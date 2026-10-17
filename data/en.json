@@ -1413,5 +1413,201 @@
       "Files and voice calls",
       "Cross-platform"
     ]
+  },
+  "localsend": {
+    "name": "LocalSend",
+    "description": "Cross-device file transfer over the local network, no cable needed.",
+    "tags": [
+      "Transfer",
+      "LAN",
+      "Open source"
+    ],
+    "intro": "LocalSend transfers files and text between phones and computers on the same Wi-Fi without cables or cloud drives. It runs on Windows, macOS, Linux, Android and iOS, and data never passes through a server.",
+    "highlights": [
+      "Direct LAN transfer",
+      "Phone to PC",
+      "Cross-platform and open source"
+    ]
+  },
+  "syncthing": {
+    "name": "Syncthing",
+    "description": "Open-source peer-to-peer file synchronization without cloud servers.",
+    "tags": [
+      "Sync",
+      "Backup",
+      "Open source"
+    ],
+    "intro": "Syncthing synchronizes folders directly between devices in a peer-to-peer manner, without relying on a cloud service. It suits syncing files between a desktop, laptop and NAS while keeping full control of the data.",
+    "highlights": [
+      "Peer-to-peer sync",
+      "No cloud dependency",
+      "Open source"
+    ]
+  },
+  "devtoys": {
+    "name": "DevToys",
+    "description": "A Swiss Army knife for developers with JSON, encoding and regex tools.",
+    "tags": [
+      "Development",
+      "Toolkit",
+      "Open source"
+    ],
+    "intro": "DevToys bundles common developer utilities such as JSON formatting, Base64 encoding, regex testing, hashing and timestamp conversion into one app. It is portable and open source, handy for everyday debugging.",
+    "highlights": [
+      "JSON and encoding tools",
+      "Regex and hashing",
+      "Open source"
+    ]
+  },
+  "imageglass": {
+    "name": "ImageGlass",
+    "description": "Lightweight and fast image viewer with broad format support.",
+    "tags": [
+      "Images",
+      "Viewer",
+      "Open source"
+    ],
+    "intro": "ImageGlass is a lightweight, fast image viewer that supports PNG, JPG, GIF, WebP, SVG and more. It has a clean interface with zoom, rotation and slideshow features, making it a good replacement for the built-in Photos app.",
+    "highlights": [
+      "Fast and lightweight",
+      "Broad format support",
+      "Clean interface"
+    ]
+  },
+  "eartrumpet": {
+    "name": "EarTrumpet",
+    "description": "A better volume control for Windows with per-app volume.",
+    "tags": [
+      "Volume",
+      "System",
+      "Open source"
+    ],
+    "intro": "EarTrumpet enhances Windows volume control with per-app volume sliders, quick output device switching and a taskbar panel showing which apps are playing sound.",
+    "highlights": [
+      "Per-app volume",
+      "Switch output devices",
+      "Taskbar controls"
+    ]
+  },
+  "modernflyouts": {
+    "name": "ModernFlyouts",
+    "description": "Replaces Windows volume and brightness flyouts with a modern design.",
+    "tags": [
+      "UI",
+      "System",
+      "Open source"
+    ],
+    "intro": "ModernFlyouts replaces the default Windows volume and brightness flyouts with a modern design, including media controls, playback info and theme customization.",
+    "highlights": [
+      "Modern flyouts",
+      "Media controls",
+      "Custom themes"
+    ]
+  },
+  "files-app": {
+    "name": "Files",
+    "description": "A modern Windows file manager with tabs and dual panes.",
+    "tags": [
+      "File manager",
+      "Productivity",
+      "Open source"
+    ],
+    "intro": "Files is a modern Windows file manager with tabs, dual-pane browsing, file previews and cloud drive integration. Its cleaner interface suits users who organize files often.",
+    "highlights": [
+      "Tabbed browsing",
+      "Dual pane and previews",
+      "Cloud integration"
+    ]
+  },
+  "motrix": {
+    "name": "Motrix",
+    "description": "Open-source download manager for HTTP, BT and magnet links.",
+    "tags": [
+      "Download",
+      "BT",
+      "Open source"
+    ],
+    "intro": "Motrix is an open-source download manager supporting HTTP, FTP, BitTorrent, magnet links and more. It has a clean, ad-free interface with concurrent downloads and resume support.",
+    "highlights": [
+      "BT and magnet support",
+      "Concurrent downloads",
+      "Open source, no ads"
+    ]
+  },
+  "picgo": {
+    "name": "PicGo",
+    "description": "Upload images to image hosting and copy links instantly.",
+    "tags": [
+      "Image hosting",
+      "Upload",
+      "Open source"
+    ],
+    "intro": "PicGo uploads images to services such as GitHub, Aliyun OSS or Tencent COS and copies the Markdown link automatically. It is handy for blogging, note-taking and documentation.",
+    "highlights": [
+      "Multiple image hosts",
+      "Drag, upload, copy link",
+      "Open source"
+    ]
+  },
+  "clash-verge": {
+    "name": "Clash Verge Rev",
+    "description": "Open-source proxy client built on the Clash core.",
+    "tags": [
+      "Network",
+      "Proxy",
+      "Open source"
+    ],
+    "intro": "Clash Verge Rev is an open-source proxy client built on the Clash core, with subscription import, rule-based routing and system proxy toggling in a modern interface.",
+    "highlights": [
+      "Subscriptions and rules",
+      "System proxy toggle",
+      "Modern open-source UI"
+    ]
+  },
+  "dismpp": {
+    "name": "Dism++",
+    "description": "Powerful Windows cleanup and system optimization tool.",
+    "tags": [
+      "System",
+      "Optimization",
+      "Cleanup"
+    ],
+    "intro": "Dism++ is a capable Windows maintenance tool for cleaning junk files, managing startup items, repairing system images and adjusting settings. It is portable and requires no installation.",
+    "highlights": [
+      "System cleanup",
+      "Startup and settings",
+      "Portable"
+    ]
+  },
+  "pot-translate": {
+    "name": "Pot",
+    "description": "Open-source text selection translator with multiple engines.",
+    "tags": [
+      "Translation",
+      "Selection",
+      "Open source"
+    ],
+    "intro": "Pot translates selected text with a hotkey and supports multiple translation engines plus OCR screenshot translation. It is handy for reading foreign-language material.",
+    "highlights": [
+      "Hotkey selection translation",
+      "Multiple engines",
+      "OCR screenshot translation"
+    ]
+  },
+  "rclone": {
+    "name": "Rclone",
+    "description": "Command-line cloud sync tool supporting dozens of storage services.",
+    "tags": [
+      "Cloud",
+      "Sync",
+      "CLI",
+      "Open source"
+    ],
+    "intro": "Rclone is a command-line tool for syncing and mounting dozens of cloud storage services including OneDrive, Google Drive, Aliyun Drive and S3, with incremental sync and encrypted backups.",
+    "highlights": [
+      "Dozens of cloud services",
+      "Mount and incremental sync",
+      "Scriptable and open source"
+    ]
   }
 }

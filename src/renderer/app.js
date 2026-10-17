@@ -33,6 +33,7 @@ const state = {
     installDir: ''
   },
   activeTags: new Set(),
+  opensourceSub: 'all',
   installedApps: [],
   installedLoading: false,
   installedError: '',
@@ -208,14 +209,29 @@ function toast(message, ms = 3200) {
 
 function renderNav() {
   const { categories, apps } = state.catalog;
-  const items = [{ id: 'all', name: t('nav.all'), icon: '◎' }, ...categories];
+  const items = [
+    { id: 'all', name: t('nav.all'), icon: '◎' },
+    { id: 'opensource', name: t('nav.opensource'), icon: '⌘' },
+    ...categories
+  ];
   const counts = new Map();
   apps.forEach((a) => counts.set(a.category, (counts.get(a.category) || 0) + 1));
+  const openCount = apps.filter((a) => a.opensource).length;
 
   $('#categories').innerHTML = items
     .map((cat) => {
-      const count = cat.id === 'all' ? apps.length : counts.get(cat.id) || 0;
-      const name = cat.id === 'all' ? t('nav.all') : t(`category.${cat.id}`);
+      const count =
+        cat.id === 'all'
+          ? apps.length
+          : cat.id === 'opensource'
+            ? openCount
+            : counts.get(cat.id) || 0;
+      const name =
+        cat.id === 'all'
+          ? t('nav.all')
+          : cat.id === 'opensource'
+            ? t('nav.opensource')
+            : t(`category.${cat.id}`);
       return `
         <button class="nav-item ${state.view === 'catalog' && state.category === cat.id ? 'active' : ''}" data-category="${escapeHtml(cat.id)}">
           <span class="nav-icon">${escapeHtml(cat.icon)}</span>
@@ -255,6 +271,20 @@ function renderTagFilter() {
   const box = $('#tagFilter');
   if (!box) return;
 
+  if (state.category === 'opensource') {
+    const subCats = state.catalog.categories.filter((cat) =>
+      state.catalog.apps.some((app) => app.opensource && app.category === cat.id)
+    );
+    box.innerHTML = [
+      `<button class="tag-chip ${state.opensourceSub === 'all' ? 'active' : ''}" data-sub="all">${t('nav.all')}</button>`,
+      ...subCats.map(
+        (cat) =>
+          `<button class="tag-chip ${state.opensourceSub === cat.id ? 'active' : ''}" data-sub="${cat.id}">${escapeHtml(t(`category.${cat.id}`))}</button>`
+      )
+    ].join('');
+    return;
+  }
+
   const counts = new Map();
   for (const app of state.catalog.apps) {
     const text = appText(app);
@@ -280,7 +310,12 @@ function renderTagFilter() {
 function currentApps() {
   const q = state.query.trim().toLowerCase();
   return state.catalog.apps.filter((app) => {
-    if (state.category !== 'all' && app.category !== state.category) return false;
+    if (state.category === 'opensource') {
+      if (!app.opensource) return false;
+      if (state.opensourceSub !== 'all' && app.category !== state.opensourceSub) return false;
+    } else if (state.category !== 'all' && app.category !== state.category) {
+      return false;
+    }
     if (state.installableOnly && !app.winget) return false;
     const text = appText(app);
     if (state.activeTags.size && !(text.tags || []).some((tag) => state.activeTags.has(tag))) {
@@ -374,8 +409,15 @@ function render() {
   $('#empty').hidden = apps.length !== 0;
   $('#count').textContent = t('count.apps', { n: apps.length });
 
-  $('#sectionTitle').textContent =
-    state.category === 'all' ? t('nav.all') : t(`category.${state.category}`);
+  if (state.category === 'opensource') {
+    const sub = state.catalog.categories.find((c) => c.id === state.opensourceSub);
+    $('#sectionTitle').textContent = sub
+      ? `${t('nav.opensource')} · ${t(`category.${sub.id}`)}`
+      : t('nav.opensource');
+  } else {
+    $('#sectionTitle').textContent =
+      state.category === 'all' ? t('nav.all') : t(`category.${state.category}`);
+  }
 
   renderNav();
   renderTagFilter();
@@ -1350,6 +1392,7 @@ function bindEvents() {
     const item = event.target.closest('.nav-item');
     if (!item) return;
     state.category = item.dataset.category;
+    if (state.category === 'opensource') state.opensourceSub = 'all';
     if (state.view !== 'catalog') {
       setView('catalog');
     } else {
@@ -1407,8 +1450,13 @@ function bindEvents() {
   });
 
   $('#tagFilter').addEventListener('click', (event) => {
-    const chip = event.target.closest('[data-tag]');
+    const chip = event.target.closest('[data-tag],[data-sub]');
     if (!chip) return;
+    if (chip.dataset.sub !== undefined) {
+      state.opensourceSub = chip.dataset.sub;
+      render();
+      return;
+    }
     const tag = chip.dataset.tag;
     if (state.activeTags.has(tag)) state.activeTags.delete(tag);
     else state.activeTags.add(tag);

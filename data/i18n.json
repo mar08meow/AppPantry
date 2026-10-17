@@ -2,6 +2,7 @@
   "zh-CN": {
     "brand.sub": "应用下载与管理",
     "nav.all": "全部应用",
+    "nav.opensource": "开源专区",
     "category.essentials": "装机必备",
     "category.social": "社交与网盘",
     "category.games": "游戏平台",
@@ -169,6 +170,7 @@
   "en-US": {
     "brand.sub": "App download & manager",
     "nav.all": "All apps",
+    "nav.opensource": "Open source",
     "category.essentials": "Essentials",
     "category.social": "Social & cloud",
     "category.games": "Game platforms",

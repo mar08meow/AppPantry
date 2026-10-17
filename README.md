@@ -12,12 +12,12 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 ## Features / 功能
 
 ### App catalog / 应用清单
-- 99 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools
+- 112 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools, including 25 open-source projects
 - Real brand icons extracted from the local system, with offline fallbacks
 - Detailed Chinese and English descriptions, highlights and tags
 - Search, category filters and an "installable only" filter
 
-- 收录 99 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具
+- 收录 112 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 25 个为开源项目
 - 从本机提取真实品牌图标，离线可用
 - 中英文详细介绍、亮点和标签
 - 支持搜索、分类筛选和「仅看可一键安装」
