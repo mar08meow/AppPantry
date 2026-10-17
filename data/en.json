@@ -1847,5 +1847,395 @@
       "Wuxia storyline",
       "Made by NetEase"
     ]
+  },
+  "bilibili": {
+    "name": "Bilibili",
+    "description": "Popular Chinese video platform client with danmaku, anime and live streaming.",
+    "tags": [
+      "Video",
+      "Danmaku",
+      "Anime"
+    ],
+    "intro": "The Bilibili desktop client offers videos, anime, live streams and a dynamic feed with danmaku, playback speed, casting and offline caching.",
+    "highlights": [
+      "Videos and anime",
+      "Danmaku comments",
+      "Live and casting"
+    ]
+  },
+  "douyin": {
+    "name": "Douyin",
+    "description": "Short video platform client for watching, streaming and creating.",
+    "tags": [
+      "Short video",
+      "Live",
+      "Creation"
+    ],
+    "intro": "Douyin for desktop lets you watch short videos and live streams, publish content and manage your creations on a larger screen.",
+    "highlights": [
+      "Short videos",
+      "Live and creation",
+      "Desktop experience"
+    ]
+  },
+  "tencent-docs": {
+    "name": "Tencent Docs",
+    "description": "Online collaborative documents, spreadsheets and slides.",
+    "tags": [
+      "Documents",
+      "Collaboration",
+      "Office"
+    ],
+    "intro": "Tencent Docs offers online documents, spreadsheets, slides and forms with real-time multi-user editing, suitable for teamwork and daily office work.",
+    "highlights": [
+      "Real-time collaboration",
+      "Docs and sheets",
+      "Cloud sync"
+    ]
+  },
+  "xmind": {
+    "name": "XMind",
+    "description": "Mind mapping tool for organizing ideas and knowledge.",
+    "tags": [
+      "Mind map",
+      "Productivity",
+      "Office"
+    ],
+    "intro": "XMind is a mind mapping app with multiple layouts, themes and export formats, useful for meeting notes, knowledge mapping and planning.",
+    "highlights": [
+      "Multiple layouts",
+      "Theme templates",
+      "Export to image and PDF"
+    ]
+  },
+  "ximalaya": {
+    "name": "Ximalaya",
+    "description": "Audio platform for audiobooks, podcasts and storytelling.",
+    "tags": [
+      "Audio",
+      "Audiobooks",
+      "Podcasts"
+    ],
+    "intro": "Ximalaya offers audiobooks, podcasts, crosstalk and courses, with offline downloads and sleep timers for commuting or bedtime listening.",
+    "highlights": [
+      "Audiobooks and podcasts",
+      "Offline download",
+      "Sleep timer"
+    ]
+  },
+  "todesk": {
+    "name": "ToDesk",
+    "description": "Chinese remote desktop and file transfer tool.",
+    "tags": [
+      "Remote",
+      "Control",
+      "Office"
+    ],
+    "intro": "ToDesk provides remote desktop, file transfer and phone-to-PC control with stable connections, suitable for remote work and remote support.",
+    "highlights": [
+      "Low-latency desktop",
+      "File transfer",
+      "Phone control"
+    ]
+  },
+  "kugou": {
+    "name": "Kugou Music",
+    "description": "Long-running Chinese music player with a large catalog.",
+    "tags": [
+      "Music",
+      "Player",
+      "Listening"
+    ],
+    "intro": "Kugou Music offers a large song catalog, MVs, radio and karaoke features with lyrics, audio effects and local library management.",
+    "highlights": [
+      "Large catalog",
+      "MV and radio",
+      "Karaoke"
+    ]
+  },
+  "kuwo": {
+    "name": "Kuwo Music",
+    "description": "Music player with lossless audio and local library support.",
+    "tags": [
+      "Music",
+      "Player",
+      "Lossless"
+    ],
+    "intro": "Kuwo Music plays songs, radio and MVs plus local files, with lossless audio, lyrics and equalizer options in a clean interface.",
+    "highlights": [
+      "Lossless audio",
+      "Local library",
+      "Radio and MV"
+    ]
+  },
+  "xiaohongshu": {
+    "name": "Xiaohongshu",
+    "description": "Lifestyle community for recommendations and guides.",
+    "tags": [
+      "Community",
+      "Lifestyle",
+      "Guides"
+    ],
+    "intro": "Xiaohongshu is a lifestyle community where users share notes on fashion, food, travel and beauty, and search for real experiences and recommendations.",
+    "highlights": [
+      "Lifestyle notes",
+      "Guide search",
+      "Community"
+    ]
+  },
+  "zhihu": {
+    "name": "Zhihu",
+    "description": "Q&A community for questions, answers and expert discussion.",
+    "tags": [
+      "Q&A",
+      "Community",
+      "Knowledge"
+    ],
+    "intro": "Zhihu is a Q&A community where users ask and answer questions, follow topics and columns, and read expert discussions across fields.",
+    "highlights": [
+      "Questions and columns",
+      "Topic following",
+      "Expert discussion"
+    ]
+  },
+  "weibo": {
+    "name": "Weibo",
+    "description": "Social media platform for trending topics and posts.",
+    "tags": [
+      "Social",
+      "Trending",
+      "Posts"
+    ],
+    "intro": "Weibo is a social platform for trending topics, following celebrities and posting text, images and videos, and is a common way to follow breaking news.",
+    "highlights": [
+      "Trending topics",
+      "Posts and media",
+      "Follow and interact"
+    ]
+  },
+  "meituan": {
+    "name": "Meituan",
+    "description": "Local services platform for food delivery, deals and hotels.",
+    "tags": [
+      "Lifestyle",
+      "Delivery",
+      "Deals"
+    ],
+    "intro": "Meituan offers food delivery, group deals, hotel booking, movie tickets and errands, with desktop browsing and order management.",
+    "highlights": [
+      "Delivery and deals",
+      "Hotels and tickets",
+      "Order management"
+    ]
+  },
+  "taobao": {
+    "name": "Taobao",
+    "description": "Major Chinese e-commerce platform for shopping and live sales.",
+    "tags": [
+      "Shopping",
+      "E-commerce",
+      "Live"
+    ],
+    "intro": "Taobao is a major e-commerce platform with product search, price comparison, store following and live shopping, well suited to browsing on a larger screen.",
+    "highlights": [
+      "Search and compare",
+      "Stores and live",
+      "Order management"
+    ]
+  },
+  "alipay": {
+    "name": "Alipay",
+    "description": "Payment and lifestyle app for transfers, bills and travel.",
+    "tags": [
+      "Payment",
+      "Lifestyle",
+      "Utility"
+    ],
+    "intro": "Alipay handles QR payments, transfers, utility bills, travel and government services, with a desktop client for web services and account management.",
+    "highlights": [
+      "Payments and transfers",
+      "Utility bills",
+      "Account management"
+    ]
+  },
+  "sunlogin": {
+    "name": "Sunlogin",
+    "description": "Chinese remote control tool with remote desktop and wake-on-LAN.",
+    "tags": [
+      "Remote",
+      "Control",
+      "Office"
+    ],
+    "intro": "Sunlogin supports remote desktop, file transfer, remote power-on and phone-to-PC control, suitable for remote work, IT support and family help.",
+    "highlights": [
+      "Remote desktop",
+      "Remote power-on",
+      "File transfer"
+    ]
+  },
+  "huorong": {
+    "name": "Huorong Security",
+    "description": "Lightweight Chinese antivirus with pop-up blocking.",
+    "tags": [
+      "Security",
+      "Antivirus",
+      "Lightweight"
+    ],
+    "intro": "Huorong Security is a lightweight antivirus with malware scanning, pop-up blocking, system hardening and startup management.",
+    "highlights": [
+      "Malware scanning",
+      "Pop-up blocking",
+      "Low resource use"
+    ]
+  },
+  "360safe": {
+    "name": "360 Total Security",
+    "description": "All-in-one security suite with cleanup and system repair.",
+    "tags": [
+      "Security",
+      "Cleanup",
+      "System"
+    ],
+    "intro": "360 Total Security offers malware scanning, junk cleanup, system repair and startup optimization in one suite.",
+    "highlights": [
+      "Malware scanning",
+      "Junk cleanup",
+      "System repair"
+    ]
+  },
+  "tencent-pcmgr": {
+    "name": "Tencent PC Manager",
+    "description": "Tencent security and cleanup suite.",
+    "tags": [
+      "Security",
+      "Cleanup",
+      "Tencent"
+    ],
+    "intro": "Tencent PC Manager provides antivirus, junk cleanup, software management and network acceleration in a friendly interface.",
+    "highlights": [
+      "Antivirus",
+      "Junk cleanup",
+      "Software management"
+    ]
+  },
+  "baidu-input": {
+    "name": "Baidu Input",
+    "description": "Chinese input method with rich dictionary and voice input.",
+    "tags": [
+      "Input method",
+      "Chinese",
+      "Productivity"
+    ],
+    "intro": "Baidu Input supports Pinyin, Wubi, voice and handwriting input with a rich dictionary, skins and quick phrases.",
+    "highlights": [
+      "Pinyin and Wubi",
+      "Voice input",
+      "Rich dictionary"
+    ]
+  },
+  "iflytek-input": {
+    "name": "iFlytek Input",
+    "description": "Chinese input method known for accurate voice input.",
+    "tags": [
+      "Input method",
+      "Voice",
+      "Productivity"
+    ],
+    "intro": "iFlytek Input is known for accurate speech recognition, alongside Pinyin, handwriting and quick phrase input.",
+    "highlights": [
+      "Accurate voice input",
+      "Pinyin and handwriting",
+      "Quick phrases"
+    ]
+  },
+  "youdao": {
+    "name": "Youdao Dictionary",
+    "description": "Dictionary and translation tool for learning English.",
+    "tags": [
+      "Dictionary",
+      "Translation",
+      "Learning"
+    ],
+    "intro": "Youdao Dictionary offers word lookup, sentence translation, selection translation and speaking practice across multiple languages.",
+    "highlights": [
+      "Lookup and translation",
+      "Selection translate",
+      "Multi-language"
+    ]
+  },
+  "yuque": {
+    "name": "Yuque",
+    "description": "Knowledge base and document collaboration tool.",
+    "tags": [
+      "Knowledge base",
+      "Documents",
+      "Collaboration"
+    ],
+    "intro": "Yuque is a knowledge base and document tool with docs, tables, whiteboards and team spaces, suited to notes and team knowledge.",
+    "highlights": [
+      "Knowledge base",
+      "Docs and tables",
+      "Team collaboration"
+    ]
+  },
+  "jianying": {
+    "name": "CapCut",
+    "description": "Easy video editor with templates, captions and effects.",
+    "tags": [
+      "Video editing",
+      "Creation",
+      "Templates"
+    ],
+    "intro": "CapCut is a video editor with cutting, captions, color grading, effects and many templates, suitable for short video creation.",
+    "highlights": [
+      "Easy editing",
+      "Many templates",
+      "Captions and effects"
+    ]
+  },
+  "format-factory": {
+    "name": "Format Factory",
+    "description": "Long-running format converter for video, audio, images and documents.",
+    "tags": [
+      "Converter",
+      "Media",
+      "Utility"
+    ],
+    "intro": "Format Factory converts video, audio, images and documents, and can trim, merge and compress files in a straightforward interface.",
+    "highlights": [
+      "Media conversion",
+      "Images and documents",
+      "Trim and merge"
+    ]
+  },
+  "watt-toolkit": {
+    "name": "Watt Toolkit",
+    "description": "Steam toolbox for store, community and download acceleration.",
+    "tags": [
+      "Steam",
+      "Acceleration",
+      "Toolkit"
+    ],
+    "intro": "Watt Toolkit (formerly Steam++) accelerates the Steam store, community and game downloads, and bundles scripts, account and achievement tools.",
+    "highlights": [
+      "Store acceleration",
+      "Download speed-up",
+      "Account tools"
+    ]
+  },
+  "taptap": {
+    "name": "TapTap",
+    "description": "Game community and download platform for discovering games.",
+    "tags": [
+      "Games",
+      "Community",
+      "Download"
+    ],
+    "intro": "TapTap is a game community and download platform where you can browse ratings, reviews and guides, and download mobile and PC games.",
+    "highlights": [
+      "Ratings and reviews",
+      "Game downloads",
+      "Player community"
+    ]
   }
 }

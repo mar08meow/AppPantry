@@ -12,8 +12,10 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 ## Features / 功能
 
 ### App catalog / 应用清单
-- 128 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools, including 28 open-source projects
+- 154 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools, including 28 open-source projects
 - Real brand icons extracted from the local system, with offline fallbacks
+- Placeholder detection when fetching icons, with a favicon.im fallback
+- 26 Chinese apps added: Bilibili, Douyin, Xiaohongshu, Zhihu, Weibo, Taobao, Alipay, Sunlogin, ToDesk, Huorong, Kugou, Kuwo, CapCut and more
 - Detailed Chinese and English descriptions, highlights and tags
 - Search, category filters and an "installable only" filter
 - One-click installable apps are listed first in every category
@@ -21,8 +23,10 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 - Automatic icon fetching from official sites or the GitHub API
 - In-app app submission, reviewed through a GitHub Issue before being added
 
-- 收录 128 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 28 个为开源项目
+- 收录 154 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 28 个为开源项目
 - 从本机提取真实品牌图标，离线可用
+- 图标抓取带占位图检测，并提供 favicon.im 备用源
+- 新增 26 款国内应用：哔哩哔哩、抖音、小红书、知乎、微博、淘宝、支付宝、向日葵、ToDesk、火绒、酷狗、酷我、剪映等
 - 中英文详细介绍、亮点和标签
 - 支持搜索、分类筛选和「仅看可一键安装」
 - 每个分类中可一键安装的应用优先显示

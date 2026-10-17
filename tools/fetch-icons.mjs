@@ -72,6 +72,13 @@ async function githubIcon(homepage) {
   return { buffer, ext: path.extname(candidate.path).slice(1).toLowerCase() || 'png' };
 }
 
+// favicon.im 等源经常返回灰色圆 + 字母的占位 SVG，判定为无效
+function isPlaceholder(buffer) {
+  if (buffer.length > 2000) return false;
+  const head = buffer.subarray(0, 400).toString('utf8');
+  return head.includes('<svg') && head.includes('#808080');
+}
+
 async function webIcon(homepage) {
   const html = (await fetchBuffer(homepage)).toString('utf8');
   const links = [];
@@ -87,7 +94,7 @@ async function webIcon(homepage) {
       const res = await fetch(url, { redirect: 'follow' });
       if (!res.ok) continue;
       const buffer = Buffer.from(await res.arrayBuffer());
-      if (buffer.length < 300) continue;
+      if (buffer.length < 300 || isPlaceholder(buffer)) continue;
       const type = res.headers.get('content-type') || '';
       const ext = type.includes('svg')
         ? 'svg'
@@ -102,6 +109,30 @@ async function webIcon(homepage) {
     } catch (_) {
       /* 尝试下一个候选 */
     }
+  }
+
+  // 官网没有可用图标时退回 favicon.im，同样过滤占位图
+  try {
+    const host = new URL(homepage).hostname;
+    const res = await fetch(`https://favicon.im/${host}?larger=true`, { redirect: 'follow' });
+    if (res.ok) {
+      const buffer = Buffer.from(await res.arrayBuffer());
+      if (buffer.length >= 300 && !isPlaceholder(buffer)) {
+        const type = res.headers.get('content-type') || '';
+        const ext = type.includes('svg')
+          ? 'svg'
+          : type.includes('png')
+            ? 'png'
+            : type.includes('webp')
+              ? 'webp'
+              : type.includes('jpeg')
+                ? 'jpg'
+                : 'ico';
+        return { buffer, ext };
+      }
+    }
+  } catch (_) {
+    /* favicon.im 也不可用时放弃 */
   }
   return null;
 }

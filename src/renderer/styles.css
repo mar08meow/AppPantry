@@ -2020,3 +2020,127 @@ button {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/* ==================== 1.0 视觉重构 ==================== */
+
+/* 背景光斑：让深色界面更有层次 */
+body {
+  background:
+    radial-gradient(
+      900px 520px at 10% -12%,
+      color-mix(in srgb, var(--accent) 15%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(820px 480px at 102% -4%, rgba(157, 107, 255, 0.12), transparent 64%),
+    var(--bg);
+}
+
+.sidebar {
+  width: 246px;
+  flex: 0 0 246px;
+  background: color-mix(in srgb, var(--sidebar) 92%, transparent);
+  padding: 24px 14px 18px;
+}
+
+.brand {
+  padding: 0 8px 22px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  font-size: 19px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 92%, #fff),
+    var(--accent-deep)
+  );
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+.brand-text strong {
+  font-size: 15.5px;
+  letter-spacing: 0.3px;
+}
+
+.nav-item {
+  height: 40px;
+  border-radius: 11px;
+  font-size: 13px;
+}
+
+.nav-item:hover {
+  background: color-mix(in srgb, var(--panel) 70%, transparent);
+  color: var(--text);
+}
+
+.nav-item.active {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 26%, transparent);
+  color: var(--text);
+}
+
+.topbar {
+  padding: 16px 26px 12px;
+}
+
+.search {
+  height: 42px;
+  border-radius: 13px;
+}
+
+.card {
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.card-top {
+  gap: 13px;
+}
+
+.app-icon {
+  width: 54px;
+  height: 54px;
+  flex-basis: 54px;
+  border-radius: 15px;
+  font-size: 21px;
+}
+
+.card-title h3 {
+  font-size: 14.5px;
+}
+
+.card .desc {
+  font-size: 12.2px;
+  line-height: 1.55;
+}
+
+.card-actions {
+  gap: 8px;
+}
+
+.btn {
+  border-radius: 10px;
+  height: 33px;
+  font-size: 12px;
+}
+
+.modal {
+  border-radius: 20px;
+}
+
+@keyframes view-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.catalog-view,
+.installed-view,
+.convert-view,
+.submit-view,
+.settings-view {
+  animation: view-in 0.22s ease both;
+}

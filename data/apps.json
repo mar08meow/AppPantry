@@ -201,7 +201,6 @@
       ],
       "color": "#EE7B1D",
       "initial": "P",
-      "icon": "icons/potplayer.svg",
       "opensource": false
     },
     {
@@ -1045,7 +1044,6 @@
       ],
       "color": "#FFD400",
       "initial": "P",
-      "icon": "icons/putty.svg",
       "opensource": false
     },
     {
@@ -1472,8 +1470,8 @@
       ],
       "color": "#F59E0B",
       "initial": "D",
-      "icon": "icons/ditto.svg",
-      "opensource": false
+      "opensource": false,
+      "icon": "icons/ditto.ico"
     },
     {
       "id": "trafficmonitor",
@@ -1743,7 +1741,6 @@
       ],
       "color": "#25D366",
       "initial": "W",
-      "icon": "icons/whatsapp.svg",
       "opensource": false
     },
     {
@@ -2266,6 +2263,474 @@
       "initial": "N",
       "opensource": false,
       "icon": "icons/nishuihan.ico"
+    },
+    {
+      "id": "bilibili",
+      "name": "哔哩哔哩",
+      "category": "media",
+      "description": "国内知名的视频弹幕网站客户端，追番、看视频、看直播。",
+      "homepage": "https://www.bilibili.com/",
+      "winget": "Bilibili.Bilibili",
+      "mirror": "",
+      "tags": [
+        "视频",
+        "弹幕",
+        "追番"
+      ],
+      "color": "#FB7299",
+      "initial": "B",
+      "opensource": false,
+      "icon": "icons/bilibili.png"
+    },
+    {
+      "id": "douyin",
+      "name": "抖音",
+      "category": "media",
+      "description": "短视频平台客户端，刷视频、看直播、创作内容。",
+      "homepage": "https://www.douyin.com/",
+      "winget": "ByteDance.Douyin",
+      "mirror": "",
+      "tags": [
+        "短视频",
+        "直播",
+        "创作"
+      ],
+      "color": "#161823",
+      "initial": "抖",
+      "opensource": false,
+      "icon": "icons/douyin.ico"
+    },
+    {
+      "id": "tencent-docs",
+      "name": "腾讯文档",
+      "category": "utilities",
+      "description": "在线协作文档工具，支持文档、表格和幻灯片。",
+      "homepage": "https://docs.qq.com/",
+      "winget": "Tencent.TencentDocs",
+      "mirror": "",
+      "tags": [
+        "文档",
+        "协作",
+        "办公"
+      ],
+      "color": "#2E7CF6",
+      "initial": "T",
+      "opensource": false,
+      "icon": "icons/tencent-docs.ico"
+    },
+    {
+      "id": "xmind",
+      "name": "XMind",
+      "category": "utilities",
+      "description": "思维导图工具，用来整理思路和做知识梳理。",
+      "homepage": "https://xmind.cn/",
+      "winget": "Xmind.Xmind",
+      "mirror": "",
+      "tags": [
+        "思维导图",
+        "效率",
+        "办公"
+      ],
+      "color": "#3B82F6",
+      "initial": "X",
+      "opensource": false,
+      "icon": "icons/xmind.png"
+    },
+    {
+      "id": "ximalaya",
+      "name": "喜马拉雅",
+      "category": "media",
+      "description": "音频分享平台，听书、听播客、听相声。",
+      "homepage": "https://www.ximalaya.com/",
+      "winget": "Ximalaya.Ximalaya",
+      "mirror": "",
+      "tags": [
+        "音频",
+        "听书",
+        "播客"
+      ],
+      "color": "#F86442",
+      "initial": "喜",
+      "opensource": false,
+      "icon": "icons/ximalaya.ico"
+    },
+    {
+      "id": "todesk",
+      "name": "ToDesk",
+      "category": "utilities",
+      "description": "国产远程控制软件，远程桌面和文件传输。",
+      "homepage": "https://www.todesk.com/",
+      "winget": "Youqu.ToDesk",
+      "mirror": "",
+      "tags": [
+        "远程",
+        "控制",
+        "办公"
+      ],
+      "color": "#1E6FFF",
+      "initial": "T",
+      "opensource": false,
+      "icon": "icons/todesk.ico"
+    },
+    {
+      "id": "kugou",
+      "name": "酷狗音乐",
+      "category": "media",
+      "description": "国内老牌音乐播放器，曲库丰富。",
+      "homepage": "https://www.kugou.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "播放器",
+        "听歌"
+      ],
+      "color": "#2CA2F0",
+      "initial": "酷",
+      "opensource": false,
+      "icon": "icons/kugou.ico"
+    },
+    {
+      "id": "kuwo",
+      "name": "酷我音乐",
+      "category": "media",
+      "description": "音乐播放器，支持无损音质和本地音乐。",
+      "homepage": "https://www.kuwo.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "播放器",
+        "无损"
+      ],
+      "color": "#FF7A00",
+      "initial": "酷",
+      "opensource": false,
+      "icon": "icons/kuwo.ico"
+    },
+    {
+      "id": "xiaohongshu",
+      "name": "小红书",
+      "category": "social",
+      "description": "生活方式社区，种草、攻略和分享。",
+      "homepage": "https://www.xiaohongshu.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "社区",
+        "种草",
+        "生活"
+      ],
+      "color": "#FF2442",
+      "initial": "小",
+      "opensource": false,
+      "icon": "icons/xiaohongshu.ico"
+    },
+    {
+      "id": "zhihu",
+      "name": "知乎",
+      "category": "social",
+      "description": "问答社区，提问、回答和看专业讨论。",
+      "homepage": "https://www.zhihu.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "问答",
+        "社区",
+        "知识"
+      ],
+      "color": "#0084FF",
+      "initial": "知",
+      "opensource": false,
+      "icon": "icons/zhihu.png"
+    },
+    {
+      "id": "weibo",
+      "name": "微博",
+      "category": "social",
+      "description": "社交媒体平台，看热点、发动态、关注明星。",
+      "homepage": "https://weibo.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "社交",
+        "热点",
+        "动态"
+      ],
+      "color": "#E6162D",
+      "initial": "微",
+      "opensource": false,
+      "icon": "icons/weibo.ico"
+    },
+    {
+      "id": "meituan",
+      "name": "美团",
+      "category": "social",
+      "description": "生活服务平台，点外卖、团购和订酒店。",
+      "homepage": "https://www.meituan.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "生活",
+        "外卖",
+        "团购"
+      ],
+      "color": "#FFC300",
+      "initial": "美",
+      "opensource": false,
+      "icon": "icons/meituan.ico"
+    },
+    {
+      "id": "taobao",
+      "name": "淘宝",
+      "category": "social",
+      "description": "综合电商平台，购物、比价和看直播。",
+      "homepage": "https://www.taobao.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "购物",
+        "电商",
+        "直播"
+      ],
+      "color": "#FF5000",
+      "initial": "淘",
+      "opensource": false,
+      "icon": "icons/taobao.png"
+    },
+    {
+      "id": "alipay",
+      "name": "支付宝",
+      "category": "social",
+      "description": "支付和生活服务工具，转账、缴费和出行。",
+      "homepage": "https://www.alipay.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "支付",
+        "生活",
+        "工具"
+      ],
+      "color": "#1677FF",
+      "initial": "支",
+      "opensource": false,
+      "icon": "icons/alipay.png"
+    },
+    {
+      "id": "sunlogin",
+      "name": "向日葵远程控制",
+      "category": "utilities",
+      "description": "国产远程控制软件，远程桌面和开机。",
+      "homepage": "https://sunlogin.oray.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "远程",
+        "控制",
+        "办公"
+      ],
+      "color": "#F5A623",
+      "initial": "向",
+      "opensource": false,
+      "icon": "icons/sunlogin.ico"
+    },
+    {
+      "id": "huorong",
+      "name": "火绒安全",
+      "category": "utilities",
+      "description": "轻量的国产安全软件，拦截弹窗和查杀病毒。",
+      "homepage": "https://www.huorong.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "安全",
+        "杀毒",
+        "轻量"
+      ],
+      "color": "#2F6FEB",
+      "initial": "火",
+      "opensource": false,
+      "icon": "icons/huorong.png"
+    },
+    {
+      "id": "360safe",
+      "name": "360安全卫士",
+      "category": "utilities",
+      "description": "综合安全软件，清理、查杀和系统修复。",
+      "homepage": "https://www.360.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "安全",
+        "清理",
+        "系统"
+      ],
+      "color": "#00A650",
+      "initial": "3",
+      "opensource": false,
+      "icon": "icons/360safe.ico"
+    },
+    {
+      "id": "tencent-pcmgr",
+      "name": "腾讯电脑管家",
+      "category": "utilities",
+      "description": "腾讯出品的系统安全与清理工具。",
+      "homepage": "https://guanjia.qq.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "安全",
+        "清理",
+        "腾讯"
+      ],
+      "color": "#2C8EFF",
+      "initial": "T",
+      "opensource": false,
+      "icon": "icons/tencent-pcmgr.png"
+    },
+    {
+      "id": "baidu-input",
+      "name": "百度输入法",
+      "category": "utilities",
+      "description": "中文输入法，词库丰富，支持语音输入。",
+      "homepage": "https://shurufa.baidu.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "输入法",
+        "中文",
+        "效率"
+      ],
+      "color": "#2932E1",
+      "initial": "百",
+      "opensource": false,
+      "icon": "icons/baidu-input.ico"
+    },
+    {
+      "id": "iflytek-input",
+      "name": "讯飞输入法",
+      "category": "utilities",
+      "description": "语音输入见长的中文输入法。",
+      "homepage": "https://srf.xunfei.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "输入法",
+        "语音",
+        "效率"
+      ],
+      "color": "#1E88E5",
+      "initial": "讯",
+      "opensource": false,
+      "icon": "icons/iflytek-input.ico"
+    },
+    {
+      "id": "youdao",
+      "name": "网易有道词典",
+      "category": "utilities",
+      "description": "词典翻译工具，查词、翻译和学英语。",
+      "homepage": "https://youdao.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "词典",
+        "翻译",
+        "学习"
+      ],
+      "color": "#E4393C",
+      "initial": "有",
+      "opensource": false,
+      "icon": "icons/youdao.ico"
+    },
+    {
+      "id": "yuque",
+      "name": "语雀",
+      "category": "utilities",
+      "description": "知识库与文档协作工具，适合团队沉淀内容。",
+      "homepage": "https://www.yuque.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "知识库",
+        "文档",
+        "协作"
+      ],
+      "color": "#00B96B",
+      "initial": "语",
+      "opensource": false,
+      "icon": "icons/yuque.svg"
+    },
+    {
+      "id": "jianying",
+      "name": "剪映",
+      "category": "media",
+      "description": "视频剪辑工具，模板丰富，上手简单。",
+      "homepage": "https://www.capcut.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "视频剪辑",
+        "创作",
+        "模板"
+      ],
+      "color": "#00C8C8",
+      "initial": "剪",
+      "opensource": false,
+      "icon": "icons/jianying.ico"
+    },
+    {
+      "id": "format-factory",
+      "name": "格式工厂",
+      "category": "utilities",
+      "description": "老牌格式转换工具，音视频和图片互转。",
+      "homepage": "http://www.pcfreetime.com/formatfactory/CN/index.html",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "格式转换",
+        "音视频",
+        "工具"
+      ],
+      "color": "#F5A623",
+      "initial": "格",
+      "opensource": false,
+      "icon": "icons/format-factory.ico"
+    },
+    {
+      "id": "watt-toolkit",
+      "name": "Watt Toolkit",
+      "category": "utilities",
+      "description": "Steam 工具箱，加速商店、社区和游戏下载。",
+      "homepage": "https://steampp.net/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "Steam",
+        "加速",
+        "工具"
+      ],
+      "color": "#66C0F4",
+      "initial": "W",
+      "opensource": false,
+      "icon": "icons/watt-toolkit.ico"
+    },
+    {
+      "id": "taptap",
+      "name": "TapTap",
+      "category": "games",
+      "description": "游戏社区与下载平台，发现好游戏。",
+      "homepage": "https://www.taptap.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏",
+        "社区",
+        "下载"
+      ],
+      "color": "#00C3C3",
+      "initial": "T",
+      "opensource": false,
+      "icon": "icons/taptap.ico"
     }
   ]
 }

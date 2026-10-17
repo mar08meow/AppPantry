@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, shell, dialog, net } = require('electron');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const { spawn, execFile } = require('child_process');
 const iconv = require('iconv-lite');
 const { PDFDocument } = require('pdf-lib');
@@ -116,17 +117,59 @@ function runWinget(args, onLine) {
 
 const WINGET_SOURCES = {
   official: 'https://cdn.winget.microsoft.com/cache',
-  ustc: 'https://mirrors.ustc.edu.cn/winget-source'
+  huawei: 'https://mirrors.huaweicloud.com/winget'
 };
 
+// 独立源名，避免与默认的 winget 源冲突（新版 winget 不允许覆盖同名源）
+const WINGET_MIRROR_NAME = 'apppantry-mirror';
+
+async function hasMirrorSource() {
+  const res = await runWinget(['source', 'list'], () => {});
+  return (res.output || '').includes(WINGET_MIRROR_NAME);
+}
+
+function wingetExePath() {
+  const local = path.join(
+    process.env.LOCALAPPDATA || '',
+    'Microsoft',
+    'WindowsApps',
+    'winget.exe'
+  );
+  return fs.existsSync(local) ? local : 'winget';
+}
+
 // winget source add 需要管理员权限，通过 UAC 提权执行
+// 用临时 ps1 脚本 + 输出重定向，避免 cmd 引号嵌套和输出丢失
 function runWingetElevated(args) {
   return new Promise((resolve) => {
-    const argList = args.map((arg) => `'${String(arg).replace(/'/g, "''")}'`).join(',');
-    const script = `$p = Start-Process -FilePath "winget" -ArgumentList @(${argList}) -Verb RunAs -Wait -PassThru; exit $p.ExitCode`;
+    const exe = wingetExePath();
+    const stamp = Date.now();
+    const scriptFile = path.join(os.tmpdir(), `apppantry-winget-${stamp}.ps1`);
+    const logFile = path.join(os.tmpdir(), `apppantry-winget-${stamp}.log`);
+    const lines = [
+      "$ErrorActionPreference = 'Continue'",
+      `& "${exe}" ${args.map((arg) => `"${arg}"`).join(' ')} *> "${logFile}"`,
+      'exit $LASTEXITCODE'
+    ];
+    try {
+      fs.writeFileSync(scriptFile, lines.join('\r\n'), 'utf8');
+    } catch (err) {
+      resolve({ code: -1, error: String(err) });
+      return;
+    }
+
+    const psScript = [
+      'try {',
+      `  $p = Start-Process -FilePath 'powershell.exe' -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File','${scriptFile.replace(/'/g, "''")}') -Verb RunAs -Wait -PassThru`,
+      '  exit $p.ExitCode',
+      '} catch {',
+      '  exit 1',
+      '}'
+    ].join('\n');
+
     let child;
     try {
-      child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], {
+      child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', psScript], {
         windowsHide: true
       });
     } catch (err) {
@@ -134,7 +177,30 @@ function runWingetElevated(args) {
       return;
     }
     child.on('error', (err) => resolve({ code: -1, error: String(err) }));
-    child.on('close', (code) => resolve({ code }));
+    child.on('close', (code) => {
+      let output = '';
+      try {
+        const raw = fs.readFileSync(logFile);
+        // PowerShell 重定向可能是 UTF-16LE 或 GBK，按 BOM / 替换字符判断
+        const asUtf8 = raw.toString('utf8');
+        output =
+          raw[0] === 0xff && raw[1] === 0xfe
+            ? raw.toString('utf16le').replace(/^\uFEFF/, '')
+            : asUtf8.includes('\uFFFD')
+              ? iconv.decode(raw, 'gbk')
+              : asUtf8;
+      } catch (_) {
+        /* 提权被取消时没有日志 */
+      }
+      for (const file of [scriptFile, logFile]) {
+        try {
+          fs.rmSync(file, { force: true });
+        } catch (_) {
+          /* 忽略清理失败 */
+        }
+      }
+      resolve({ code, output: output.trim(), error: '' });
+    });
   });
 }
 
@@ -833,6 +899,10 @@ ipcMain.handle('winget:install', async (event, appEntry, options = {}) => {
   if (options.installDir) {
     args.push('--location', path.join(String(options.installDir), String(appEntry.id)));
   }
+  // 配置了镜像源时优先从镜像安装
+  if (await hasMirrorSource()) {
+    args.push('--source', WINGET_MIRROR_NAME);
+  }
 
   send(`> winget ${args.join(' ')}`);
   const res = await runWinget(args, send);
@@ -849,27 +919,45 @@ ipcMain.handle('winget:installed', async (_event, appEntry) => {
 ipcMain.handle('winget:source', async () => {
   const res = await runWinget(['source', 'list'], () => {});
   const output = res.output || '';
-  const line = output
-    .split(/\r?\n/)
-    .map((item) => item.trim())
-    .find((item) => /^winget\s/i.test(item));
-  const url = line ? (line.match(/https?:\/\/\S+/) || [])[0] || '' : '';
-  const mirror = url.includes('ustc.edu.cn') ? 'ustc' : 'official';
-  return { ok: res.code === 0, mirror, url };
+  const mirror = output.includes(WINGET_MIRROR_NAME) ? 'huawei' : 'official';
+  return {
+    ok: res.code === 0,
+    mirror,
+    url: mirror === 'huawei' ? WINGET_SOURCES.huawei : WINGET_SOURCES.official
+  };
 });
 
 ipcMain.handle('winget:setSource', async (_event, mirror) => {
-  const url = WINGET_SOURCES[mirror] || WINGET_SOURCES.official;
-  const res = await runWingetElevated([
-    'source',
-    'add',
-    'winget',
-    url,
-    '--trust-level',
-    'trusted',
-    '--accept-source-agreements'
-  ]);
-  return { ok: res.code === 0, code: res.code, url, error: res.error || '' };
+  if (mirror === 'huawei') {
+    // 先移除同名源（忽略不存在的情况），再添加独立镜像源
+    await runWingetElevated(['source', 'remove', WINGET_MIRROR_NAME]);
+    const res = await runWingetElevated([
+      'source',
+      'add',
+      WINGET_MIRROR_NAME,
+      WINGET_SOURCES.huawei,
+      '--type',
+      'Microsoft.Rest',
+      '--trust-level',
+      'trusted'
+    ]);
+    const ok = await hasMirrorSource();
+    return {
+      ok,
+      code: res.code,
+      url: WINGET_SOURCES.huawei,
+      error: ok ? '' : res.output || '添加镜像源失败，请确认 UAC 弹窗中点击了「是」'
+    };
+  }
+
+  const res = await runWingetElevated(['source', 'remove', WINGET_MIRROR_NAME]);
+  const ok = !(await hasMirrorSource());
+  return {
+    ok,
+    code: res.code,
+    url: WINGET_SOURCES.official,
+    error: ok ? '' : res.output || '移除镜像源失败'
+  };
 });
 
 ipcMain.handle('open:external', async (_event, url) => {

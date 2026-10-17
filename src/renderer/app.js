@@ -280,7 +280,10 @@ async function setWingetSource(mirror) {
       renderMirrorStatus();
       toast(t('settings.mirrorDone'));
     } else {
-      toast(t('settings.mirrorFailed'));
+      toast(
+        t('settings.mirrorFailed') + (res?.error ? `：${res.error}` : ''),
+        7000
+      );
     }
   } catch (_) {
     toast(t('settings.mirrorFailed'));
