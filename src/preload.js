@@ -26,6 +26,7 @@ contextBridge.exposeInMainWorld('toolbox', {
     return () => ipcRenderer.removeListener('download:progress', listener);
   },
   openExternal: (url) => ipcRenderer.invoke('open:external', url),
+  autoFetchIcons: (apps) => ipcRenderer.invoke('icons:autoFetch', apps),
   onInstallLog: (callback) => {
     const listener = (_event, payload) => callback(payload);
     ipcRenderer.on('install:log', listener);

@@ -16,11 +16,17 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 - Real brand icons extracted from the local system, with offline fallbacks
 - Detailed Chinese and English descriptions, highlights and tags
 - Search, category filters and an "installable only" filter
+- Favorites, recently installed shortcuts and an open-source section with sub-category filters
+- Automatic icon fetching from official sites or the GitHub API
+- In-app app submission, reviewed through a GitHub Issue before being added
 
 - 收录 112 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 25 个为开源项目
 - 从本机提取真实品牌图标，离线可用
 - 中英文详细介绍、亮点和标签
 - 支持搜索、分类筛选和「仅看可一键安装」
+- 我的收藏、最近安装，以及带子分类筛选的开源专区
+- 自动从官网或 GitHub 抓取应用图标
+- 应用内投稿，经 GitHub Issue 审核后才加入清单
 
 ### Install & manage / 安装与管理
 - One-click install via winget, with silent install as an option

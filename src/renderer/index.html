@@ -32,6 +32,10 @@
           <span class="nav-icon">⇄</span>
           <span data-i18n="nav.convert">格式转换</span>
         </button>
+        <button class="nav-item nav-submit" id="navSubmit">
+          <span class="nav-icon">＋</span>
+          <span data-i18n="nav.submit">投稿应用</span>
+        </button>
         <button class="nav-item nav-settings" id="navSettings">
           <span class="nav-icon">⚙</span>
           <span data-i18n="nav.settings">设置</span>
@@ -48,7 +52,7 @@
           <button class="theme-btn" id="themeToggle">
             <span id="themeIcon">☾</span><span id="themeLabel">切换浅色</span>
           </button>
-          <div class="version">v0.6.0 · 离线清单</div>
+          <div class="version">v0.7.0 · 离线清单</div>
         </div>
       </aside>
 
@@ -186,6 +190,64 @@
           </div>
         </section>
 
+        <section class="submit-view" id="submitView" hidden>
+          <div class="settings-hero">
+            <p class="eyebrow" data-i18n="submit.eyebrow">投稿</p>
+            <h1 data-i18n="submit.title">推荐一款应用</h1>
+            <p class="settings-sub" data-i18n="submit.sub">填写应用信息后提交，作者审核通过后会加入清单。</p>
+          </div>
+
+          <div class="settings-group">
+            <div class="form-grid">
+              <label class="field">
+                <span data-i18n="submit.name">应用名称 *</span>
+                <input id="submitName" maxlength="40" />
+              </label>
+              <label class="field">
+                <span data-i18n="submit.category">分类 *</span>
+                <select id="submitCategory"></select>
+              </label>
+              <label class="field">
+                <span data-i18n="submit.homepage">官网或 GitHub 地址 *</span>
+                <input id="submitHomepage" placeholder="https://" />
+              </label>
+              <label class="field">
+                <span data-i18n="submit.winget">winget ID（可选）</span>
+                <input id="submitWinget" placeholder="Publisher.AppName" />
+              </label>
+              <label class="field">
+                <span data-i18n="submit.download">直接下载地址（可选）</span>
+                <input id="submitDownload" placeholder="https://" />
+              </label>
+              <label class="field">
+                <span data-i18n="submit.tags">标签（可选，逗号分隔）</span>
+                <input id="submitTags" placeholder="截图, 录屏" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span data-i18n="submit.description">一句话简介 *</span>
+              <input id="submitDescription" maxlength="80" />
+            </label>
+            <label class="field">
+              <span data-i18n="submit.intro">详细介绍（可选）</span>
+              <textarea id="submitIntro" rows="4" maxlength="400"></textarea>
+            </label>
+            <label class="field">
+              <span data-i18n="submit.icon">图标地址（可选）</span>
+              <input id="submitIcon" placeholder="https://" />
+            </label>
+
+            <div class="submit-actions">
+              <button class="btn primary" id="submitPublish" data-i18n="submit.publish">提交审核</button>
+              <button class="btn" id="submitCopy" data-i18n="submit.copy">复制 JSON</button>
+              <button class="btn" id="submitReset" data-i18n="submit.reset">清空</button>
+            </div>
+            <p class="settings-hint" data-i18n="submit.hint">提交后会打开 GitHub Issue，作者审核通过后才会出现在应用清单中。</p>
+            <pre class="submit-preview" id="submitPreview" hidden></pre>
+          </div>
+        </section>
+
         <section class="settings-view" id="settingsView" hidden>
           <div class="settings-hero">
             <p class="eyebrow" data-i18n="settings.eyebrow">设置</p>
@@ -222,6 +284,15 @@
               <button data-color="#ec4899" style="--c: #ec4899" title="粉色"></button>
               <button data-color="#ef4444" style="--c: #ef4444" title="红色"></button>
               <button data-color="#22c55e" style="--c: #22c55e" title="绿色"></button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.icons">应用图标</h2>
+            <p class="settings-hint" data-i18n="settings.iconsHint">自动从官网或 GitHub 项目抓取缺失的图标，结果保存在本机。</p>
+            <div class="settings-row">
+              <code id="iconStatus" data-i18n="settings.iconsIdle">部分应用还没有图标</code>
+              <button class="btn" id="fetchIcons" data-i18n="settings.fetchIcons">自动补全缺失图标</button>
             </div>
           </div>
 

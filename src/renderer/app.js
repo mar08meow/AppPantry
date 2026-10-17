@@ -34,6 +34,8 @@ const state = {
   },
   activeTags: new Set(),
   opensourceSub: 'all',
+  favorites: new Set(),
+  recent: [],
   installedApps: [],
   installedLoading: false,
   installedError: '',
@@ -164,6 +166,45 @@ function saveDownloaded() {
   localStorage.setItem('apppantry-downloaded', JSON.stringify([...state.downloaded]));
 }
 
+function loadFavorites() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('apppantry-favorites') || '[]');
+    state.favorites = new Set(Array.isArray(saved) ? saved : []);
+  } catch (_) {
+    state.favorites = new Set();
+  }
+}
+
+function saveFavorites() {
+  localStorage.setItem('apppantry-favorites', JSON.stringify([...state.favorites]));
+}
+
+function loadRecent() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('apppantry-recent') || '[]');
+    state.recent = Array.isArray(saved) ? saved : [];
+  } catch (_) {
+    state.recent = [];
+  }
+}
+
+function saveRecent() {
+  localStorage.setItem('apppantry-recent', JSON.stringify(state.recent));
+}
+
+function recordRecent(id) {
+  state.recent = [id, ...state.recent.filter((item) => item !== id)].slice(0, 20);
+  saveRecent();
+}
+
+function toggleFavorite(id) {
+  if (state.favorites.has(id)) state.favorites.delete(id);
+  else state.favorites.add(id);
+  saveFavorites();
+  render();
+  if (state.modalApp?.id === id) renderDetail();
+}
+
 function saveSettings() {
   localStorage.setItem('apppantry-settings', JSON.stringify(state.settings));
 }
@@ -209,36 +250,35 @@ function toast(message, ms = 3200) {
 
 function renderNav() {
   const { categories, apps } = state.catalog;
-  const items = [
-    { id: 'all', name: t('nav.all'), icon: '◎' },
-    { id: 'opensource', name: t('nav.opensource'), icon: '⌘' },
-    ...categories
-  ];
   const counts = new Map();
   apps.forEach((a) => counts.set(a.category, (counts.get(a.category) || 0) + 1));
-  const openCount = apps.filter((a) => a.opensource).length;
+  const items = [
+    { id: 'all', name: t('nav.all'), icon: '◎', count: apps.length },
+    { id: 'favorites', name: t('nav.favorites'), icon: '★', count: state.favorites.size },
+    { id: 'recent', name: t('nav.recent'), icon: '↺', count: state.recent.length },
+    {
+      id: 'opensource',
+      name: t('nav.opensource'),
+      icon: '⌘',
+      count: apps.filter((a) => a.opensource).length
+    },
+    ...categories.map((cat) => ({
+      id: cat.id,
+      name: t(`category.${cat.id}`),
+      icon: cat.icon,
+      count: counts.get(cat.id) || 0
+    }))
+  ];
 
   $('#categories').innerHTML = items
-    .map((cat) => {
-      const count =
-        cat.id === 'all'
-          ? apps.length
-          : cat.id === 'opensource'
-            ? openCount
-            : counts.get(cat.id) || 0;
-      const name =
-        cat.id === 'all'
-          ? t('nav.all')
-          : cat.id === 'opensource'
-            ? t('nav.opensource')
-            : t(`category.${cat.id}`);
-      return `
+    .map(
+      (cat) => `
         <button class="nav-item ${state.view === 'catalog' && state.category === cat.id ? 'active' : ''}" data-category="${escapeHtml(cat.id)}">
           <span class="nav-icon">${escapeHtml(cat.icon)}</span>
-          <span>${escapeHtml(name)}</span>
-          <span class="nav-count">${count}</span>
-        </button>`;
-    })
+          <span>${escapeHtml(cat.name)}</span>
+          <span class="nav-count">${cat.count}</span>
+        </button>`
+    )
     .join('');
 }
 
@@ -270,6 +310,11 @@ function appText(app) {
 function renderTagFilter() {
   const box = $('#tagFilter');
   if (!box) return;
+
+  if (state.category === 'favorites' || state.category === 'recent') {
+    box.innerHTML = '';
+    return;
+  }
 
   if (state.category === 'opensource') {
     const subCats = state.catalog.categories.filter((cat) =>
@@ -309,6 +354,14 @@ function renderTagFilter() {
 
 function currentApps() {
   const q = state.query.trim().toLowerCase();
+
+  if (state.category === 'favorites') {
+    return state.catalog.apps.filter((app) => state.favorites.has(app.id));
+  }
+  if (state.category === 'recent') {
+    return state.recent.map((id) => state.appsById.get(id)).filter(Boolean);
+  }
+
   return state.catalog.apps.filter((app) => {
     if (state.category === 'opensource') {
       if (!app.opensource) return false;
@@ -332,9 +385,12 @@ function currentApps() {
 function iconHtml(app, extraClass = '') {
   const text = appText(app);
   const letter = escapeHtml(app.initial || String(text.name || '?')[0]);
-  const img = app.icon
-    ? `<img class="app-icon-img" src="../../data/${escapeHtml(app.icon)}" alt="" loading="lazy" />`
+  const src = app.icon
+    ? app.icon.startsWith('data:')
+      ? app.icon
+      : `../../data/${escapeHtml(app.icon)}`
     : '';
+  const img = src ? `<img class="app-icon-img" src="${src}" alt="" loading="lazy" />` : '';
   return `<div class="app-icon ${extraClass}" style="--c:${escapeHtml(app.color || '#5b6cff')}">
       <span class="app-icon-letter">${letter}</span>${img}
     </div>`;
@@ -351,6 +407,7 @@ function cardHtml(app) {
   const text = appText(app);
   const installing = state.installing.has(app.id);
   const installed = state.installed.has(app.id) || state.justInstalled.has(app.id);
+  const fav = state.favorites.has(app.id);
   const tags = (text.tags || [])
     .map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`)
     .join('');
@@ -373,7 +430,8 @@ function cardHtml(app) {
       : '';
 
   return `
-    <article class="card ${installing ? 'installing' : ''}" data-app-id="${escapeHtml(app.id)}">
+    <article class="card ${installing ? 'installing' : ''}" data-app-id="${escapeHtml(app.id)}" style="--c:${escapeHtml(app.color || '#5b6cff')}">
+      <button class="fav-btn ${fav ? 'active' : ''}" data-fav="${escapeHtml(app.id)}" title="${fav ? t('card.unfavorite') : t('card.favorite')}">${fav ? '★' : '☆'}</button>
       <div class="card-top">
         ${iconHtml(app)}
         <div class="card-title">
@@ -409,7 +467,11 @@ function render() {
   $('#empty').hidden = apps.length !== 0;
   $('#count').textContent = t('count.apps', { n: apps.length });
 
-  if (state.category === 'opensource') {
+  if (state.category === 'favorites') {
+    $('#sectionTitle').textContent = t('nav.favorites');
+  } else if (state.category === 'recent') {
+    $('#sectionTitle').textContent = t('nav.recent');
+  } else if (state.category === 'opensource') {
     const sub = state.catalog.categories.find((c) => c.id === state.opensourceSub);
     $('#sectionTitle').textContent = sub
       ? `${t('nav.opensource')} · ${t(`category.${sub.id}`)}`
@@ -570,6 +632,7 @@ async function installApp(app, options = {}) {
     if (!failed) {
       state.installed.add(app.id);
       state.justInstalled.add(app.id);
+      recordRecent(app.id);
       toast(
         silent
           ? t('toast.installedSilent', { name: app.name })
@@ -1046,15 +1109,18 @@ function setView(view) {
   const isInstalled = view === 'installed';
   const isConvert = view === 'convert';
   const isSettings = view === 'settings';
+  const isSubmit = view === 'submit';
 
   $('#catalogView').hidden = !isCatalog;
   $('#installedView').hidden = !isInstalled;
   $('#convertView').hidden = !isConvert;
   $('#settingsView').hidden = !isSettings;
+  $('#submitView').hidden = !isSubmit;
   $('#installableOnly').hidden = !isCatalog;
-  $('.topbar').hidden = isConvert || isSettings;
+  $('.topbar').hidden = isConvert || isSettings || isSubmit;
   $('#navInstalled').classList.toggle('active', isInstalled);
   $('#navConvert').classList.toggle('active', isConvert);
+  $('#navSubmit').classList.toggle('active', isSubmit);
   $('#navSettings').classList.toggle('active', isSettings);
   $('#search').placeholder = isInstalled
     ? '搜索已安装程序、发布者'
@@ -1068,10 +1134,199 @@ function setView(view) {
     renderConvertView();
   } else if (isSettings) {
     renderSettingsUI();
+  } else if (isSubmit) {
+    renderSubmitView();
   } else {
     render();
   }
   $('.main').scrollTo({ top: 0 });
+}
+
+// ---------- 图标自动获取 ----------
+async function autoFetchMissingIcons(showToast = false) {
+  if (!window.toolbox?.autoFetchIcons) return 0;
+  const missing = state.catalog.apps.filter((app) => !app.icon).slice(0, 15);
+  if (!missing.length) {
+    if (showToast) toast(t('toast.iconsNone'));
+    return 0;
+  }
+  if (showToast) toast(t('toast.iconsFetching'), 5000);
+  try {
+    const res = await window.toolbox.autoFetchIcons(
+      missing.map((app) => ({ id: app.id, homepage: app.homepage, name: app.name }))
+    );
+    const list = res?.results || [];
+    for (const item of list) {
+      const app = state.appsById.get(item.id);
+      if (app) app.icon = item.dataUrl;
+    }
+    if (list.length) {
+      render();
+      if (state.view === 'installed') renderInstalled();
+      if (showToast) toast(t('toast.iconsDone', { n: list.length }));
+    } else if (showToast) {
+      toast(t('toast.iconsNone'));
+    }
+    return list.length;
+  } catch (_) {
+    if (showToast) toast(t('toast.iconsNone'));
+    return 0;
+  }
+}
+
+// ---------- 投稿 ----------
+const SUBMIT_INPUTS = [
+  'submitName',
+  'submitCategory',
+  'submitHomepage',
+  'submitWinget',
+  'submitDownload',
+  'submitTags',
+  'submitDescription',
+  'submitIntro',
+  'submitIcon'
+];
+
+function readSubmitForm() {
+  return {
+    name: $('#submitName').value.trim(),
+    category: $('#submitCategory').value,
+    homepage: $('#submitHomepage').value.trim(),
+    winget: $('#submitWinget').value.trim(),
+    download: $('#submitDownload').value.trim(),
+    tags: $('#submitTags').value.trim(),
+    description: $('#submitDescription').value.trim(),
+    intro: $('#submitIntro').value.trim(),
+    icon: $('#submitIcon').value.trim()
+  };
+}
+
+function saveSubmitDraft() {
+  localStorage.setItem('apppantry-submit-draft', JSON.stringify(readSubmitForm()));
+}
+
+function loadSubmitDraft() {
+  try {
+    const draft = JSON.parse(localStorage.getItem('apppantry-submit-draft') || '{}');
+    $('#submitName').value = draft.name || '';
+    if (draft.category && state.catalog.categories.some((cat) => cat.id === draft.category)) {
+      $('#submitCategory').value = draft.category;
+    }
+    $('#submitHomepage').value = draft.homepage || '';
+    $('#submitWinget').value = draft.winget || '';
+    $('#submitDownload').value = draft.download || '';
+    $('#submitTags').value = draft.tags || '';
+    $('#submitDescription').value = draft.description || '';
+    $('#submitIntro').value = draft.intro || '';
+    $('#submitIcon').value = draft.icon || '';
+  } catch (_) {
+    /* 草稿损坏时忽略 */
+  }
+}
+
+function renderSubmitView() {
+  const select = $('#submitCategory');
+  if (!select) return;
+  select.innerHTML = state.catalog.categories
+    .map(
+      (cat) =>
+        `<option value="${escapeHtml(cat.id)}">${escapeHtml(t(`category.${cat.id}`))}</option>`
+    )
+    .join('');
+  loadSubmitDraft();
+}
+
+function buildSubmitPayload(form) {
+  const slug =
+    form.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || `app-${Date.now()}`;
+  const payload = {
+    id: slug,
+    name: form.name,
+    category: form.category,
+    description: form.description,
+    homepage: form.homepage,
+    winget: form.winget,
+    tags: form.tags
+      .split(/[,，]/)
+      .map((tag) => tag.trim())
+      .filter(Boolean),
+    publisher: '',
+    intro: form.intro,
+    highlights: []
+  };
+  if (form.download) payload.download = { url: form.download, filename: '' };
+  if (form.icon) payload.icon = form.icon;
+  return payload;
+}
+
+function validateSubmitForm() {
+  const form = readSubmitForm();
+  if (!form.name || !form.category || !form.homepage || !form.description) {
+    toast(t('submit.required'));
+    return null;
+  }
+  if (!/^https?:\/\//i.test(form.homepage)) {
+    toast(t('submit.badUrl'));
+    return null;
+  }
+  return form;
+}
+
+function showSubmitPreview(json) {
+  const preview = $('#submitPreview');
+  if (!preview) return;
+  preview.hidden = false;
+  preview.textContent = json;
+}
+
+function publishSubmit() {
+  const form = validateSubmitForm();
+  if (!form) return;
+  const payload = buildSubmitPayload(form);
+  const json = JSON.stringify(payload, null, 2);
+  showSubmitPreview(json);
+
+  const body = [
+    '### 应用投稿 / App submission',
+    '',
+    '```json',
+    json,
+    '```',
+    '',
+    '---',
+    '提交后由作者审核，通过后会合并到 `data/apps.json`。',
+    'This submission is reviewed before being added to the catalog.'
+  ].join('\n');
+  const url = `https://github.com/mar08meow/AppPantry/issues/new?title=${encodeURIComponent(
+    `[应用投稿] ${payload.name}`
+  )}&body=${encodeURIComponent(body)}`;
+  openLink(url);
+  toast(t('submit.issueOpened'), 5200);
+}
+
+async function copySubmitJson() {
+  const form = validateSubmitForm();
+  if (!form) return;
+  const json = JSON.stringify(buildSubmitPayload(form), null, 2);
+  showSubmitPreview(json);
+  try {
+    await navigator.clipboard.writeText(json);
+  } catch (_) {
+    /* 剪贴板不可用时仍然显示预览 */
+  }
+  toast(t('submit.copied'));
+}
+
+function resetSubmitForm() {
+  SUBMIT_INPUTS.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el && el.tagName !== 'SELECT') el.value = '';
+  });
+  localStorage.removeItem('apppantry-submit-draft');
+  $('#submitPreview').hidden = true;
 }
 
 // ---------- 格式转换 ----------
@@ -1362,6 +1617,12 @@ async function startConvert() {
 
 function bindEvents() {
   $('#grid').addEventListener('click', (event) => {
+    const fav = event.target.closest('[data-fav]');
+    if (fav) {
+      event.stopPropagation();
+      toggleFavorite(fav.dataset.fav);
+      return;
+    }
     const button = event.target.closest('button[data-action]');
     const card = event.target.closest('[data-app-id]');
     if (!card) return;
@@ -1403,7 +1664,17 @@ function bindEvents() {
 
   $('#navInstalled').addEventListener('click', () => setView('installed'));
   $('#navConvert').addEventListener('click', () => setView('convert'));
+  $('#navSubmit').addEventListener('click', () => setView('submit'));
   $('#navSettings').addEventListener('click', () => setView('settings'));
+
+  $('#submitPublish').addEventListener('click', publishSubmit);
+  $('#submitCopy').addEventListener('click', copySubmitJson);
+  $('#submitReset').addEventListener('click', resetSubmitForm);
+  $('#fetchIcons').addEventListener('click', () => autoFetchMissingIcons(true));
+  SUBMIT_INPUTS.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', saveSubmitDraft);
+  });
 
   $('#languageOptions').addEventListener('click', (event) => {
     const button = event.target.closest('button[data-lang]');
@@ -1647,6 +1918,8 @@ async function checkWinget() {
 async function boot() {
   loadSettings();
   loadDownloaded();
+  loadFavorites();
+  loadRecent();
   applyTheme(state.settings.theme);
   document.documentElement.style.setProperty('--accent', state.settings.accent);
   bindEvents();
@@ -1656,6 +1929,8 @@ async function boot() {
   state.appsById = new Map(state.catalog.apps.map((app) => [app.id, app]));
 
   applyLanguage();
+  // 后台补全缺失图标，不阻塞启动
+  autoFetchMissingIcons(false);
   renderStats();
   render();
   checkWinget();

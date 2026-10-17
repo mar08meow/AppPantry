@@ -31,6 +31,13 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
   mainWindow.once('ready-to-show', () => mainWindow.show());
 
+  mainWindow.webContents.on('render-process-gone', (_event, details) => {
+    console.error('[renderer gone]', JSON.stringify(details));
+  });
+  mainWindow.webContents.on('did-fail-load', (_event, code, description) => {
+    console.error('[load failed]', code, description);
+  });
+
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     if (/^https?:\/\//i.test(url)) shell.openExternal(url);
     return { action: 'deny' };
@@ -686,6 +693,200 @@ ipcMain.handle('open:external', async (_event, url) => {
   }
   await shell.openExternal(url);
   return { ok: true };
+});
+
+// ---------- 图标自动获取 ----------
+const ICON_MAX = 15;
+const ICON_MIME = {
+  png: 'image/png',
+  svg: 'image/svg+xml',
+  ico: 'image/x-icon',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  webp: 'image/webp',
+  gif: 'image/gif'
+};
+
+function requestBuffer(url, timeout = 12000) {
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const finish = (fn, value) => {
+      if (settled) return;
+      settled = true;
+      fn(value);
+    };
+    const request = net.request({ url, redirect: 'follow' });
+    request.setHeader('User-Agent', 'AppPantry/0.7 (+https://github.com/mar08meow/AppPantry)');
+    request.setHeader('Accept', '*/*');
+    const timer = setTimeout(() => {
+      request.abort();
+      finish(reject, new Error('timeout'));
+    }, timeout);
+    request.on('response', (response) => {
+      const chunks = [];
+      response.on('data', (chunk) => chunks.push(chunk));
+      response.on('end', () => {
+        clearTimeout(timer);
+        finish(resolve, {
+          status: response.statusCode,
+          headers: response.headers,
+          buffer: Buffer.concat(chunks)
+        });
+      });
+      response.on('error', (err) => {
+        clearTimeout(timer);
+        finish(reject, err);
+      });
+    });
+    request.on('error', (err) => {
+      clearTimeout(timer);
+      finish(reject, err);
+    });
+    request.end();
+  });
+}
+
+async function requestJson(url) {
+  const res = await requestBuffer(url);
+  if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
+  return JSON.parse(res.buffer.toString('utf8'));
+}
+
+function githubRepo(homepage) {
+  const match = /github\.com\/([^/]+)\/([^/?#]+)/i.exec(homepage || '');
+  return match ? `${match[1]}/${match[2]}` : '';
+}
+
+function iconScore(file) {
+  let value = 0;
+  if (/icon/i.test(file.path)) value += 3;
+  if (/logo/i.test(file.path)) value += 1;
+  if (/^[^/]+\.(png|svg|ico)$/i.test(file.path)) value += 2;
+  if (/assets|build|resources|images/i.test(file.path)) value += 1;
+  if (/256|512|128|1024/i.test(file.path)) value += 1;
+  return value;
+}
+
+function pickGithubIcon(tree) {
+  return (tree || [])
+    .filter((file) => file.type === 'blob')
+    .filter((file) => /\.(png|svg|ico)$/i.test(file.path))
+    .filter((file) => /icon|logo/i.test(file.path))
+    .filter(
+      (file) =>
+        !/screenshot|docs?\/|test|sample|banner|social|readme|website|favicon/i.test(file.path)
+    )
+    .filter((file) => file.size > 300 && file.size < 800000)
+    .sort((a, b) => iconScore(b) - iconScore(a))[0];
+}
+
+async function fetchGithubIcon(homepage) {
+  const repo = githubRepo(homepage);
+  if (!repo) return null;
+  const info = await requestJson(`https://api.github.com/repos/${repo}`);
+  const branch = info.default_branch || 'main';
+  const tree = await requestJson(
+    `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`
+  );
+  const candidate = pickGithubIcon(tree.tree);
+  if (!candidate) return null;
+  const content = await requestJson(
+    `https://api.github.com/repos/${repo}/contents/${encodeURI(candidate.path)}?ref=${branch}`
+  );
+  if (!content.content) return null;
+  const buffer = Buffer.from(content.content.replace(/\s/g, ''), 'base64');
+  if (buffer.length < 300) return null;
+  return { buffer, ext: path.extname(candidate.path).toLowerCase().replace('.', '') || 'png' };
+}
+
+async function fetchWebIcon(homepage) {
+  const res = await requestBuffer(homepage);
+  if (res.status >= 400) return null;
+  const html = res.buffer.toString('utf8');
+  const links = [];
+  const linkRe = /<link[^>]+rel=["'][^"']*icon[^"']*["'][^>]*>/gi;
+  let match;
+  while ((match = linkRe.exec(html))) {
+    const href = /href=["']([^"']+)["']/i.exec(match[0]);
+    if (!href) continue;
+    try {
+      links.push(new URL(href[1], homepage).href);
+    } catch (_) {
+      /* 忽略非法地址 */
+    }
+  }
+  // apple-touch-icon 通常分辨率最高，优先尝试
+  links.sort((a, b) => (b.includes('apple-touch') ? 1 : 0) - (a.includes('apple-touch') ? 1 : 0));
+  for (const url of links.slice(0, 6)) {
+    try {
+      const icon = await requestBuffer(url);
+      if (icon.status !== 200 || icon.buffer.length < 300) continue;
+      const type = String(icon.headers['content-type'] || '');
+      const ext = type.includes('svg')
+        ? 'svg'
+        : type.includes('png')
+          ? 'png'
+          : type.includes('webp')
+            ? 'webp'
+            : type.includes('jpeg')
+              ? 'jpg'
+              : 'ico';
+      return { buffer: icon.buffer, ext };
+    } catch (_) {
+      /* 尝试下一个候选 */
+    }
+  }
+  return null;
+}
+
+function iconDir() {
+  const dir = path.join(app.getPath('userData'), 'icons');
+  fs.mkdirSync(dir, { recursive: true });
+  return dir;
+}
+
+function cachedIconDataUrl(id) {
+  const dir = iconDir();
+  for (const ext of Object.keys(ICON_MIME)) {
+    const file = path.join(dir, `${id}.${ext}`);
+    if (fs.existsSync(file)) {
+      return `data:${ICON_MIME[ext]};base64,${fs.readFileSync(file).toString('base64')}`;
+    }
+  }
+  return '';
+}
+
+function saveIcon(id, result) {
+  fs.writeFileSync(path.join(iconDir(), `${id}.${result.ext}`), result.buffer);
+  return `data:${ICON_MIME[result.ext] || 'image/png'};base64,${result.buffer.toString('base64')}`;
+}
+
+async function resolveIcon(appEntry) {
+  const cached = cachedIconDataUrl(appEntry.id);
+  if (cached) return cached;
+  let result = null;
+  if (githubRepo(appEntry.homepage)) {
+    result = await fetchGithubIcon(appEntry.homepage);
+  }
+  if (!result && appEntry.homepage) {
+    result = await fetchWebIcon(appEntry.homepage);
+  }
+  return result ? saveIcon(appEntry.id, result) : '';
+}
+
+ipcMain.handle('icons:autoFetch', async (_event, list) => {
+  const entries = Array.isArray(list) ? list.slice(0, ICON_MAX) : [];
+  const results = [];
+  for (const entry of entries) {
+    if (!entry || !entry.id) continue;
+    try {
+      const dataUrl = await resolveIcon(entry);
+      if (dataUrl) results.push({ id: entry.id, dataUrl });
+    } catch (err) {
+      console.warn('[icons]', entry.id, String(err.message || err));
+    }
+  }
+  return { results };
 });
 
 // ---------- 生命周期 ----------
