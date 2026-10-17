@@ -1980,6 +1980,184 @@
       "initial": "R",
       "opensource": true,
       "icon": "icons/rclone.png"
+    },
+    {
+      "id": "fdm",
+      "name": "Free Download Manager",
+      "category": "utilities",
+      "description": "免费的下载管理器，多线程加速，支持 BT 和视频下载。",
+      "homepage": "https://www.freedownloadmanager.org/",
+      "winget": "SoftDeluxe.FreeDownloadManager",
+      "mirror": "",
+      "tags": [
+        "下载",
+        "BT",
+        "免费"
+      ],
+      "color": "#00A0E9",
+      "initial": "F",
+      "opensource": false,
+      "icon": "icons/fdm.ico"
+    },
+    {
+      "id": "xdown",
+      "name": "XDown",
+      "category": "utilities",
+      "description": "支持 BT、磁力和 HTTP 的多线程下载工具。",
+      "homepage": "https://xdown.org/",
+      "winget": "XDown.XDown",
+      "mirror": "",
+      "tags": [
+        "下载",
+        "BT",
+        "磁力"
+      ],
+      "color": "#4F46E5",
+      "initial": "X",
+      "opensource": false,
+      "icon": "icons/xdown.png"
+    },
+    {
+      "id": "lmms",
+      "name": "LMMS",
+      "category": "media",
+      "description": "开源音乐制作软件，用来编曲、作曲和混音。",
+      "homepage": "https://lmms.io/",
+      "winget": "LMMS.LMMS",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "编曲",
+        "开源"
+      ],
+      "color": "#2FA36B",
+      "initial": "L",
+      "opensource": true,
+      "icon": "icons/lmms.png"
+    },
+    {
+      "id": "krita",
+      "name": "Krita",
+      "category": "media",
+      "description": "专业的开源绘画软件，适合插画、漫画和概念设计。",
+      "homepage": "https://krita.org/",
+      "winget": "KDE.Krita",
+      "mirror": "",
+      "tags": [
+        "绘画",
+        "插画",
+        "开源"
+      ],
+      "color": "#3DAA6E",
+      "initial": "K",
+      "opensource": true,
+      "icon": "icons/krita.ico"
+    },
+    {
+      "id": "uu-remote",
+      "name": "UU远程",
+      "category": "utilities",
+      "description": "网易出品的远程控制工具，低延迟远程桌面。",
+      "homepage": "https://uu.163.com/remote/",
+      "winget": "NetEase.UURemote",
+      "mirror": "",
+      "tags": [
+        "远程",
+        "控制",
+        "网易"
+      ],
+      "color": "#E63946",
+      "initial": "U",
+      "opensource": false,
+      "icon": "icons/uu-remote.ico"
+    },
+    {
+      "id": "uu-accelerator",
+      "name": "UU加速器",
+      "category": "games",
+      "description": "网易出品的游戏加速器，降低外服游戏延迟。",
+      "homepage": "https://uu.163.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "加速器",
+        "游戏",
+        "网易"
+      ],
+      "color": "#E63946",
+      "initial": "U",
+      "opensource": false,
+      "icon": "icons/uu-accelerator.ico"
+    },
+    {
+      "id": "xunyou",
+      "name": "迅游加速器",
+      "category": "games",
+      "description": "老牌游戏加速器，支持国内外网游加速。",
+      "homepage": "https://www.xunyou.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "加速器",
+        "游戏"
+      ],
+      "color": "#FF8C42",
+      "initial": "X",
+      "opensource": false,
+      "icon": "icons/xunyou.ico"
+    },
+    {
+      "id": "qiyou",
+      "name": "奇游加速器",
+      "category": "games",
+      "description": "游戏加速器，支持 PC 和主机游戏加速。",
+      "homepage": "https://www.qiyou.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "加速器",
+        "游戏"
+      ],
+      "color": "#FF4D4F",
+      "initial": "Q",
+      "opensource": false,
+      "icon": "icons/qiyou.ico"
+    },
+    {
+      "id": "kook",
+      "name": "KOOK",
+      "category": "social",
+      "description": "语音开黑工具，游戏玩家常用的语音频道。",
+      "homepage": "https://www.kookapp.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "语音",
+        "开黑",
+        "社交"
+      ],
+      "color": "#5865F2",
+      "initial": "K",
+      "opensource": false,
+      "icon": "icons/kook.ico"
+    },
+    {
+      "id": "bcuninstaller",
+      "name": "Bulk Crap Uninstaller",
+      "category": "utilities",
+      "description": "开源批量卸载工具，能清理残留、静默卸载和检测无效条目。",
+      "homepage": "https://github.com/Klocman/Bulk-Crap-Uninstaller",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "卸载",
+        "清理",
+        "开源"
+      ],
+      "color": "#E4572E",
+      "initial": "B",
+      "opensource": true,
+      "icon": "icons/bcuninstaller.png"
     }
   ]
 }

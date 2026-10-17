@@ -1,7 +1,7 @@
 {
   "name": "app-pantry",
   "productName": "AppPantry",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A local-first Windows app downloader, installer and manager",
   "main": "src/main.js",
   "author": "Mar08Meow",

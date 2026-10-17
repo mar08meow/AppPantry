@@ -1,0 +1,170 @@
+[
+  {
+    "id": "qq",
+    "name": "QQ",
+    "category": "social",
+    "description": "腾讯出品的即时通讯软件，聊天、传文件和群组。",
+    "homepage": "https://im.qq.com/",
+    "winget": "Tencent.QQ.NT",
+    "tags": ["聊天", "社交", "腾讯"],
+    "color": "#12B7F5",
+    "initial": "Q",
+    "publisher": "腾讯",
+    "intro": "QQ 是腾讯推出的即时通讯软件，支持文字、语音、视频聊天，文件传输、群组和远程协助。新版 QQ 采用 NT 架构，界面更清爽，适合日常沟通和传大文件。",
+    "highlights": ["聊天与视频通话", "大文件传输", "群组与远程协助"],
+    "en": {
+      "name": "QQ",
+      "description": "Tencent's messaging app for chat, file transfer and groups.",
+      "tags": ["Chat", "Social", "Tencent"],
+      "intro": "QQ is Tencent's messaging app with text, voice and video chat, file transfer, groups and remote assistance. The NT-based version has a cleaner interface and is handy for daily chat and sending large files.",
+      "highlights": ["Chat and video calls", "Large file transfer", "Groups and remote help"]
+    }
+  },
+  {
+    "id": "uu-remote",
+    "name": "UU远程",
+    "category": "utilities",
+    "description": "网易出品的远程控制工具，低延迟远程桌面。",
+    "homepage": "https://uu.163.com/remote/",
+    "winget": "NetEase.UURemote",
+    "tags": ["远程", "控制", "网易"],
+    "color": "#E63946",
+    "initial": "U",
+    "publisher": "网易",
+    "intro": "UU 远程是网易推出的远程控制软件，支持远程桌面、文件传输和手机控制电脑，连接稳定、延迟低，适合远程办公和帮家人处理电脑问题。",
+    "highlights": ["低延迟远程桌面", "手机控制电脑", "文件传输"],
+    "en": {
+      "name": "UU Remote",
+      "description": "NetEase remote desktop tool with low latency.",
+      "tags": ["Remote", "Control", "NetEase"],
+      "intro": "UU Remote is NetEase's remote control app with remote desktop, file transfer and phone-to-PC control. It is stable and low-latency, useful for remote work or helping family with their computers.",
+      "highlights": ["Low-latency desktop", "Phone controls PC", "File transfer"]
+    }
+  },
+  {
+    "id": "uu-accelerator",
+    "name": "UU加速器",
+    "category": "games",
+    "description": "网易出品的游戏加速器，降低外服游戏延迟。",
+    "homepage": "https://uu.163.com/",
+    "winget": "",
+    "tags": ["加速器", "游戏", "网易"],
+    "color": "#E63946",
+    "initial": "U",
+    "publisher": "网易",
+    "intro": "网易 UU 加速器是一款游戏网络加速工具，支持上千款国内外游戏，通过专线节点降低延迟、减少丢包，适合玩外服游戏的玩家。需要登录网易账号使用。",
+    "highlights": ["支持大量游戏", "专线降低延迟", "网易官方出品"],
+    "en": {
+      "name": "UU Accelerator",
+      "description": "NetEase game accelerator that lowers ping for overseas games.",
+      "tags": ["Accelerator", "Games", "NetEase"],
+      "intro": "NetEase UU Accelerator is a game network booster supporting hundreds of games. It uses dedicated routes to reduce ping and packet loss, and requires a NetEase account.",
+      "highlights": ["Wide game support", "Dedicated low-latency routes", "Made by NetEase"]
+    }
+  },
+  {
+    "id": "leigod",
+    "name": "雷神加速器",
+    "category": "games",
+    "description": "游戏加速器，支持外服游戏和主机加速。",
+    "homepage": "https://www.leigod.com/",
+    "winget": "",
+    "tags": ["加速器", "游戏"],
+    "color": "#FF6B35",
+    "initial": "L",
+    "publisher": "雷神",
+    "intro": "雷神加速器是一款游戏网络加速工具，支持 PC、主机和手游加速，提供多条专线节点，适合玩外服网游和联机游戏的玩家。",
+    "highlights": ["支持主机加速", "多线路节点", "按分钟计费"],
+    "en": {
+      "name": "Leigod Accelerator",
+      "description": "Game accelerator for PC, console and mobile games.",
+      "tags": ["Accelerator", "Games"],
+      "intro": "Leigod Accelerator boosts PC, console and mobile games with multiple dedicated routes, aimed at players of overseas online and co-op games.",
+      "highlights": ["Console acceleration", "Multiple routes", "Pay by minute"]
+    }
+  },
+  {
+    "id": "xunyou",
+    "name": "迅游加速器",
+    "category": "games",
+    "description": "老牌游戏加速器，支持国内外网游加速。",
+    "homepage": "https://www.xunyou.com/",
+    "winget": "",
+    "tags": ["加速器", "游戏"],
+    "color": "#FF8C42",
+    "initial": "X",
+    "publisher": "迅游",
+    "intro": "迅游加速器是国内较早的游戏加速工具，支持上千款网游加速，提供智能节点选择，适合玩外服游戏的玩家。",
+    "highlights": ["老牌加速器", "智能选节点", "支持多款游戏"],
+    "en": {
+      "name": "Xunyou Accelerator",
+      "description": "Long-running game accelerator for domestic and overseas games.",
+      "tags": ["Accelerator", "Games"],
+      "intro": "Xunyou Accelerator is one of the earliest Chinese game boosters, covering hundreds of online games with smart node selection.",
+      "highlights": ["Established booster", "Smart node selection", "Wide game coverage"]
+    }
+  },
+  {
+    "id": "qiyou",
+    "name": "奇游加速器",
+    "category": "games",
+    "description": "游戏加速器，支持 PC 和主机游戏加速。",
+    "homepage": "https://www.qiyou.cn/",
+    "winget": "",
+    "tags": ["加速器", "游戏"],
+    "color": "#FF4D4F",
+    "initial": "Q",
+    "publisher": "奇游",
+    "intro": "奇游加速器是一款游戏网络加速工具，支持 PC、主机和手游，提供专线节点和智能加速，适合外服游戏玩家。",
+    "highlights": ["主机与手游加速", "专线节点", "智能加速"],
+    "en": {
+      "name": "Qiyou Accelerator",
+      "description": "Game accelerator for PC and console games.",
+      "tags": ["Accelerator", "Games"],
+      "intro": "Qiyou Accelerator supports PC, console and mobile games with dedicated routes and smart acceleration for overseas game players.",
+      "highlights": ["Console and mobile", "Dedicated routes", "Smart acceleration"]
+    }
+  },
+  {
+    "id": "kook",
+    "name": "KOOK",
+    "category": "social",
+    "description": "语音开黑工具，游戏玩家常用的语音频道。",
+    "homepage": "https://www.kookapp.cn/",
+    "winget": "",
+    "tags": ["语音", "开黑", "社交"],
+    "color": "#5865F2",
+    "initial": "K",
+    "publisher": "KOOK",
+    "intro": "KOOK 是一款语音沟通工具，提供语音频道、文字聊天和屏幕共享，常被游戏玩家用来开黑和组队，支持 Windows、手机和网页端。",
+    "highlights": ["语音频道开黑", "屏幕共享", "跨平台"],
+    "en": {
+      "name": "KOOK",
+      "description": "Voice chat app popular with gamers for team play.",
+      "tags": ["Voice", "Gaming", "Social"],
+      "intro": "KOOK is a voice communication app with voice channels, text chat and screen sharing, widely used by gamers to team up. It runs on Windows, mobile and the web.",
+      "highlights": ["Voice channels", "Screen sharing", "Cross-platform"]
+    }
+  },
+  {
+    "id": "mobaxterm",
+    "name": "MobaXterm",
+    "category": "dev",
+    "description": "强大的 SSH/X11 终端工具，集成 SFTP 和远程桌面。",
+    "homepage": "https://mobaxterm.mobatek.net/",
+    "winget": "Mobatek.MobaXterm",
+    "tags": ["SSH", "终端", "服务器"],
+    "color": "#2E7D32",
+    "initial": "M",
+    "publisher": "Mobatek",
+    "intro": "MobaXterm 是一款面向开发者和运维的终端工具，集成 SSH、SFTP、X11 转发、串口和远程桌面，支持多标签和会话管理，适合管理 Linux 服务器。",
+    "highlights": ["SSH 与 SFTP 一体", "支持 X11 转发", "多标签会话管理"],
+    "en": {
+      "name": "MobaXterm",
+      "description": "Powerful SSH/X11 terminal with built-in SFTP and remote desktop.",
+      "tags": ["SSH", "Terminal", "Server"],
+      "intro": "MobaXterm is a terminal toolbox for developers and sysadmins, bundling SSH, SFTP, X11 forwarding, serial and remote desktop with tabs and session management.",
+      "highlights": ["SSH and SFTP together", "X11 forwarding", "Tabbed session management"]
+    }
+  }
+]

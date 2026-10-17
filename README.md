@@ -12,7 +12,7 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 ## Features / 功能
 
 ### App catalog / 应用清单
-- 112 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools, including 25 open-source projects
+- 121 curated Windows apps across essentials, media, utilities, social & cloud, game platforms, and dev tools, including 27 open-source projects
 - Real brand icons extracted from the local system, with offline fallbacks
 - Detailed Chinese and English descriptions, highlights and tags
 - Search, category filters and an "installable only" filter
@@ -20,7 +20,7 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 - Automatic icon fetching from official sites or the GitHub API
 - In-app app submission, reviewed through a GitHub Issue before being added
 
-- 收录 112 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 25 个为开源项目
+- 收录 121 款常用应用，覆盖装机必备、影音娱乐、系统工具、社交与网盘、游戏平台、开发工具，其中 27 个为开源项目
 - 从本机提取真实品牌图标，离线可用
 - 中英文详细介绍、亮点和标签
 - 支持搜索、分类筛选和「仅看可一键安装」
@@ -33,11 +33,15 @@ AppPantry 面向刚接触 Windows 的用户：不用在搜索结果里翻找，�
 - Clear install log with progress, auto-collapsed when finished
 - Installed apps are read from the Windows registry, with size, publisher and install date
 - Uninstall through each app's own uninstaller, or open its install folder
+- Batch uninstall, force removal and leftover scanning, similar to HiBit / Geek Uninstaller
+- Optional USTC mirror for winget downloads, no proxy required
 
 - 通过 winget 一键安装，可选静默安装
 - 安装日志实时显示，完成后自动收起
 - 从注册表读取已安装程序，显示大小、发布者和安装日期
 - 调用程序自带卸载器，或打开安装目录
+- 批量卸载、强制移除和残留清理，接近 HiBit / Geek Uninstaller
+- winget 下载源可切换为中科大镜像，无需代理
 
 ### Convert / 格式转换
 - Convert images between PNG, JPG and WebP
@@ -154,6 +158,18 @@ scripts/           build-time patches (NSIS include order)
 - winget for package installation
 - PowerShell for registry and icon extraction
 - electron-builder for packaging (portable + NSIS)
+
+---
+
+## Acknowledgements / 致谢
+
+- Uninstall management is inspired by [HiBit Uninstaller](https://www.hibitsoft.ir/) and [Geek Uninstaller](https://geekuninstaller.com/).
+- [Bulk Crap Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller) (Apache-2.0) is included in the catalog as an open-source alternative for deep cleanup.
+- App icons are fetched from official websites or GitHub repositories; all trademarks belong to their respective owners.
+
+- 卸载管理的设计参考了 [HiBit Uninstaller](https://www.hibitsoft.ir/) 和 [Geek Uninstaller](https://geekuninstaller.com/)。
+- [Bulk Crap Uninstaller](https://github.com/Klocman/Bulk-Crap-Uninstaller)（Apache-2.0）已收录进清单，作为开源深度清理工具。
+- 应用图标来自各应用官网或 GitHub 仓库，商标归各自所有者。
 
 ---
 

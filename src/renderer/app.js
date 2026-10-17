@@ -36,6 +36,10 @@ const state = {
   opensourceSub: 'all',
   favorites: new Set(),
   recent: [],
+  wingetMirror: 'official',
+  wingetSourceUrl: '',
+  selectedInstalled: new Set(),
+  residue: null,
   installedApps: [],
   installedLoading: false,
   installedError: '',
@@ -235,6 +239,51 @@ function renderSettingsUI() {
   const installLabel = $('#installDirLabel');
   if (installLabel) {
     installLabel.textContent = state.settings.installDir || t('settings.installDefault');
+  }
+  renderMirrorStatus();
+}
+
+function renderMirrorStatus() {
+  document.querySelectorAll('#mirrorOptions button').forEach((button) => {
+    button.classList.toggle('active', button.dataset.mirror === state.wingetMirror);
+  });
+  const status = $('#mirrorStatus');
+  if (status) {
+    status.textContent = state.wingetSourceUrl
+      ? t('settings.mirrorCurrent', { url: state.wingetSourceUrl })
+      : '';
+  }
+}
+
+async function loadWingetSource() {
+  if (!window.toolbox?.getWingetSource) return;
+  try {
+    const res = await window.toolbox.getWingetSource();
+    if (res?.ok) {
+      state.wingetMirror = res.mirror;
+      state.wingetSourceUrl = res.url;
+      renderMirrorStatus();
+    }
+  } catch (_) {
+    /* 读取失败时保持默认 */
+  }
+}
+
+async function setWingetSource(mirror) {
+  if (!window.toolbox?.setWingetSource || mirror === state.wingetMirror) return;
+  toast(t('settings.mirrorChanging'), 8000);
+  try {
+    const res = await window.toolbox.setWingetSource(mirror);
+    if (res?.ok) {
+      state.wingetMirror = mirror;
+      state.wingetSourceUrl = res.url;
+      renderMirrorStatus();
+      toast(t('settings.mirrorDone'));
+    } else {
+      toast(t('settings.mirrorFailed'));
+    }
+  } catch (_) {
+    toast(t('settings.mirrorFailed'));
   }
 }
 
@@ -855,9 +904,13 @@ function installedIconHtml(item) {
 function installedRowHtml(item) {
   const matched = matchCatalogItem(item);
   const meta = [item.publisher, item.version].filter(Boolean).join(' · ');
+  const checked = state.selectedInstalled.has(rowKey(item));
 
   return `
     <div class="installed-row" data-source="${escapeHtml(item.source)}" data-key="${escapeHtml(item.key)}">
+      <label class="row-check">
+        <input type="checkbox" data-row-check="1" ${checked ? 'checked' : ''} />
+      </label>
       ${installedIconHtml(item)}
       <div class="row-main">
         <div class="row-title">
@@ -870,6 +923,7 @@ function installedRowHtml(item) {
       <div class="row-date">${formatDate(item.installDate)}</div>
       <div class="row-actions">
         ${item.location ? `<button class="btn" data-row-action="reveal">${t('installed.reveal')}</button>` : ''}
+        <button class="btn" data-row-action="force" title="${t('installed.force')}">⛔</button>
         <button class="btn danger" data-row-action="uninstall" ${
           item.uninstall ? '' : `disabled title="${t('uninstall.noCommand')}"`
         }>${t('installed.uninstall')}</button>
@@ -910,6 +964,7 @@ function renderInstalled() {
     : '—';
 
   updateInstalledCount();
+  updateBatchButton();
   ensureRowIcons(list);
 }
 
@@ -1100,6 +1155,125 @@ async function runUninstall() {
     toast(t('toast.uninstallFailed', { error: err }), 4200);
   } finally {
     okBtn.disabled = false;
+  }
+}
+
+function updateBatchButton() {
+  const button = $('#uninstallSelected');
+  if (!button) return;
+  const count = state.selectedInstalled.size;
+  button.disabled = count === 0;
+  button.textContent = count
+    ? t('installed.batchUninstallCount', { n: count })
+    : t('installed.batchUninstall');
+}
+
+function askBatchUninstall() {
+  const items = state.installedApps.filter(
+    (item) => state.selectedInstalled.has(rowKey(item)) && item.uninstall
+  );
+  if (!items.length) {
+    toast(t('installed.batchNone'));
+    return;
+  }
+  state.confirmTarget = items;
+  showConfirm({
+    title: t('installed.batchUninstallCount', { n: items.length }),
+    text: t('installed.batchUninstallText'),
+    detail: items.map((item) => item.name).join('\n'),
+    okText: t('uninstall.confirmOk'),
+    danger: true,
+    action: 'batchUninstall'
+  });
+}
+
+async function runBatchUninstall() {
+  const items = state.confirmTarget;
+  closeConfirm();
+  if (!Array.isArray(items) || !window.toolbox?.uninstall) return;
+  let started = 0;
+  for (const item of items) {
+    try {
+      const res = await window.toolbox.uninstall({ source: item.source, key: item.key });
+      if (res?.ok) started += 1;
+    } catch (_) {
+      /* 单个失败不影响后续 */
+    }
+  }
+  state.selectedInstalled.clear();
+  renderInstalled();
+  toast(t('installed.batchStarted', { n: started }), 5000);
+}
+
+function askForceRemove(item) {
+  state.confirmTarget = item;
+  const detail = [
+    `${t('installed.forceRegistry')}: ${item.key}`,
+    item.location ? `${t('installed.forceDir')}: ${item.location}` : t('installed.forceNoLocation')
+  ].join('\n');
+  showConfirm({
+    title: t('installed.forceConfirmTitle', { name: item.name }),
+    text: t('installed.forceConfirmText'),
+    detail,
+    okText: t('installed.force'),
+    danger: true,
+    action: 'force'
+  });
+}
+
+async function runForceRemove() {
+  const item = state.confirmTarget;
+  closeConfirm();
+  if (!item || !window.toolbox?.forceRemove) return;
+  try {
+    const res = await window.toolbox.forceRemove({
+      source: item.source,
+      key: item.key,
+      location: item.location
+    });
+    if (res?.ok) {
+      toast(t('toast.forceRemoved', { name: item.name }), 5000);
+      state.selectedInstalled.delete(rowKey(item));
+      loadInstalled(true);
+      scanResidue(item);
+    } else {
+      toast(t('toast.forceFailed', { error: res?.error || '' }), 5000);
+    }
+  } catch (err) {
+    toast(t('toast.forceFailed', { error: err }), 5000);
+  }
+}
+
+async function scanResidue(item) {
+  if (!window.toolbox?.scanResidue) return;
+  try {
+    const res = await window.toolbox.scanResidue({ name: item.name, location: item.location });
+    const list = res?.residues || [];
+    if (!list.length) return;
+    state.residue = { item, list };
+    showConfirm({
+      title: t('residue.title', { name: item.name, n: list.length }),
+      text: t('residue.text'),
+      detail: list.map((entry) => entry.path).join('\n'),
+      okText: t('residue.clean'),
+      danger: true,
+      action: 'residue'
+    });
+  } catch (_) {
+    /* 扫描失败时静默忽略 */
+  }
+}
+
+async function runCleanResidue() {
+  const residue = state.residue;
+  closeConfirm();
+  if (!residue || !window.toolbox?.cleanResidue) return;
+  state.residue = null;
+  try {
+    const res = await window.toolbox.cleanResidue(residue.list.map((entry) => entry.path));
+    toast(t('toast.residueCleaned', { n: res?.removed?.length || 0 }), 5000);
+  } catch (_) {
+    toast(t('toast.residueCleaned', { n: 0 }), 4000);
   }
 }
 
@@ -1710,6 +1884,12 @@ function bindEvents() {
     }
   });
 
+  $('#mirrorOptions').addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-mirror]');
+    if (!button) return;
+    setWingetSource(button.dataset.mirror);
+  });
+
   $('#pickInstallDir').addEventListener('click', async () => {
     if (!window.toolbox?.pickDirectory) return;
     const dir = await window.toolbox.pickDirectory();
@@ -1762,6 +1942,17 @@ function bindEvents() {
   });
 
   $('#installedList').addEventListener('click', (event) => {
+    const check = event.target.closest('[data-row-check]');
+    if (check) {
+      const row = check.closest('[data-source]');
+      if (row) {
+        const key = `${row.dataset.source}|${row.dataset.key}`;
+        if (check.checked) state.selectedInstalled.add(key);
+        else state.selectedInstalled.delete(key);
+        updateBatchButton();
+      }
+      return;
+    }
     const button = event.target.closest('button[data-row-action]');
     if (!button) return;
     const row = button.closest('[data-source]');
@@ -1771,7 +1962,8 @@ function bindEvents() {
     );
     if (!item) return;
     if (button.dataset.rowAction === 'reveal') revealInstalled(item);
-    if (button.dataset.rowAction === 'uninstall') askUninstall(item);
+    else if (button.dataset.rowAction === 'uninstall') askUninstall(item);
+    else if (button.dataset.rowAction === 'force') askForceRemove(item);
   });
 
   $('#sortGroup').addEventListener('click', (event) => {
@@ -1786,6 +1978,22 @@ function bindEvents() {
 
   $('#refreshInstalled').addEventListener('click', () => loadInstalled(true));
 
+  $('#openUninstallTools').addEventListener('click', () => {
+    const app = state.appsById.get('bcuninstaller') || state.appsById.get('geek-uninstaller');
+    if (!app) return;
+    setView('catalog');
+    openDetail(app);
+  });
+
+  $('#selectAllInstalled').addEventListener('change', (event) => {
+    const list = filteredInstalled();
+    if (event.target.checked) list.forEach((item) => state.selectedInstalled.add(rowKey(item)));
+    else state.selectedInstalled.clear();
+    renderInstalled();
+  });
+
+  $('#uninstallSelected').addEventListener('click', askBatchUninstall);
+
   $('#confirmCancel').addEventListener('click', closeConfirm);
   $('#confirmMask').addEventListener('click', (event) => {
     if (event.target === $('#confirmMask')) closeConfirm();
@@ -1793,6 +2001,9 @@ function bindEvents() {
   $('#confirmOk').addEventListener('click', () => {
     if (state.confirmAction === 'uninstall') runUninstall();
     else if (state.confirmAction === 'silent') runSilentInstall();
+    else if (state.confirmAction === 'force') runForceRemove();
+    else if (state.confirmAction === 'residue') runCleanResidue();
+    else if (state.confirmAction === 'batchUninstall') runBatchUninstall();
   });
 
   let searchTimer;
@@ -1934,6 +2145,7 @@ async function boot() {
   renderStats();
   render();
   checkWinget();
+  loadWingetSource();
   loadInstalled();
 }
 

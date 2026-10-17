@@ -1,0 +1,46 @@
+[
+  {
+    "id": "bcuninstaller",
+    "name": "Bulk Crap Uninstaller",
+    "category": "utilities",
+    "description": "开源批量卸载工具，能清理残留、静默卸载和检测无效条目。",
+    "homepage": "https://github.com/Klocman/Bulk-Crap-Uninstaller",
+    "winget": "",
+    "tags": ["卸载", "清理", "开源"],
+    "color": "#E4572E",
+    "initial": "B",
+    "publisher": "Klocman",
+    "opensource": true,
+    "intro": "Bulk Crap Uninstaller（BCUninstaller）是一款开源的批量卸载工具，可以一次卸载多个程序、检测卸载残留、静默卸载和清理无效的注册表条目。功能接近 HiBit Uninstaller，适合需要深度清理的用户，基于 Apache-2.0 协议开源。",
+    "highlights": ["批量卸载多个程序", "残留与无效条目检测", "开源免费（Apache-2.0）"],
+    "en": {
+      "name": "Bulk Crap Uninstaller",
+      "description": "Open-source bulk uninstaller with leftover cleanup and invalid-entry detection.",
+      "tags": ["Uninstall", "Cleanup", "Open source"],
+      "intro": "Bulk Crap Uninstaller (BCUninstaller) is an open-source bulk uninstaller that removes many programs at once, detects leftovers, supports silent uninstall and cleans invalid registry entries. It is close to HiBit Uninstaller and licensed under Apache-2.0.",
+      "highlights": ["Bulk uninstall", "Leftover detection", "Open source (Apache-2.0)"]
+    }
+  },
+  {
+    "id": "geek-uninstaller",
+    "name": "Geek Uninstaller",
+    "category": "utilities",
+    "description": "轻量强力的卸载工具，支持强制卸载和残留清理。",
+    "homepage": "https://geekuninstaller.com/",
+    "winget": "GeekUninstaller.GeekUninstaller",
+    "tags": ["卸载", "清理", "工具"],
+    "color": "#2F6FEB",
+    "initial": "G",
+    "publisher": "Geek Uninstaller",
+    "opensource": false,
+    "intro": "Geek Uninstaller 是一款轻量的卸载工具，支持强制卸载、清除注册表残留和卸载后自动扫描，界面简洁、免安装，适合替代系统自带的「程序和功能」。",
+    "highlights": ["强制卸载", "卸载后残留扫描", "免安装单文件"],
+    "en": {
+      "name": "Geek Uninstaller",
+      "description": "Lightweight uninstaller with force removal and leftover cleanup.",
+      "tags": ["Uninstall", "Cleanup", "Utility"],
+      "intro": "Geek Uninstaller is a lightweight uninstaller with force removal, registry leftover cleanup and automatic post-uninstall scanning. It is a portable single file and a good replacement for Windows' built-in Programs and Features.",
+      "highlights": ["Force removal", "Post-uninstall scan", "Portable single file"]
+    }
+  }
+]

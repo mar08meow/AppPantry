@@ -52,7 +52,7 @@
           <button class="theme-btn" id="themeToggle">
             <span id="themeIcon">☾</span><span id="themeLabel">切换浅色</span>
           </button>
-          <div class="version">v0.7.0 · 离线清单</div>
+          <div class="version">v0.8.0 · 离线清单</div>
         </div>
       </aside>
 
@@ -117,15 +117,21 @@
                 数据读取自系统注册表；卸载会调用程序自带的卸载程序，不需要额外权限。
               </p>
               <button class="btn" id="refreshInstalled" data-i18n="installed.refresh">刷新列表</button>
+              <button class="btn" id="openUninstallTools" data-i18n="installed.moreTools">更强力的卸载工具</button>
             </div>
           </div>
 
           <div class="installed-toolbar">
+            <label class="select-all">
+              <input type="checkbox" id="selectAllInstalled" />
+              <span data-i18n="installed.selectAll">全选</span>
+            </label>
             <div class="sort-group" id="sortGroup">
               <button class="sort-btn active" data-sort="name" data-i18n="installed.sort.name">名称</button>
               <button class="sort-btn" data-sort="size" data-i18n="installed.sort.size">大小</button>
               <button class="sort-btn" data-sort="date" data-i18n="installed.sort.date">安装日期</button>
             </div>
+            <button class="btn danger" id="uninstallSelected" disabled data-i18n="installed.batchUninstall">卸载选中</button>
             <span class="count" id="installedMeta"></span>
           </div>
 
@@ -312,6 +318,16 @@
               <code id="installDirLabel" data-i18n="settings.installDefault">默认：由安装器决定</code>
               <button class="btn" id="pickInstallDir" data-i18n="settings.changeDir">更改目录</button>
             </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.mirror">winget 下载源</h2>
+            <p class="settings-hint" data-i18n="settings.mirrorHint">网络不好或没有代理时，可以切换到国内镜像；切换需要管理员权限。</p>
+            <div class="segmented" id="mirrorOptions">
+              <button data-mirror="official" data-i18n="settings.mirror.official">官方源</button>
+              <button data-mirror="ustc" data-i18n="settings.mirror.ustc">中科大镜像</button>
+            </div>
+            <p class="settings-hint" id="mirrorStatus"></p>
           </div>
 
           <div class="settings-group">

@@ -88,10 +88,11 @@ function runWinget(args, onLine) {
     }
 
     let finished = false;
+    const lines = [];
     const finish = (payload) => {
       if (finished) return;
       finished = true;
-      resolve(payload);
+      resolve({ output: lines.join('\n'), ...payload });
     };
 
     const emit = (buf) => {
@@ -99,7 +100,10 @@ function runWinget(args, onLine) {
       const text = buf.toString('utf8');
       const decoded = text.includes('\uFFFD') ? iconv.decode(buf, 'gbk') : text;
       decoded.split(/\r?\n/).forEach((line) => {
-        if (line.trim()) onLine(line);
+        if (line.trim()) {
+          lines.push(line);
+          onLine(line);
+        }
       });
     };
 
@@ -107,6 +111,30 @@ function runWinget(args, onLine) {
     child.stderr.on('data', emit);
     child.on('error', (err) => finish({ code: -1, error: String(err) }));
     child.on('close', (code) => finish({ code }));
+  });
+}
+
+const WINGET_SOURCES = {
+  official: 'https://cdn.winget.microsoft.com/cache',
+  ustc: 'https://mirrors.ustc.edu.cn/winget-source'
+};
+
+// winget source add 需要管理员权限，通过 UAC 提权执行
+function runWingetElevated(args) {
+  return new Promise((resolve) => {
+    const argList = args.map((arg) => `'${String(arg).replace(/'/g, "''")}'`).join(',');
+    const script = `$p = Start-Process -FilePath "winget" -ArgumentList @(${argList}) -Verb RunAs -Wait -PassThru; exit $p.ExitCode`;
+    let child;
+    try {
+      child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], {
+        windowsHide: true
+      });
+    } catch (err) {
+      resolve({ code: -1, error: String(err) });
+      return;
+    }
+    child.on('error', (err) => resolve({ code: -1, error: String(err) }));
+    child.on('close', (code) => resolve({ code }));
   });
 }
 
@@ -204,6 +232,137 @@ ipcMain.handle('installed:reveal', async (_event, targetPath) => {
   if (!fs.existsSync(cleaned)) return { ok: false, error: '目录不存在或已被删除' };
   const err = await shell.openPath(cleaned);
   return err ? { ok: false, error: err } : { ok: true };
+});
+
+// ---------- 强制移除与残留清理 ----------
+const UNINSTALL_BASES = {
+  hklm64: 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+  hklm32: 'HKLM:\\SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+  hkcu: 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'
+};
+
+function isSafeRemovalPath(target) {
+  if (!target) return false;
+  let resolved;
+  try {
+    resolved = path.resolve(String(target));
+  } catch (_) {
+    return false;
+  }
+  if (resolved.length < 5) return false;
+  if (resolved === path.parse(resolved).root) return false;
+  const forbidden = [
+    process.env.WINDIR,
+    process.env.SystemRoot,
+    process.env.ProgramFiles,
+    process.env['ProgramFiles(x86)'],
+    process.env.USERPROFILE,
+    process.env.APPDATA,
+    process.env.LOCALAPPDATA
+  ]
+    .filter(Boolean)
+    .map((item) => path.resolve(item).toLowerCase());
+  return !forbidden.includes(resolved.toLowerCase());
+}
+
+ipcMain.handle('installed:forceRemove', async (_event, target) => {
+  if (!target || !target.source || !target.key) {
+    return { ok: false, error: '参数无效' };
+  }
+  const base = UNINSTALL_BASES[target.source];
+  if (!base) return { ok: false, error: '未知的注册表来源' };
+
+  const key = String(target.key).replace(/'/g, "''");
+  const regPath = base + key;
+  const location = target.location
+    ? String(target.location).trim().replace(/^"|"$/g, '')
+    : '';
+
+  const registryRes = await runPowerShell(
+    `Remove-Item -Path '${regPath}' -Recurse -Force -ErrorAction SilentlyContinue; if (Test-Path '${regPath}') { exit 1 } else { exit 0 }`,
+    20000
+  );
+
+  let removedDir = false;
+  if (location && isSafeRemovalPath(location) && fs.existsSync(location)) {
+    try {
+      fs.rmSync(location, { recursive: true, force: true, maxRetries: 2 });
+      removedDir = !fs.existsSync(location);
+    } catch (_) {
+      removedDir = false;
+    }
+  }
+
+  return {
+    ok: registryRes.ok,
+    registry: registryRes.ok,
+    dir: removedDir,
+    location,
+    error: registryRes.ok ? '' : '注册表项删除失败，可能需要管理员权限'
+  };
+});
+
+ipcMain.handle('installed:scanResidue', async (_event, target) => {
+  const name = String(target?.name || '').trim();
+  const location = String(target?.location || '').trim().replace(/^"|"$/g, '');
+  const residues = [];
+
+  if (location && fs.existsSync(location)) {
+    residues.push({ type: 'dir', path: location });
+  }
+
+  if (name.length >= 2) {
+    const shortcutDirs = [
+      path.join(process.env.APPDATA || '', 'Microsoft', 'Windows', 'Start Menu', 'Programs'),
+      path.join(process.env.PUBLIC || 'C:\\Users\\Public', 'Desktop'),
+      path.join(process.env.USERPROFILE || '', 'Desktop')
+    ].filter(Boolean);
+    const lower = name.toLowerCase();
+
+    for (const dir of shortcutDirs) {
+      if (!fs.existsSync(dir)) continue;
+      try {
+        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+          const full = path.join(dir, entry.name);
+          const entryLower = entry.name.toLowerCase();
+          if (entry.isDirectory()) {
+            if (entryLower.includes(lower)) residues.push({ type: 'dir', path: full });
+            continue;
+          }
+          if (entryLower.endsWith('.lnk') && entryLower.includes(lower)) {
+            residues.push({ type: 'shortcut', path: full });
+          }
+        }
+      } catch (_) {
+        /* 忽略无法读取的目录 */
+      }
+    }
+  }
+
+  const unique = [];
+  const seen = new Set();
+  for (const item of residues) {
+    const key = item.path.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(item);
+  }
+  return { ok: true, residues: unique };
+});
+
+ipcMain.handle('installed:cleanResidue', async (_event, paths) => {
+  const list = Array.isArray(paths) ? paths.slice(0, 50) : [];
+  const removed = [];
+  for (const item of list) {
+    if (!isSafeRemovalPath(item)) continue;
+    try {
+      fs.rmSync(item, { recursive: true, force: true, maxRetries: 2 });
+      if (!fs.existsSync(item)) removed.push(item);
+    } catch (_) {
+      /* 被占用时跳过 */
+    }
+  }
+  return { ok: true, removed };
 });
 
 // ---------- 已安装程序图标（从本机 exe/ico 提取） ----------
@@ -685,6 +844,32 @@ ipcMain.handle('winget:installed', async (_event, appEntry) => {
   if (!isWin || !appEntry || !appEntry.winget) return false;
   const res = await runWinget(['list', '--id', appEntry.winget, '-e'], () => {});
   return res.code === 0;
+});
+
+ipcMain.handle('winget:source', async () => {
+  const res = await runWinget(['source', 'list'], () => {});
+  const output = res.output || '';
+  const line = output
+    .split(/\r?\n/)
+    .map((item) => item.trim())
+    .find((item) => /^winget\s/i.test(item));
+  const url = line ? (line.match(/https?:\/\/\S+/) || [])[0] || '' : '';
+  const mirror = url.includes('ustc.edu.cn') ? 'ustc' : 'official';
+  return { ok: res.code === 0, mirror, url };
+});
+
+ipcMain.handle('winget:setSource', async (_event, mirror) => {
+  const url = WINGET_SOURCES[mirror] || WINGET_SOURCES.official;
+  const res = await runWingetElevated([
+    'source',
+    'add',
+    'winget',
+    url,
+    '--trust-level',
+    'trusted',
+    '--accept-source-agreements'
+  ]);
+  return { ok: res.code === 0, code: res.code, url, error: res.error || '' };
 });
 
 ipcMain.handle('open:external', async (_event, url) => {

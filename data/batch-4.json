@@ -1,0 +1,90 @@
+[
+  {
+    "id": "fdm",
+    "name": "Free Download Manager",
+    "category": "utilities",
+    "description": "免费的下载管理器，多线程加速，支持 BT 和视频下载。",
+    "homepage": "https://www.freedownloadmanager.org/",
+    "winget": "SoftDeluxe.FreeDownloadManager",
+    "tags": ["下载", "BT", "免费"],
+    "color": "#00A0E9",
+    "initial": "F",
+    "publisher": "Free Download Manager",
+    "opensource": false,
+    "intro": "Free Download Manager（FDM）是一款免费的下载管理器，支持多线程加速、断点续传、BT 下载和网页视频嗅探。界面简洁、没有广告，适合替代浏览器自带的下载功能。",
+    "highlights": ["多线程加速下载", "支持 BT 与磁力链接", "网页视频嗅探"],
+    "en": {
+      "name": "Free Download Manager",
+      "description": "Free download manager with multi-threaded acceleration, BT and video downloads.",
+      "tags": ["Download", "BT", "Free"],
+      "intro": "Free Download Manager (FDM) is a free download manager with multi-threaded acceleration, resume support, BitTorrent downloads and web video sniffing. It has a clean, ad-free interface and is a good replacement for the browser's built-in downloader.",
+      "highlights": ["Multi-threaded acceleration", "BT and magnet support", "Web video sniffing"]
+    }
+  },
+  {
+    "id": "xdown",
+    "name": "XDown",
+    "category": "utilities",
+    "description": "支持 BT、磁力和 HTTP 的多线程下载工具。",
+    "homepage": "https://xdown.org/",
+    "winget": "XDown.XDown",
+    "tags": ["下载", "BT", "磁力"],
+    "color": "#4F46E5",
+    "initial": "X",
+    "publisher": "XDown",
+    "opensource": false,
+    "intro": "XDown 是一款支持 HTTP、FTP、BT 和磁力链接的下载工具，支持多线程下载和断点续传，界面轻量。适合下载较大的安装包、影视资源和 BT 种子。",
+    "highlights": ["支持 BT 与磁力", "多线程下载", "轻量界面"],
+    "en": {
+      "name": "XDown",
+      "description": "Multi-threaded downloader for BT, magnet and HTTP links.",
+      "tags": ["Download", "BT", "Magnet"],
+      "intro": "XDown is a download tool supporting HTTP, FTP, BitTorrent and magnet links, with multi-threaded downloads and resume support. Its lightweight interface suits large installers, media files and torrents.",
+      "highlights": ["BT and magnet support", "Multi-threaded downloads", "Lightweight UI"]
+    }
+  },
+  {
+    "id": "lmms",
+    "name": "LMMS",
+    "category": "media",
+    "description": "开源音乐制作软件，用来编曲、作曲和混音。",
+    "homepage": "https://lmms.io/",
+    "winget": "LMMS.LMMS",
+    "tags": ["音乐", "编曲", "开源"],
+    "color": "#2FA36B",
+    "initial": "L",
+    "publisher": "LMMS",
+    "opensource": true,
+    "intro": "LMMS 是一款开源的数字音频工作站，支持编曲、作曲、混音和 MIDI 编辑，内置多种合成器、鼓机和效果器。界面友好，适合入门音乐制作和电子音乐创作，完全免费。",
+    "highlights": ["开源免费", "内置合成器与鼓机", "支持 MIDI 与插件"],
+    "en": {
+      "name": "LMMS",
+      "description": "Open-source music production software for composing, arranging and mixing.",
+      "tags": ["Music", "Composing", "Open source"],
+      "intro": "LMMS is an open-source digital audio workstation for composing, arranging, mixing and MIDI editing, with built-in synthesizers, drum machines and effects. It is free and approachable for beginners and electronic music makers.",
+      "highlights": ["Free and open source", "Built-in synths and drums", "MIDI and plugin support"]
+    }
+  },
+  {
+    "id": "krita",
+    "name": "Krita",
+    "category": "media",
+    "description": "专业的开源绘画软件，适合插画、漫画和概念设计。",
+    "homepage": "https://krita.org/",
+    "winget": "KDE.Krita",
+    "tags": ["绘画", "插画", "开源"],
+    "color": "#3DAA6E",
+    "initial": "K",
+    "publisher": "KDE",
+    "opensource": true,
+    "intro": "Krita 是一款专业的开源绘画软件，提供丰富的笔刷引擎、图层管理、动画和时间轴工具，适合插画、漫画、概念设计和数字绘画。完全免费，跨平台使用。",
+    "highlights": ["专业笔刷引擎", "图层与动画工具", "完全免费"],
+    "en": {
+      "name": "Krita",
+      "description": "Professional open-source painting software for illustration and concept art.",
+      "tags": ["Painting", "Illustration", "Open source"],
+      "intro": "Krita is a professional open-source painting application with a rich brush engine, layer management, animation and timeline tools. It suits illustration, comics, concept art and digital painting, and is completely free.",
+      "highlights": ["Professional brush engine", "Layers and animation", "Completely free"]
+    }
+  }
+]

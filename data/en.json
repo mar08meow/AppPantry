@@ -1609,5 +1609,153 @@
       "Mount and incremental sync",
       "Scriptable and open source"
     ]
+  },
+  "fdm": {
+    "name": "Free Download Manager",
+    "description": "Free download manager with multi-threaded acceleration, BT and video downloads.",
+    "tags": [
+      "Download",
+      "BT",
+      "Free"
+    ],
+    "intro": "Free Download Manager (FDM) is a free download manager with multi-threaded acceleration, resume support, BitTorrent downloads and web video sniffing. It has a clean, ad-free interface and is a good replacement for the browser's built-in downloader.",
+    "highlights": [
+      "Multi-threaded acceleration",
+      "BT and magnet support",
+      "Web video sniffing"
+    ]
+  },
+  "xdown": {
+    "name": "XDown",
+    "description": "Multi-threaded downloader for BT, magnet and HTTP links.",
+    "tags": [
+      "Download",
+      "BT",
+      "Magnet"
+    ],
+    "intro": "XDown is a download tool supporting HTTP, FTP, BitTorrent and magnet links, with multi-threaded downloads and resume support. Its lightweight interface suits large installers, media files and torrents.",
+    "highlights": [
+      "BT and magnet support",
+      "Multi-threaded downloads",
+      "Lightweight UI"
+    ]
+  },
+  "lmms": {
+    "name": "LMMS",
+    "description": "Open-source music production software for composing, arranging and mixing.",
+    "tags": [
+      "Music",
+      "Composing",
+      "Open source"
+    ],
+    "intro": "LMMS is an open-source digital audio workstation for composing, arranging, mixing and MIDI editing, with built-in synthesizers, drum machines and effects. It is free and approachable for beginners and electronic music makers.",
+    "highlights": [
+      "Free and open source",
+      "Built-in synths and drums",
+      "MIDI and plugin support"
+    ]
+  },
+  "krita": {
+    "name": "Krita",
+    "description": "Professional open-source painting software for illustration and concept art.",
+    "tags": [
+      "Painting",
+      "Illustration",
+      "Open source"
+    ],
+    "intro": "Krita is a professional open-source painting application with a rich brush engine, layer management, animation and timeline tools. It suits illustration, comics, concept art and digital painting, and is completely free.",
+    "highlights": [
+      "Professional brush engine",
+      "Layers and animation",
+      "Completely free"
+    ]
+  },
+  "uu-remote": {
+    "name": "UU Remote",
+    "description": "NetEase remote desktop tool with low latency.",
+    "tags": [
+      "Remote",
+      "Control",
+      "NetEase"
+    ],
+    "intro": "UU Remote is NetEase's remote control app with remote desktop, file transfer and phone-to-PC control. It is stable and low-latency, useful for remote work or helping family with their computers.",
+    "highlights": [
+      "Low-latency desktop",
+      "Phone controls PC",
+      "File transfer"
+    ]
+  },
+  "uu-accelerator": {
+    "name": "UU Accelerator",
+    "description": "NetEase game accelerator that lowers ping for overseas games.",
+    "tags": [
+      "Accelerator",
+      "Games",
+      "NetEase"
+    ],
+    "intro": "NetEase UU Accelerator is a game network booster supporting hundreds of games. It uses dedicated routes to reduce ping and packet loss, and requires a NetEase account.",
+    "highlights": [
+      "Wide game support",
+      "Dedicated low-latency routes",
+      "Made by NetEase"
+    ]
+  },
+  "xunyou": {
+    "name": "Xunyou Accelerator",
+    "description": "Long-running game accelerator for domestic and overseas games.",
+    "tags": [
+      "Accelerator",
+      "Games"
+    ],
+    "intro": "Xunyou Accelerator is one of the earliest Chinese game boosters, covering hundreds of online games with smart node selection.",
+    "highlights": [
+      "Established booster",
+      "Smart node selection",
+      "Wide game coverage"
+    ]
+  },
+  "qiyou": {
+    "name": "Qiyou Accelerator",
+    "description": "Game accelerator for PC and console games.",
+    "tags": [
+      "Accelerator",
+      "Games"
+    ],
+    "intro": "Qiyou Accelerator supports PC, console and mobile games with dedicated routes and smart acceleration for overseas game players.",
+    "highlights": [
+      "Console and mobile",
+      "Dedicated routes",
+      "Smart acceleration"
+    ]
+  },
+  "kook": {
+    "name": "KOOK",
+    "description": "Voice chat app popular with gamers for team play.",
+    "tags": [
+      "Voice",
+      "Gaming",
+      "Social"
+    ],
+    "intro": "KOOK is a voice communication app with voice channels, text chat and screen sharing, widely used by gamers to team up. It runs on Windows, mobile and the web.",
+    "highlights": [
+      "Voice channels",
+      "Screen sharing",
+      "Cross-platform"
+    ]
+  },
+  "bcuninstaller": {
+    "name": "Bulk Crap Uninstaller",
+    "description": "Open-source bulk uninstaller with leftover cleanup and invalid-entry detection.",
+    "tags": [
+      "Uninstall",
+      "Cleanup",
+      "Open source"
+    ],
+    "intro": "Bulk Crap Uninstaller (BCUninstaller) is an open-source bulk uninstaller that removes many programs at once, detects leftovers, supports silent uninstall and cleans invalid registry entries. It is close to HiBit Uninstaller and licensed under Apache-2.0.",
+    "highlights": [
+      "Bulk uninstall",
+      "Leftover detection",
+      "Open source (Apache-2.0)"
+    ]
   }
 }
