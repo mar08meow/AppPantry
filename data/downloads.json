@@ -1,0 +1,22 @@
+{
+  "chrome": {
+    "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
+    "filename": "ChromeSetup.exe"
+  },
+  "firefox": {
+    "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=zh-CN",
+    "filename": "FirefoxSetup.exe"
+  },
+  "vlc": {
+    "url": "https://get.videolan.org/vlc/last/win64/vlc-win64.exe",
+    "filename": "vlc-win64.exe"
+  },
+  "vscode": {
+    "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
+    "filename": "VSCodeUserSetup-x64.exe"
+  },
+  "7zip": {
+    "url": "https://www.7-zip.org/a/7z2408-x64.exe",
+    "filename": "7z2408-x64.exe"
+  }
+}

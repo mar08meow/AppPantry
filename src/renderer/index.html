@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'"
+    />
+    <title>AppPantry</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div class="brand-text">
+            <strong>AppPantry</strong>
+            <span>应用下载与管理</span>
+          </div>
+        </div>
+
+        <nav class="nav" id="categories"></nav>
+
+        <div class="nav-sep"></div>
+        <button class="nav-item nav-installed" id="navInstalled">
+          <span class="nav-icon">▣</span>
+          <span data-i18n="nav.installed">已安装应用</span>
+          <span class="nav-count" id="installedCount">—</span>
+        </button>
+        <button class="nav-item nav-convert" id="navConvert">
+          <span class="nav-icon">⇄</span>
+          <span data-i18n="nav.convert">格式转换</span>
+        </button>
+        <button class="nav-item nav-settings" id="navSettings">
+          <span class="nav-icon">⚙</span>
+          <span data-i18n="nav.settings">设置</span>
+        </button>
+
+        <div class="sidebar-foot">
+          <div class="status-card">
+            <div class="status-row">
+              <span class="dot" id="wingetDot"></span>
+              <span id="wingetText">正在检测 winget…</span>
+            </div>
+            <p class="status-hint" data-i18n="status.hint">支持一键安装的应用会显示「安装」按钮</p>
+          </div>
+          <button class="theme-btn" id="themeToggle">
+            <span id="themeIcon">☾</span><span id="themeLabel">切换浅色</span>
+          </button>
+          <div class="version">v0.4.0 · 离线清单</div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <label class="search">
+            <span class="search-icon">⌕</span>
+            <input
+              id="search"
+              type="search"
+              placeholder="搜索应用、用途，例如：浏览器 / 压缩 / 网盘"
+              data-i18n-placeholder="search.placeholder"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <kbd>Ctrl K</kbd>
+          </label>
+          <button class="filter-chip" id="installableOnly" title="只显示支持一键安装的应用">
+            <span class="filter-dot"></span><span data-i18n="filter.installable">可一键安装</span>
+          </button>
+        </header>
+
+        <div id="catalogView">
+          <section class="hero">
+            <div>
+              <p class="eyebrow" data-i18n="hero.eyebrow">一站式下载 · 官方来源</p>
+              <h1 data-i18n="hero.title">想装什么，点一下就好</h1>
+              <p class="hero-sub" data-i18n="hero.sub">
+                优先通过 winget 一键安装；没有收录的，直接打开官方下载页。备用下载由你自己的网盘兜底。
+              </p>
+            </div>
+            <div class="hero-stats">
+              <div><strong id="statTotal">0</strong><span data-i18n="stat.apps">收录应用</span></div>
+              <div><strong id="statWinget">0</strong><span data-i18n="stat.winget">一键安装</span></div>
+            </div>
+          </section>
+
+          <div class="section-head">
+            <h2 id="sectionTitle">全部应用</h2>
+            <span class="count" id="count"></span>
+          </div>
+
+          <div class="grid" id="grid"></div>
+          <div class="empty" id="empty" hidden>
+            <div class="empty-mark">⌕</div>
+            <h3 data-i18n="empty.title">没有找到匹配的应用</h3>
+            <p data-i18n="empty.sub">换个关键词试试，或者告诉我们要补充什么。</p>
+          </div>
+        </div>
+
+        <section class="installed-view" id="installedView" hidden>
+          <div class="installed-hero">
+            <div class="installed-stats">
+              <div><strong id="statInstalled">—</strong><span data-i18n="installed.stat.total">已安装程序</span></div>
+              <div><strong id="statSize">—</strong><span data-i18n="installed.stat.size">占用空间</span></div>
+              <div><strong id="statMatched">—</strong><span data-i18n="installed.stat.matched">工具箱已收录</span></div>
+            </div>
+            <div class="installed-hero-side">
+              <p class="installed-hint" data-i18n="installed.hint">
+                数据读取自系统注册表；卸载会调用程序自带的卸载程序，不需要额外权限。
+              </p>
+              <button class="btn" id="refreshInstalled" data-i18n="installed.refresh">刷新列表</button>
+            </div>
+          </div>
+
+          <div class="installed-toolbar">
+            <div class="sort-group" id="sortGroup">
+              <button class="sort-btn active" data-sort="name" data-i18n="installed.sort.name">名称</button>
+              <button class="sort-btn" data-sort="size" data-i18n="installed.sort.size">大小</button>
+              <button class="sort-btn" data-sort="date" data-i18n="installed.sort.date">安装日期</button>
+            </div>
+            <span class="count" id="installedMeta"></span>
+          </div>
+
+          <div class="installed-list" id="installedList"></div>
+          <div class="empty" id="installedEmpty" hidden>
+            <div class="empty-mark">▣</div>
+            <h3 id="installedEmptyTitle">正在读取已安装程序…</h3>
+            <p id="installedEmptyText">第一次读取需要几秒钟。</p>
+          </div>
+        </section>
+
+        <section class="convert-view" id="convertView" hidden>
+          <div class="convert-hero">
+            <div>
+              <p class="eyebrow" data-i18n="convert.eyebrow">本地转换 · 不上传</p>
+              <h1 data-i18n="convert.title">格式转换</h1>
+              <p class="convert-sub" data-i18n="convert.sub">
+                图片互转、图片合成 PDF、PDF 合并与拆分都在本机完成，文件不会离开你的电脑。
+              </p>
+            </div>
+          </div>
+
+          <div class="convert-tabs" id="convertTabs">
+            <button data-tab="image" class="active" data-i18n="convert.tab.image">图片转换</button>
+            <button data-tab="img2pdf" data-i18n="convert.tab.img2pdf">图片转 PDF</button>
+            <button data-tab="merge" data-i18n="convert.tab.merge">PDF 合并</button>
+            <button data-tab="split" data-i18n="convert.tab.split">PDF 拆分</button>
+          </div>
+
+          <div class="convert-panel">
+            <div class="convert-drop" id="convertDrop">
+              <div class="drop-icon">＋</div>
+              <p id="dropText">点击选择文件，支持多选</p>
+              <button class="btn primary" id="pickConvertFiles" data-i18n="convert.pick">选择文件</button>
+            </div>
+
+            <ul class="convert-files" id="convertFiles"></ul>
+
+            <div class="convert-options" id="convertOptions"></div>
+
+            <div class="convert-actions">
+              <button class="btn primary" id="startConvert" data-i18n="convert.start">开始转换</button>
+              <button class="btn" id="clearConvert" data-i18n="convert.clear">清空</button>
+            </div>
+
+            <div class="convert-result" id="convertResult" hidden></div>
+          </div>
+
+          <div class="convert-recommend">
+            <div>
+              <h3 data-i18n="convert.recommendTitle">音视频和文档转换</h3>
+              <p data-i18n="convert.recommendText">
+                MP4、MP3、GIF、视频压缩，以及 Word / Excel 转 PDF，建议使用开源的 FileConverter：
+                装好后右键文件就能转换。
+              </p>
+            </div>
+            <div class="convert-recommend-actions">
+              <button class="btn primary" id="installFileConverter" data-i18n="convert.installFC">一键安装 FileConverter</button>
+              <span class="installed-chip" id="fileConverterStatus" hidden data-i18n="convert.installedFC">已安装 FileConverter</span>
+              <button class="btn" id="openFileConverter" data-i18n="convert.openFC">打开官网</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-view" id="settingsView" hidden>
+          <div class="settings-hero">
+            <p class="eyebrow" data-i18n="settings.eyebrow">设置</p>
+            <h1 data-i18n="settings.title">外观与偏好</h1>
+            <p class="settings-sub" data-i18n="settings.sub">这些设置只保存在本机，不会上传到任何服务器。</p>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.language">语言</h2>
+            <p class="settings-hint" data-i18n="settings.languageHint">界面和应用介绍使用的语言。</p>
+            <div class="segmented" id="languageOptions">
+              <button data-lang="zh-CN" data-i18n="settings.lang.zh">中文</button>
+              <button data-lang="en-US" data-i18n="settings.lang.en">English</button>
+              <button data-lang="auto" data-i18n="settings.lang.auto">跟随系统</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.theme">主题</h2>
+            <p class="settings-hint" data-i18n="settings.themeHint">深色适合夜间，浅色更适合白天。</p>
+            <div class="segmented" id="themeOptions">
+              <button data-theme="dark" data-i18n="settings.theme.dark">深色</button>
+              <button data-theme="light" data-i18n="settings.theme.light">浅色</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.accent">主题色</h2>
+            <p class="settings-hint" data-i18n="settings.accentHint">按钮、链接和高亮会使用这个颜色。</p>
+            <div class="color-options" id="colorOptions">
+              <button data-color="#6d8dff" style="--c: #6d8dff" title="蓝紫"></button>
+              <button data-color="#2dd4bf" style="--c: #2dd4bf" title="青绿"></button>
+              <button data-color="#f59e0b" style="--c: #f59e0b" title="橙色"></button>
+              <button data-color="#ec4899" style="--c: #ec4899" title="粉色"></button>
+              <button data-color="#ef4444" style="--c: #ef4444" title="红色"></button>
+              <button data-color="#22c55e" style="--c: #22c55e" title="绿色"></button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.downloadDir">下载目录</h2>
+            <p class="settings-hint" data-i18n="settings.downloadDirHint">内置下载器保存安装包的默认位置。</p>
+            <div class="settings-row">
+              <code id="downloadDirLabel" data-i18n="settings.defaultDir">默认：系统下载文件夹</code>
+              <button class="btn" id="pickDownloadDir" data-i18n="settings.changeDir">更改目录</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.about">关于</h2>
+            <p class="settings-hint" data-i18n="settings.aboutText">
+              AppPantry v0.4.0 · MIT License · 开源项目，欢迎在 GitHub 上提交问题和建议。
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-mask" id="modalMask" hidden>
+      <section class="modal" id="modal" role="dialog" aria-modal="true" aria-label="应用详情"></section>
+    </div>
+
+    <div class="modal-mask" id="confirmMask" hidden>
+      <div class="confirm" role="dialog" aria-modal="true" aria-label="确认卸载">
+        <h3 id="confirmTitle">卸载应用</h3>
+        <p id="confirmText"></p>
+        <pre id="confirmCmd"></pre>
+        <div class="confirm-actions">
+          <button class="btn" id="confirmCancel">取消</button>
+          <button class="btn danger" id="confirmOk">确认卸载</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="log-panel" id="logPanel" hidden>
+      <header class="log-head" id="logHead">
+        <div>
+          <strong id="logTitle" data-i18n="log.title">安装日志</strong>
+          <span class="log-status" id="logStatus"></span>
+        </div>
+        <div class="log-actions">
+          <button class="log-toggle" id="logToggle" title="收起日志">—</button>
+          <button class="log-close" id="logClose" title="关闭">×</button>
+        </div>
+      </header>
+      <pre class="log-body" id="logBody"></pre>
+    </aside>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

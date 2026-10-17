@@ -1,0 +1,471 @@
+{
+  "chrome": {
+    "name": "Google Chrome",
+    "description": "The world's most popular browser with a huge extension ecosystem.",
+    "tags": ["Browser", "Web"],
+    "intro": "Google Chrome is the most widely used browser, tightly integrated with a Google account so bookmarks, passwords and extensions sync across devices. It has the best support for modern web standards, and most websites are tested against it first.",
+    "highlights": ["Largest extension library", "Sync across devices", "Best website compatibility"]
+  },
+  "firefox": {
+    "name": "Mozilla Firefox",
+    "description": "Open-source browser with strong privacy protection and deep customization.",
+    "tags": ["Browser", "Open source"],
+    "intro": "Firefox is maintained by the non-profit Mozilla Foundation and ships with Enhanced Tracking Protection on by default, blocking cross-site trackers and fingerprinting scripts. Its interface can be heavily customized, making it a good fit for users who care about privacy and avoiding a single-vendor web.",
+    "highlights": ["Blocks trackers by default", "Highly customizable UI", "Fully open source"]
+  },
+  "edge": {
+    "name": "Microsoft Edge",
+    "description": "Windows' built-in Chromium browser with Chrome extension support.",
+    "tags": ["Browser", "Built-in"],
+    "intro": "Microsoft Edge uses the same engine as Chrome, so it can install extensions from the Chrome Web Store. It integrates deeply with Windows and adds vertical tabs, sleeping tabs to save memory, and built-in PDF reading and read-aloud features.",
+    "highlights": ["Preinstalled on Windows", "Works with Chrome extensions", "Sleeping tabs save memory"]
+  },
+  "brave": {
+    "name": "Brave",
+    "description": "Chromium browser that blocks ads and trackers out of the box.",
+    "tags": ["Browser", "Privacy"],
+    "intro": "Brave is built on Chromium and blocks ads, pop-ups and cross-site trackers by default, making pages load faster and use less data. It includes a private window with Tor and a built-in firewall for users who want stronger privacy.",
+    "highlights": ["Ads blocked by default", "Private window with Tor", "Chrome extension compatible"]
+  },
+  "7zip": {
+    "name": "7-Zip",
+    "description": "Free, lightweight archiver with no ads or bundleware.",
+    "tags": ["Archive", "Open source", "Essential"],
+    "intro": "7-Zip is a free open-source archiver that handles 7z, ZIP, RAR, tar, gz and almost every common format. It is only a few megabytes, contains no ads or bundled software, and its compression ratio is among the best available.",
+    "highlights": ["Completely free, no ads", "Supports almost all formats", "Excellent compression ratio"]
+  },
+  "bandizip": {
+    "name": "Bandizip",
+    "description": "Clean, easy-to-use archiver with image preview and auto-extract.",
+    "tags": ["Archive"],
+    "intro": "Bandizip is a Korean archiver with a clean interface, automatic extraction and image previews inside archives. The free version covers everyday use and suits users who find 7-Zip's interface too plain; watch the optional bundled components during installation.",
+    "highlights": ["Simple, friendly interface", "Automatic extraction", "Preview images in archives"]
+  },
+  "winrar": {
+    "name": "WinRAR",
+    "description": "Veteran archiver with native RAR support and repair tools.",
+    "tags": ["Archive", "RAR"],
+    "intro": "WinRAR is one of the oldest archivers and has the most complete support for the RAR format, including the ability to repair damaged archives. It can be evaluated for free for personal use; businesses need a license. Many older resources and game patches are still distributed as RAR files.",
+    "highlights": ["Native RAR support", "Repairs damaged archives", "Mature multi-volume archives"]
+  },
+  "nanazip": {
+    "name": "NanaZip",
+    "description": "Modern 7-Zip derivative with Windows 11 context menu support.",
+    "tags": ["Archive", "Open source"],
+    "intro": "NanaZip is built on the 7-Zip engine and keeps its format support and compression ratio while adding Windows 11 context menu integration and dark mode. It is open source and free, ideal for users who want better system integration.",
+    "highlights": ["Windows 11 context menu", "Dark mode support", "Powered by 7-Zip"]
+  },
+  "vlc": {
+    "name": "VLC media player",
+    "description": "Open-source player that plays virtually any video or audio format.",
+    "tags": ["Player", "Open source", "Essential"],
+    "intro": "VLC is the benchmark open-source media player. It plays MP4, MKV, AVI, FLV and almost every other format without extra codecs, and can even play damaged or incomplete files. It supports network streams, subtitles and every major platform.",
+    "highlights": ["Plays almost any format", "Handles damaged files", "Free, open source, no ads"]
+  },
+  "potplayer": {
+    "name": "PotPlayer",
+    "description": "Fast local video player with excellent subtitle and image quality options.",
+    "tags": ["Player"],
+    "intro": "PotPlayer is a Korean local video player known for fast startup, good image quality and detailed subtitle handling. It bundles a wide range of codecs and offers extensive picture enhancement, 3D, 360-degree video and live stream support.",
+    "highlights": ["Fast startup, low resource use", "Detailed subtitle support", "Rich picture enhancement"]
+  },
+  "netmusic": {
+    "name": "NetEase Cloud Music",
+    "description": "Popular Chinese music platform known for playlists and community.",
+    "tags": ["Music"],
+    "intro": "NetEase Cloud Music is one of China's main music platforms, known for its playlist recommendations and lively comment sections. The desktop app supports lossless audio, synchronized lyrics and local music management, and is especially good for indie and niche tracks.",
+    "highlights": ["Strong playlist recommendations", "Distinctive community comments", "Lossless audio support"]
+  },
+  "qqmusic": {
+    "name": "QQ Music",
+    "description": "Tencent's music client with a large licensed catalog.",
+    "tags": ["Music"],
+    "intro": "QQ Music is Tencent's music client and has broad licensing coverage, especially for mainstream Chinese artists. It supports high-quality audio, music videos and lyric posters, and integrates with the QQ account system.",
+    "highlights": ["Large licensed catalog", "High-quality audio", "Integrated with QQ accounts"]
+  },
+  "sogou-input": {
+    "name": "Sogou Input",
+    "description": "Widely used Chinese pinyin input method with strong prediction.",
+    "tags": ["Input method"],
+    "intro": "Sogou Input is one of the most widely used Chinese input methods, with accurate pinyin prediction and long-sentence input. Its dictionary updates quickly to cover internet slang, names and dialects, and it supports skins, handwriting and voice input.",
+    "highlights": ["Accurate pinyin prediction", "Fast dictionary updates", "Voice and handwriting input"]
+  },
+  "wps": {
+    "name": "WPS Office",
+    "description": "Chinese office suite compatible with Microsoft Office formats.",
+    "tags": ["Office", "Documents"],
+    "intro": "WPS Office bundles Writer, Spreadsheets and Presentation, and opens or edits Microsoft Office files reliably. Its installer is much smaller than Office, it starts quickly, and the personal edition is free for everyday documents, spreadsheets and simple presentations.",
+    "highlights": ["Compatible with Office formats", "Small and fast", "Free personal edition"]
+  },
+  "office": {
+    "name": "Microsoft Office",
+    "description": "Microsoft's full Office suite; requires a Microsoft 365 subscription.",
+    "tags": ["Office", "Documents", "Paid"],
+    "intro": "Microsoft Office is the full version of Word, Excel, PowerPoint and Outlook. It offers the most complete format compatibility and advanced features such as formulas, macros and pivot tables, making it the standard for business and school work. A Microsoft 365 subscription or standalone license is required.",
+    "highlights": ["Most complete office suite", "Best enterprise compatibility", "Requires subscription or license"]
+  },
+  "libreoffice": {
+    "name": "LibreOffice",
+    "description": "Free, open-source office suite that can replace Microsoft Office.",
+    "tags": ["Office", "Open source"],
+    "intro": "LibreOffice is a completely free open-source office suite with Writer, Calc, Impress and more. It opens and exports Office formats, has no subscription or ads, and suits users on a budget or those who prefer to keep documents entirely local.",
+    "highlights": ["Free, no subscription", "Open source", "Supports Office formats"]
+  },
+  "everything": {
+    "name": "Everything",
+    "description": "Instant file search for Windows; an essential productivity tool.",
+    "tags": ["Search", "Productivity", "Essential"],
+    "intro": "Everything indexes file names on Windows and returns results almost instantly, far faster than the built-in search. It supports wildcards, regular expressions, and filters by size or date, while using very little memory.",
+    "highlights": ["Near-instant search", "Regex and filters", "Tiny memory footprint"]
+  },
+  "snipaste": {
+    "name": "Snipaste",
+    "description": "Screenshot and pin-to-screen tool with annotations and color picker.",
+    "tags": ["Screenshot", "Productivity"],
+    "intro": "Snipaste takes screenshots with F1 and lets you pin them on top of other windows, which is great for referencing documents or code. It supports annotations, a color picker and history, and the free edition covers everyday use.",
+    "highlights": ["Pin screenshots on top", "Annotations and color picker", "Fast keyboard workflow"]
+  },
+  "tencent-meeting": {
+    "name": "Tencent Meeting",
+    "description": "Popular online meeting tool with screen sharing and recording.",
+    "tags": ["Meetings", "Office"],
+    "intro": "Tencent Meeting is one of China's most used online meeting tools, supporting screen sharing, recording, background blur and collaboration. It connects reliably on Chinese networks and integrates with WeChat and WeCom, making it suitable for remote meetings, classes and interviews.",
+    "highlights": ["Stable on Chinese networks", "Screen sharing and recording", "Works with WeChat"]
+  },
+  "anydesk": {
+    "name": "AnyDesk",
+    "description": "Lightweight remote desktop with fast, low-latency connections.",
+    "tags": ["Remote", "Support"],
+    "intro": "AnyDesk is a lightweight remote desktop tool whose installer is only a few megabytes. Connections are fast and low-latency; enter the other side's address to control their computer. It is ideal for helping family and friends with computer problems or for remote work.",
+    "highlights": ["Small and fast", "Connect by address", "Cross-platform"]
+  },
+  "fileconverter": {
+    "name": "FileConverter",
+    "description": "Right-click file conversion and compression for images, media, documents and PDFs.",
+    "tags": ["Convert", "Open source", "Context menu"],
+    "intro": "FileConverter is an open-source Windows tool that adds conversion and compression to the right-click menu. It handles images, audio, video, documents and PDFs using bundled FFmpeg and ImageMagick engines, and everything runs locally without uploading files.",
+    "highlights": ["Convert from the context menu", "Images, media and documents", "Open source, runs locally"]
+  },
+  "wechat": {
+    "name": "WeChat",
+    "description": "China's dominant messaging app, with file transfer on desktop.",
+    "tags": ["Chat", "Essential"],
+    "intro": "WeChat is China's most used messaging app. The desktop client supports text, voice and video calls plus file transfer between phone and computer. Much work communication and many group chats happen on WeChat, so it is effectively a must-install app.",
+    "highlights": ["Transfer files between phone and PC", "Group chats and video calls", "Largest user base in China"]
+  },
+  "qq": {
+    "name": "QQ",
+    "description": "Tencent's QQ desktop client on the modern NT architecture.",
+    "tags": ["Chat"],
+    "intro": "This is the new NT-based QQ desktop client, with a more modern interface and faster startup while keeping group files, remote assistance and screen sharing. It suits users who still rely on QQ groups, large file transfers or Tencent games.",
+    "highlights": ["Faster NT architecture", "Group files and large transfers", "Remote assistance"]
+  },
+  "wecom": {
+    "name": "WeCom",
+    "description": "Tencent's business communication and customer operations client.",
+    "tags": ["Office", "Chat"],
+    "intro": "WeCom (WeChat Work) is Tencent's desktop client for internal company communication and customer operations. It can exchange messages with regular WeChat, manage customer groups, and includes attendance, approvals and document tools.",
+    "highlights": ["Interoperates with WeChat", "Approvals and attendance", "Built for business"]
+  },
+  "dingtalk": {
+    "name": "DingTalk",
+    "description": "Alibaba's collaboration platform for attendance, approvals and meetings.",
+    "tags": ["Office", "Chat"],
+    "intro": "DingTalk is Alibaba's collaboration platform, combining attendance, approvals, calendars, video meetings and cloud storage. Many companies and schools use it for daily management and online classes, and it stays in sync with the mobile app.",
+    "highlights": ["Attendance and approvals", "Video meetings and live classes", "Common in schools and companies"]
+  },
+  "feishu": {
+    "name": "Feishu",
+    "description": "ByteDance's collaboration suite with excellent document editing.",
+    "tags": ["Office", "Documents"],
+    "intro": "Feishu (Lark) combines messaging, online documents, spreadsheets, calendars and video meetings in one platform. Its collaborative document editing is smooth even with many simultaneous editors, making it popular with internet teams and remote work.",
+    "highlights": ["Smooth document collaboration", "Messaging and calendar together", "Great for remote teams"]
+  },
+  "discord": {
+    "name": "Discord",
+    "description": "Voice, community servers and screen sharing for gamers and groups.",
+    "tags": ["Voice", "Community"],
+    "intro": "Discord is built around voice channels and community servers, widely used by gamers, open-source projects and hobby groups. It supports screen sharing, bots and multiple servers; access from mainland China may require a network accelerator.",
+    "highlights": ["Stable voice channels", "Bots and community servers", "Popular with gamers"]
+  },
+  "telegram": {
+    "name": "Telegram",
+    "description": "Cross-platform messenger with cloud sync and large file support.",
+    "tags": ["Chat"],
+    "intro": "Telegram is a cross-platform messenger known for cloud synchronization, large file transfers and channels. Messages sync across devices in real time, and it supports 2 GB files, secret chats and a rich bot ecosystem; access from mainland China usually needs a proxy.",
+    "highlights": ["Cloud sync across devices", "Large file transfers", "Channels and bots"]
+  },
+  "zoom": {
+    "name": "Zoom",
+    "description": "International video meeting software with simple joining.",
+    "tags": ["Meetings"],
+    "intro": "Zoom is a widely used international video meeting tool with a simple interface. It supports screen sharing, virtual backgrounds, recording and breakout rooms, and is common in multinational companies, study-abroad and cross-border collaboration.",
+    "highlights": ["Standard for international meetings", "Easy to join", "Recording and breakout rooms"]
+  },
+  "baidupan": {
+    "name": "Baidu Netdisk",
+    "description": "China's most popular cloud drive with the best link compatibility.",
+    "tags": ["Cloud", "Storage"],
+    "intro": "Baidu Netdisk is one of China's largest cloud drives and has the best compatibility with shared links, so many tutorials, tools and media resources use it. Free storage is generous, but download speed is limited without a membership.",
+    "highlights": ["Best shared-link compatibility", "Generous free storage", "Speed limited without membership"]
+  },
+  "quark": {
+    "name": "Quark Cloud Drive",
+    "description": "Alibaba's cloud drive with faster downloads and a clean interface.",
+    "tags": ["Cloud", "Storage"],
+    "intro": "Quark Cloud Drive is Alibaba's cloud storage product, focused on fast downloads and a clean interface, with sync between phone and desktop. It has grown quickly as a place to share resources and is a good alternative to Baidu Netdisk.",
+    "highlights": ["Faster download speeds", "Clean interface", "Connected to Quark browser"]
+  },
+  "aliyunpan": {
+    "name": "Aliyun Drive",
+    "description": "Alibaba Cloud's personal cloud drive with photo backup.",
+    "tags": ["Cloud", "Storage"],
+    "intro": "Aliyun Drive is Alibaba Cloud's personal cloud storage, focused on photo backup, file sync and fast transfers. It has a clean interface and suits storing personal photos, documents and backups, and it supports sharing links.",
+    "highlights": ["Emphasis on fast transfers", "Automatic photo backup", "Clean interface"]
+  },
+  "thunder": {
+    "name": "Xunlei",
+    "description": "Veteran download manager supporting HTTP, BT and magnet links.",
+    "tags": ["Download", "BT"],
+    "intro": "Xunlei is a long-standing download tool supporting HTTP, BT, magnet links and offline downloads. It is particularly good at fetching rare or poorly seeded torrents. The free version includes ads and speed limits; membership improves the experience.",
+    "highlights": ["BT and magnet support", "Strong offline downloads", "Good at rare resources"]
+  },
+  "qbittorrent": {
+    "name": "qBittorrent",
+    "description": "Open-source BT client with no ads or bundled software.",
+    "tags": ["Download", "BT", "Open source"],
+    "intro": "qBittorrent is a free open-source BitTorrent client with an interface similar to µTorrent but no ads or bundles. It supports magnet links, torrent files, RSS subscriptions and remote web control, making it a solid choice for frequent BT users.",
+    "highlights": ["Open source, no ads", "Magnet and RSS support", "Remote web control"]
+  },
+  "steam": {
+    "name": "Steam",
+    "description": "The world's largest PC game platform with cloud saves and Workshop.",
+    "tags": ["Game platform", "Essential"],
+    "intro": "Steam is the world's largest PC gaming platform, with tens of thousands of games, cloud saves, the Steam Workshop, friends and a community market. Most PC single-player and online games are published here, making it essential for PC gamers.",
+    "highlights": ["Largest PC game library", "Cloud saves and Workshop", "Friends and community"]
+  },
+  "epic": {
+    "name": "Epic Games Launcher",
+    "description": "Epic's store client with weekly free games and Unreal Engine ties.",
+    "tags": ["Game platform"],
+    "intro": "The Epic Games Launcher is Epic's store client, offering free games every week along with exclusives and Unreal Engine tools. Cross-platform purchasing and cloud saves are supported, making it useful for collecting free games and playing Epic exclusives.",
+    "highlights": ["Weekly free games", "Epic exclusives", "Unreal Engine ecosystem"]
+  },
+  "wegame": {
+    "name": "WeGame",
+    "description": "Tencent's game platform for Chinese online games and indies.",
+    "tags": ["Game platform", "China"],
+    "intro": "WeGame is Tencent's game platform, mainly hosting Chinese versions of League of Legends, CrossFire, Dungeon & Fighter and other online games, along with some single-player titles. Launching, updating and community features for those games are integrated here.",
+    "highlights": ["Entry point for Tencent games", "Game updates and launching", "Chinese community features"]
+  },
+  "battlenet": {
+    "name": "Battle.net",
+    "description": "Blizzard's launcher for World of Warcraft, Hearthstone, Overwatch and more.",
+    "tags": ["Game platform"],
+    "intro": "Battle.net is Blizzard's official client for downloading and launching World of Warcraft, Hearthstone, Overwatch, Diablo and other titles. It supports friends chat, game updates and cross-game achievements.",
+    "highlights": ["Blizzard games in one place", "Updates and repairs", "Friends and achievements"]
+  },
+  "ubisoft": {
+    "name": "Ubisoft Connect",
+    "description": "Ubisoft's platform for Assassin's Creed, Far Cry, Rainbow Six and more.",
+    "tags": ["Game platform"],
+    "intro": "Ubisoft Connect is Ubisoft's official game platform, used to launch Assassin's Creed, Far Cry, Rainbow Six and other titles. It supports cloud saves, friends and cross-platform progress, and is usually required to play Ubisoft games.",
+    "highlights": ["Entry point for Ubisoft games", "Cloud saves and cross-platform", "Friends and rewards"]
+  },
+  "ea-app": {
+    "name": "EA app",
+    "description": "EA's current client, replacing Origin.",
+    "tags": ["Game platform"],
+    "intro": "The EA app is EA's current official client and replaces Origin. It is used to download and launch EA titles such as FC, Battlefield, The Sims and Apex Legends, and supports EA Play subscriptions and cloud saves.",
+    "highlights": ["Replaces Origin", "EA Play subscription", "All EA games in one place"]
+  },
+  "gog": {
+    "name": "GOG Galaxy",
+    "description": "GOG's client for DRM-free classic and indie games.",
+    "tags": ["Game platform"],
+    "intro": "GOG Galaxy is GOG's game client, focused on DRM-free classic and independent games. Purchases can be installed offline without mandatory online checks, making it a favorite for collectors of classic single-player titles.",
+    "highlights": ["DRM-free games", "Rich classic catalog", "Offline installation"]
+  },
+  "genshin": {
+    "name": "Genshin Impact",
+    "description": "miHoYo's open-world adventure RPG with cross-platform play.",
+    "tags": ["Game", "Anime"],
+    "intro": "Genshin Impact is miHoYo's open-world adventure RPG with cross-platform support for PC, mobile and consoles. It is known for elemental combat, world exploration and ongoing story updates, and is free to play with character gacha as its monetization.",
+    "highlights": ["Open-world exploration", "Cross-platform play", "Free to play"]
+  },
+  "starrail": {
+    "name": "Honkai: Star Rail",
+    "description": "miHoYo's turn-based RPG focused on story and team building.",
+    "tags": ["Game", "Anime"],
+    "intro": "Honkai: Star Rail is miHoYo's turn-based role-playing game, centered on story, character progression and team composition. It has high production values in art and music and supports auto-battle, suiting players who enjoy story-driven, more relaxed pacing.",
+    "highlights": ["Turn-based strategy combat", "Excellent story and art", "Auto-battle support"]
+  },
+  "zzz": {
+    "name": "Zenless Zone Zero",
+    "description": "miHoYo's urban action game with fast combo-driven combat.",
+    "tags": ["Game", "Anime"],
+    "intro": "Zenless Zone Zero is miHoYo's urban action game, emphasizing fast combos and satisfying impact with a stylish street-culture look. It supports cross-play between PC and mobile and suits players who enjoy action games and fast-paced combat.",
+    "highlights": ["Fast action combat", "Stylish urban art direction", "Cross-platform play"]
+  },
+  "minecraft": {
+    "name": "Minecraft Launcher",
+    "description": "The official launcher for Java and Bedrock editions.",
+    "tags": ["Game", "Sandbox"],
+    "intro": "Minecraft is the defining sandbox game, letting players mine, build and explore in procedurally generated worlds. The official launcher supports both Java and Bedrock editions, with a massive mod and server ecosystem for all ages.",
+    "highlights": ["Creative sandbox freedom", "Huge mod and server ecosystem", "Java and Bedrock editions"]
+  },
+  "leigod": {
+    "name": "Leigod Accelerator",
+    "description": "Game network accelerator for international servers and Steam.",
+    "tags": ["Accelerator", "Network"],
+    "intro": "Leigod is a popular Chinese game accelerator for international game servers, Steam downloads and console games. It bills by the minute, which suits players who only occasionally play on overseas servers and do not want a monthly plan.",
+    "highlights": ["Accelerates overseas servers", "Pay by the minute", "Covers major online games"]
+  },
+  "uu": {
+    "name": "NetEase UU Accelerator",
+    "description": "NetEase's game accelerator with broad node coverage.",
+    "tags": ["Accelerator", "Network"],
+    "intro": "UU Accelerator is made by NetEase and has broad node coverage for console, mobile and PC games on overseas servers. Its mobile app can share an accelerated connection with a console, making it convenient for multi-platform players.",
+    "highlights": ["Broad node coverage", "Console and mobile support", "Made by NetEase"]
+  },
+  "vscode": {
+    "name": "Visual Studio Code",
+    "description": "The most popular free code editor with a massive extension ecosystem.",
+    "tags": ["Editor", "Development", "Essential"],
+    "intro": "Visual Studio Code is the most popular free code editor, with fast startup and a huge extension ecosystem covering almost every language. It includes Git, debugging, a terminal and remote development, and works well for front-end, Python, Go and C++ projects.",
+    "highlights": ["Largest extension ecosystem", "Built-in Git and terminal", "Remote development"]
+  },
+  "git": {
+    "name": "Git",
+    "description": "Distributed version control, bundled with Git Bash on Windows.",
+    "tags": ["Development", "Version control"],
+    "intro": "Git for Windows is the Windows build of the distributed version control system and includes the Git Bash command-line environment. Nearly every code hosting platform and development tool depends on it, making it foundational for programmers.",
+    "highlights": ["Standard version control", "Includes Git Bash", "Works with GitHub and GitLab"]
+  },
+  "python": {
+    "name": "Python 3.13",
+    "description": "Official Windows installer for Python 3.13; remember to add it to PATH.",
+    "tags": ["Development", "Runtime"],
+    "intro": "This is the official Windows installer for Python 3.13, suitable for data analysis, scraping, automation, AI and backend development. During installation, remember to check 'Add Python to PATH' so the python command works in terminals.",
+    "highlights": ["Easy to learn", "Strong AI and data ecosystem", "Check Add to PATH during setup"]
+  },
+  "nodejs": {
+    "name": "Node.js LTS",
+    "description": "JavaScript runtime with npm, the foundation of modern web tooling.",
+    "tags": ["Development", "Runtime"],
+    "intro": "Node.js is a JavaScript runtime with the npm package manager included. Front-end build tools, Electron desktop apps, backend services and command-line tools all rely on it, making it a basic requirement for web development.",
+    "highlights": ["Includes npm", "Essential for front-end builds", "Cross-platform runtime"]
+  },
+  "windows-terminal": {
+    "name": "Windows Terminal",
+    "description": "Microsoft's modern terminal with tabs, panes and themes.",
+    "tags": ["Terminal", "Development"],
+    "intro": "Windows Terminal is Microsoft's modern terminal app with tabs, split panes, a command palette and customizable themes. It can manage PowerShell, CMD and WSL in one window and is far more capable than the classic console.",
+    "highlights": ["Tabs and split panes", "Runs WSL and PowerShell", "Custom themes and fonts"]
+  },
+  "powershell": {
+    "name": "PowerShell 7",
+    "description": "Cross-platform PowerShell with stronger scripting capabilities.",
+    "tags": ["Terminal", "Scripting"],
+    "intro": "PowerShell 7 is the cross-platform successor to Windows PowerShell, compatible with existing commands while adding parallel pipelines and modern syntax. It is well suited to automation scripts, server management and batch processing.",
+    "highlights": ["Cross-platform PowerShell", "Stronger scripting", "Backwards compatible"]
+  },
+  "docker": {
+    "name": "Docker Desktop",
+    "description": "Container development environment; requires WSL2 or virtualization.",
+    "tags": ["Containers", "Development"],
+    "intro": "Docker Desktop packages applications and their dependencies into images, keeping development, testing and production environments consistent. The Windows version relies on WSL2 or Hyper-V and requires virtualization to be enabled, making it suitable for backend and DevOps work.",
+    "highlights": ["Consistent environments", "Image and container management", "Requires WSL2 or virtualization"]
+  },
+  "postman": {
+    "name": "Postman",
+    "description": "API debugging and collaboration tool for teams.",
+    "tags": ["API", "Development"],
+    "intro": "Postman is an API debugging and collaboration tool for sending HTTP requests, managing environment variables, writing test scripts and generating documentation. Teams can share API collections, which makes it common for backend and frontend integration work.",
+    "highlights": ["HTTP API debugging", "Environments and test scripts", "Shared team collections"]
+  },
+  "github-desktop": {
+    "name": "GitHub Desktop",
+    "description": "GitHub's graphical Git client for users who prefer not to use the CLI.",
+    "tags": ["Git", "Development"],
+    "intro": "GitHub Desktop is GitHub's official graphical Git client, turning commits, branches, merges and pushes into a visual interface. It is a good fit for users who do not want to memorize Git commands or are new to GitHub.",
+    "highlights": ["Graphical Git workflow", "Deep GitHub integration", "Great for Git beginners"]
+  },
+  "notepadpp": {
+    "name": "Notepad++",
+    "description": "Lightweight text editor with syntax highlighting and regex replace.",
+    "tags": ["Editor", "Development"],
+    "intro": "Notepad++ is a classic lightweight text editor with fast startup, low resource use, syntax highlighting, regular-expression replace, multiple tabs and macros. It is ideal for quickly reading logs, editing config files or writing short code snippets.",
+    "highlights": ["Fast and lightweight", "Powerful regex replace", "Tabs and macros"]
+  },
+  "sublime": {
+    "name": "Sublime Text 4",
+    "description": "Speed-focused code editor with multi-cursor editing.",
+    "tags": ["Editor", "Development"],
+    "intro": "Sublime Text is a code editor known for speed, staying responsive even with very large files. It supports multi-cursor editing, a command palette and a rich plugin ecosystem, and can be evaluated for free with a license recommended for long-term use.",
+    "highlights": ["Opens large files instantly", "Multi-cursor editing", "Mature plugin ecosystem"]
+  },
+  "jetbrains-toolbox": {
+    "name": "JetBrains Toolbox",
+    "description": "JetBrains' IDE manager for installing and updating their tools.",
+    "tags": ["IDE", "Development"],
+    "intro": "JetBrains Toolbox is the official manager for JetBrains IDEs, used to install and update IntelliJ IDEA, PyCharm, WebStorm, CLion and others. It can keep multiple versions installed and manage which version each project uses.",
+    "highlights": ["Manages JetBrains IDEs", "One-click install and update", "Multiple versions side by side"]
+  },
+  "putty": {
+    "name": "PuTTY",
+    "description": "Classic tiny SSH and Telnet client, no installation required.",
+    "tags": ["SSH", "Operations"],
+    "intro": "PuTTY is a classic SSH and Telnet client distributed as a single executable with no installation required. It is commonly used to connect to Linux servers, configure key-based login and debug serial ports.",
+    "highlights": ["Tiny, portable executable", "SSH and serial connections", "A staple for sysadmins"]
+  },
+  "winscp": {
+    "name": "WinSCP",
+    "description": "Graphical SFTP, SCP and FTP client with directory sync.",
+    "tags": ["SFTP", "Operations"],
+    "intro": "WinSCP is a Windows SFTP, SCP and FTP client with an interface similar to File Explorer. It supports drag-and-drop uploads, directory synchronization and scripting, making it easy to move files to and from servers.",
+    "highlights": ["Graphical SFTP transfers", "Directory synchronization", "Scriptable automation"]
+  },
+  "wireshark": {
+    "name": "Wireshark",
+    "description": "The leading network protocol analyzer for packet capture.",
+    "tags": ["Network", "Packet capture"],
+    "intro": "Wireshark is the world's most popular network protocol analyzer, able to capture and decode network packets layer by layer. It is ideal for troubleshooting network issues, inspecting API traffic and learning TCP/IP; it requires the Npcap driver on Windows.",
+    "highlights": ["Decodes network protocols", "Powerful capture and filters", "Great for network troubleshooting"]
+  },
+  "dbeaver": {
+    "name": "DBeaver",
+    "description": "Universal database tool supporting dozens of database engines.",
+    "tags": ["Database", "Development"],
+    "intro": "DBeaver is a universal database management tool supporting MySQL, PostgreSQL, SQLite, Oracle, SQL Server and dozens more. It offers graphical table design, a SQL editor, data import/export and ER diagrams; the Community edition is free.",
+    "highlights": ["Supports dozens of databases", "Graphical table design", "Free Community edition"]
+  },
+  "acrobat": {
+    "name": "Acrobat Reader",
+    "description": "Adobe's official PDF reader with the best compatibility.",
+    "tags": ["PDF", "Office"],
+    "intro": "Acrobat Reader is Adobe's official PDF reader and has the best compatibility when rendering PDFs. It supports form filling, comments, signatures and printing; the free version can read and annotate, while editing requires a subscription.",
+    "highlights": ["Best PDF compatibility", "Forms and annotations", "Free version for reading"]
+  },
+  "obs": {
+    "name": "OBS Studio",
+    "description": "Free, open-source screen recording and live streaming software.",
+    "tags": ["Recording", "Streaming", "Open source"],
+    "intro": "OBS Studio is free open-source software for screen recording and live streaming, with scene switching, window capture, webcam overlays and real-time audio mixing. It is widely used to stream on Bilibili, Twitch and YouTube, and also for recording tutorials and gameplay.",
+    "highlights": ["Recording and streaming", "Scenes and audio mixing", "Free, open source, no ads"]
+  },
+  "blender": {
+    "name": "Blender",
+    "description": "Open-source 3D modeling, animation and rendering suite.",
+    "tags": ["3D", "Design", "Open source"],
+    "intro": "Blender is an open-source 3D creation suite covering modeling, sculpting, rigging, animation, rendering and video editing. It is feature-complete and completely free, making it a great choice for learning 3D, product rendering or independent animation.",
+    "highlights": ["Modeling, animation and rendering", "Completely free and open source", "Rich plugins and tutorials"]
+  },
+  "figma": {
+    "name": "Figma",
+    "description": "Collaborative cloud-based UI design and prototyping tool.",
+    "tags": ["Design", "UI"],
+    "intro": "Figma is a cloud-based interface design and prototyping tool where multiple people can edit the same file at once, with comments and hand-off all in the browser. The desktop app is smoother and suits UI design, product prototypes and team collaboration.",
+    "highlights": ["Real-time collaboration", "Cloud files, no manual saving", "Design and prototyping in one"]
+  }
+}

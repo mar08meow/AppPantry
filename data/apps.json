@@ -1,0 +1,1094 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-18",
+  "categories": [
+    {
+      "id": "essentials",
+      "name": "装机必备",
+      "icon": "◆"
+    },
+    {
+      "id": "social",
+      "name": "社交与网盘",
+      "icon": "●"
+    },
+    {
+      "id": "games",
+      "name": "游戏平台",
+      "icon": "▲"
+    },
+    {
+      "id": "dev",
+      "name": "开发与专业",
+      "icon": "■"
+    }
+  ],
+  "apps": [
+    {
+      "id": "chrome",
+      "name": "Google Chrome",
+      "category": "essentials",
+      "description": "全球使用最广泛的浏览器，插件生态丰富。",
+      "homepage": "https://www.google.cn/chrome/",
+      "winget": "Google.Chrome",
+      "mirror": "",
+      "tags": [
+        "浏览器",
+        "上网"
+      ],
+      "color": "#4285F4",
+      "initial": "C",
+      "icon": "icons/chrome.png"
+    },
+    {
+      "id": "firefox",
+      "name": "Mozilla Firefox",
+      "category": "essentials",
+      "description": "开源浏览器，隐私保护强，可高度定制。",
+      "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
+      "winget": "Mozilla.Firefox",
+      "mirror": "",
+      "tags": [
+        "浏览器",
+        "开源"
+      ],
+      "color": "#FF7139",
+      "initial": "F",
+      "icon": "icons/firefox.png"
+    },
+    {
+      "id": "edge",
+      "name": "Microsoft Edge",
+      "category": "essentials",
+      "description": "Windows 自带浏览器，兼容 Chromium 插件。",
+      "homepage": "https://www.microsoft.com/zh-cn/edge/download",
+      "winget": "Microsoft.Edge",
+      "mirror": "",
+      "tags": [
+        "浏览器",
+        "系统自带"
+      ],
+      "color": "#0F9D58",
+      "initial": "E",
+      "icon": "icons/edge.jpg"
+    },
+    {
+      "id": "brave",
+      "name": "Brave",
+      "category": "essentials",
+      "description": "默认拦截广告与追踪器的 Chromium 浏览器。",
+      "homepage": "https://brave.com/zh/download/",
+      "winget": "Brave.Brave",
+      "mirror": "",
+      "tags": [
+        "浏览器",
+        "隐私"
+      ],
+      "color": "#FB542B",
+      "initial": "B",
+      "icon": "icons/brave.png"
+    },
+    {
+      "id": "7zip",
+      "name": "7-Zip",
+      "category": "essentials",
+      "description": "免费开源的压缩解压工具，轻量无广告。",
+      "homepage": "https://www.7-zip.org/",
+      "winget": "7zip.7zip",
+      "mirror": "",
+      "tags": [
+        "压缩",
+        "开源",
+        "必备"
+      ],
+      "color": "#3A3A3A",
+      "initial": "7",
+      "icon": "icons/7zip.ico"
+    },
+    {
+      "id": "bandizip",
+      "name": "Bandizip",
+      "category": "essentials",
+      "description": "界面清爽的压缩软件，支持自动解压。",
+      "homepage": "https://www.bandisoft.com/bandizip/",
+      "winget": "Bandisoft.Bandizip",
+      "mirror": "",
+      "tags": [
+        "压缩"
+      ],
+      "color": "#1B7FBF",
+      "initial": "B",
+      "icon": "icons/bandizip.ico"
+    },
+    {
+      "id": "winrar",
+      "name": "WinRAR",
+      "category": "essentials",
+      "description": "老牌压缩软件，兼容 RAR 格式。",
+      "homepage": "https://www.winrar.com.cn/",
+      "winget": "RARLab.WinRAR",
+      "mirror": "",
+      "tags": [
+        "压缩",
+        "RAR"
+      ],
+      "color": "#7B4FA0",
+      "initial": "R",
+      "icon": "icons/winrar.ico"
+    },
+    {
+      "id": "nanazip",
+      "name": "NanaZip",
+      "category": "essentials",
+      "description": "基于 7-Zip 的现代化压缩工具，支持 Win11 右键菜单。",
+      "homepage": "https://github.com/M2Team/NanaZip/releases",
+      "winget": "M2Team.NanaZip",
+      "mirror": "",
+      "tags": [
+        "压缩",
+        "开源"
+      ],
+      "color": "#5B8DEF",
+      "initial": "N",
+      "icon": "icons/nanazip.webp"
+    },
+    {
+      "id": "vlc",
+      "name": "VLC media player",
+      "category": "essentials",
+      "description": "几乎什么格式都能播的开源播放器。",
+      "homepage": "https://www.videolan.org/vlc/",
+      "winget": "VideoLAN.VLC",
+      "mirror": "",
+      "tags": [
+        "播放器",
+        "开源",
+        "必备"
+      ],
+      "color": "#FF8800",
+      "initial": "V",
+      "icon": "icons/vlc.ico"
+    },
+    {
+      "id": "potplayer",
+      "name": "PotPlayer",
+      "category": "essentials",
+      "description": "功能强大的本地视频播放器，画质与字幕支持好。",
+      "homepage": "https://potplayer.daum.net/",
+      "winget": "Daum.PotPlayer",
+      "mirror": "",
+      "tags": [
+        "播放器"
+      ],
+      "color": "#EE7B1D",
+      "initial": "P"
+    },
+    {
+      "id": "netmusic",
+      "name": "网易云音乐",
+      "category": "essentials",
+      "description": "音乐播放与社区，曲库与歌单丰富。",
+      "homepage": "https://music.163.com/#/download",
+      "winget": "NetEase.CloudMusic",
+      "mirror": "",
+      "tags": [
+        "音乐"
+      ],
+      "color": "#C20C0C",
+      "initial": "W",
+      "icon": "icons/netmusic.ico"
+    },
+    {
+      "id": "qqmusic",
+      "name": "QQ音乐",
+      "category": "essentials",
+      "description": "腾讯旗下音乐客户端，版权曲库大。",
+      "homepage": "https://y.qq.com/download/",
+      "winget": "Tencent.QQMusic",
+      "mirror": "",
+      "tags": [
+        "音乐"
+      ],
+      "color": "#31C27C",
+      "initial": "Q",
+      "icon": "icons/qqmusic.ico"
+    },
+    {
+      "id": "sogou-input",
+      "name": "搜狗输入法",
+      "category": "essentials",
+      "description": "中文拼音输入法，词库与联想能力强。",
+      "homepage": "https://shurufa.sogou.com/",
+      "winget": "Sogou.SogouInput",
+      "mirror": "",
+      "tags": [
+        "输入法"
+      ],
+      "color": "#FF6A00",
+      "initial": "S",
+      "icon": "icons/sogou-input.png"
+    },
+    {
+      "id": "wps",
+      "name": "WPS Office",
+      "category": "essentials",
+      "description": "国产办公套件，兼容 Office 格式，体积小。",
+      "homepage": "https://www.wps.cn/",
+      "winget": "Kingsoft.WPSOffice",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "文档"
+      ],
+      "color": "#E31837",
+      "initial": "W",
+      "icon": "icons/wps.png"
+    },
+    {
+      "id": "office",
+      "name": "Microsoft Office",
+      "category": "essentials",
+      "description": "微软官方 Office 套件，需 Microsoft 365 订阅。",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-365",
+      "winget": "Microsoft.Office",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "文档",
+        "付费"
+      ],
+      "color": "#D83B01",
+      "initial": "O",
+      "icon": "icons/office.ico"
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "category": "essentials",
+      "description": "免费开源办公套件，可替代 Office。",
+      "homepage": "https://zh-cn.libreoffice.org/download/",
+      "winget": "TheDocumentFoundation.LibreOffice",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "开源"
+      ],
+      "color": "#18A303",
+      "initial": "L",
+      "icon": "icons/libreoffice.ico"
+    },
+    {
+      "id": "everything",
+      "name": "Everything",
+      "category": "essentials",
+      "description": "瞬间搜索本机文件的轻量工具，装机必备。",
+      "homepage": "https://www.voidtools.com/zh-cn/",
+      "winget": "voidtools.Everything",
+      "mirror": "",
+      "tags": [
+        "搜索",
+        "效率",
+        "必备"
+      ],
+      "color": "#F5A623",
+      "initial": "E",
+      "icon": "icons/everything.ico"
+    },
+    {
+      "id": "snipaste",
+      "name": "Snipaste",
+      "category": "essentials",
+      "description": "截图与贴图工具，标注方便，免费可用。",
+      "homepage": "https://www.snipaste.com/",
+      "winget": "liule.Snipaste",
+      "mirror": "",
+      "tags": [
+        "截图",
+        "效率"
+      ],
+      "color": "#3B82F6",
+      "initial": "S",
+      "icon": "icons/snipaste.ico"
+    },
+    {
+      "id": "tencent-meeting",
+      "name": "腾讯会议",
+      "category": "essentials",
+      "description": "在线会议与屏幕共享，国内网络稳定。",
+      "homepage": "https://meeting.tencent.com/download/",
+      "winget": "Tencent.TencentMeeting",
+      "mirror": "",
+      "tags": [
+        "会议",
+        "办公"
+      ],
+      "color": "#2D8CF0",
+      "initial": "T",
+      "icon": "icons/tencent-meeting.png"
+    },
+    {
+      "id": "anydesk",
+      "name": "AnyDesk",
+      "category": "essentials",
+      "description": "轻量远程桌面，帮人修电脑很常用。",
+      "homepage": "https://anydesk.com/zhs/downloads/windows",
+      "winget": "AnyDesk.AnyDesk",
+      "mirror": "",
+      "tags": [
+        "远程",
+        "协助"
+      ],
+      "color": "#EF443B",
+      "initial": "A",
+      "icon": "icons/anydesk.png"
+    },
+    {
+      "id": "fileconverter",
+      "name": "FileConverter",
+      "category": "essentials",
+      "description": "右键菜单直接转换和压缩文件，支持图片、音视频、文档、PDF。",
+      "homepage": "https://github.com/Tichau/FileConverter",
+      "winget": "AdrienAllard.FileConverter",
+      "mirror": "",
+      "tags": [
+        "转换",
+        "开源",
+        "右键"
+      ],
+      "color": "#4A90D9",
+      "initial": "F"
+    },
+    {
+      "id": "wechat",
+      "name": "微信",
+      "category": "social",
+      "description": "国民级通讯工具，电脑端支持文件传输。",
+      "homepage": "https://pc.weixin.qq.com/",
+      "winget": "Tencent.WeChat",
+      "mirror": "",
+      "tags": [
+        "聊天",
+        "必备"
+      ],
+      "color": "#07C160",
+      "initial": "W",
+      "icon": "icons/wechat.png"
+    },
+    {
+      "id": "qq",
+      "name": "QQ",
+      "category": "social",
+      "description": "腾讯 QQ 电脑版（NT 架构），支持群聊与文件。",
+      "homepage": "https://im.qq.com/pcqq",
+      "winget": "Tencent.QQ.NT",
+      "mirror": "",
+      "tags": [
+        "聊天"
+      ],
+      "color": "#12B7F5",
+      "initial": "Q",
+      "icon": "icons/qq.ico"
+    },
+    {
+      "id": "wecom",
+      "name": "企业微信",
+      "category": "social",
+      "description": "企业通讯与客户联系工具，可与微信互通。",
+      "homepage": "https://work.weixin.qq.com/#indexDownload",
+      "winget": "Tencent.WeCom",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "聊天"
+      ],
+      "color": "#2F7DFF",
+      "initial": "W",
+      "icon": "icons/wecom.png"
+    },
+    {
+      "id": "dingtalk",
+      "name": "钉钉",
+      "category": "social",
+      "description": "阿里旗下协同办公平台，考勤与审批齐全。",
+      "homepage": "https://www.dingtalk.com/download",
+      "winget": "Alibaba.DingTalk.Mainland",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "聊天"
+      ],
+      "color": "#1677FF",
+      "initial": "D",
+      "icon": "icons/dingtalk.png"
+    },
+    {
+      "id": "feishu",
+      "name": "飞书",
+      "category": "social",
+      "description": "字节跳动出品的协作平台，文档与会议一体。",
+      "homepage": "https://www.feishu.cn/download",
+      "winget": "ByteDance.Feishu",
+      "mirror": "",
+      "tags": [
+        "办公",
+        "文档"
+      ],
+      "color": "#3370FF",
+      "initial": "F",
+      "icon": "icons/feishu.png"
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "category": "social",
+      "description": "语音、频道与社区，游戏玩家常用。",
+      "homepage": "https://discord.com/download",
+      "winget": "Discord.Discord",
+      "mirror": "",
+      "tags": [
+        "语音",
+        "社区"
+      ],
+      "color": "#5865F2",
+      "initial": "D",
+      "icon": "icons/discord.png"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "category": "social",
+      "description": "跨平台即时通讯，云同步与频道功能强。",
+      "homepage": "https://telegram.org/",
+      "winget": "Telegram.TelegramDesktop",
+      "mirror": "",
+      "tags": [
+        "聊天"
+      ],
+      "color": "#26A5E4",
+      "initial": "T",
+      "icon": "icons/telegram.png"
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "category": "social",
+      "description": "国际通用的视频会议工具。",
+      "homepage": "https://zoom.us/download",
+      "winget": "Zoom.Zoom",
+      "mirror": "",
+      "tags": [
+        "会议"
+      ],
+      "color": "#2D8CFF",
+      "initial": "Z",
+      "icon": "icons/zoom.png"
+    },
+    {
+      "id": "baidupan",
+      "name": "百度网盘",
+      "category": "social",
+      "description": "国内最常用的网盘之一，分享链接兼容性好。",
+      "homepage": "https://pan.baidu.com/download",
+      "winget": "Baidu.BaiduNetdisk",
+      "mirror": "",
+      "tags": [
+        "网盘",
+        "存储"
+      ],
+      "color": "#2468F2",
+      "initial": "B",
+      "icon": "icons/baidupan.ico"
+    },
+    {
+      "id": "quark",
+      "name": "夸克网盘",
+      "category": "social",
+      "description": "阿里旗下网盘，下载速度与分享体验不错。",
+      "homepage": "https://pan.quark.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "网盘",
+        "存储"
+      ],
+      "color": "#5B6CFF",
+      "initial": "Q",
+      "icon": "icons/quark.png"
+    },
+    {
+      "id": "aliyunpan",
+      "name": "阿里云盘",
+      "category": "social",
+      "description": "阿里云个人网盘，支持相册与文件备份。",
+      "homepage": "https://www.alipan.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "网盘",
+        "存储"
+      ],
+      "color": "#4C6FFF",
+      "initial": "A",
+      "icon": "icons/aliyunpan.png"
+    },
+    {
+      "id": "thunder",
+      "name": "迅雷",
+      "category": "social",
+      "description": "老牌下载工具，支持 BT 与离线下载。",
+      "homepage": "https://www.xunlei.com/",
+      "winget": "Thunder.Thunder",
+      "mirror": "",
+      "tags": [
+        "下载",
+        "BT"
+      ],
+      "color": "#2B6DE5",
+      "initial": "X",
+      "icon": "icons/thunder.png"
+    },
+    {
+      "id": "qbittorrent",
+      "name": "qBittorrent",
+      "category": "social",
+      "description": "开源无广告的 BT 下载客户端。",
+      "homepage": "https://www.qbittorrent.org/download",
+      "winget": "qBittorrent.qBittorrent",
+      "mirror": "",
+      "tags": [
+        "下载",
+        "BT",
+        "开源"
+      ],
+      "color": "#2F67B2",
+      "initial": "Q",
+      "icon": "icons/qbittorrent.ico"
+    },
+    {
+      "id": "steam",
+      "name": "Steam",
+      "category": "games",
+      "description": "全球最大的 PC 游戏平台，游戏库与创意工坊。",
+      "homepage": "https://store.steampowered.com/about/",
+      "winget": "Valve.Steam",
+      "mirror": "",
+      "tags": [
+        "游戏平台",
+        "必备"
+      ],
+      "color": "#1B2838",
+      "initial": "S",
+      "icon": "icons/steam.ico"
+    },
+    {
+      "id": "epic",
+      "name": "Epic Games Launcher",
+      "category": "games",
+      "description": "每周免费游戏与虚幻引擎生态。",
+      "homepage": "https://store.epicgames.com/zh-CN/download",
+      "winget": "EpicGames.EpicGamesLauncher",
+      "mirror": "",
+      "tags": [
+        "游戏平台"
+      ],
+      "color": "#313131",
+      "initial": "E",
+      "icon": "icons/epic.png"
+    },
+    {
+      "id": "wegame",
+      "name": "WeGame",
+      "category": "games",
+      "description": "腾讯游戏平台，国服网游与单机分发。",
+      "homepage": "https://wegame.com.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏平台",
+        "国服"
+      ],
+      "color": "#E4393C",
+      "initial": "W",
+      "icon": "icons/wegame.ico"
+    },
+    {
+      "id": "battlenet",
+      "name": "暴雪战网",
+      "category": "games",
+      "description": "暴雪游戏客户端，魔兽、炉石、守望等。",
+      "homepage": "https://www.blizzard.com/zh-cn/download",
+      "winget": "Blizzard.BattleNet",
+      "mirror": "",
+      "tags": [
+        "游戏平台"
+      ],
+      "color": "#148EFF",
+      "initial": "B",
+      "icon": "icons/battlenet.png"
+    },
+    {
+      "id": "ubisoft",
+      "name": "Ubisoft Connect",
+      "category": "games",
+      "description": "育碧游戏平台，刺客信条等作品入口。",
+      "homepage": "https://ubisoftconnect.com/zh-CN/",
+      "winget": "Ubisoft.Connect",
+      "mirror": "",
+      "tags": [
+        "游戏平台"
+      ],
+      "color": "#0070FF",
+      "initial": "U",
+      "icon": "icons/ubisoft.ico"
+    },
+    {
+      "id": "ea-app",
+      "name": "EA app",
+      "category": "games",
+      "description": "EA 官方客户端，替代 Origin。",
+      "homepage": "https://www.ea.com/ea-app",
+      "winget": "ElectronicArts.EADesktop",
+      "mirror": "",
+      "tags": [
+        "游戏平台"
+      ],
+      "color": "#FF4747",
+      "initial": "E",
+      "icon": "icons/ea-app.png"
+    },
+    {
+      "id": "gog",
+      "name": "GOG Galaxy",
+      "category": "games",
+      "description": "GOG 游戏客户端，主打无 DRM 老游戏。",
+      "homepage": "https://www.gog.com/galaxy",
+      "winget": "GOG.Galaxy",
+      "mirror": "",
+      "tags": [
+        "游戏平台"
+      ],
+      "color": "#8B5CF6",
+      "initial": "G",
+      "icon": "icons/gog.png"
+    },
+    {
+      "id": "genshin",
+      "name": "原神",
+      "category": "games",
+      "description": "米哈游开放世界游戏，官方启动器下载。",
+      "homepage": "https://ys.mihoyo.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏",
+        "二次元"
+      ],
+      "color": "#4A90E2",
+      "initial": "G",
+      "icon": "icons/genshin.png"
+    },
+    {
+      "id": "starrail",
+      "name": "崩坏：星穹铁道",
+      "category": "games",
+      "description": "米哈游回合制 RPG，官方启动器下载。",
+      "homepage": "https://sr.mihoyo.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏",
+        "二次元"
+      ],
+      "color": "#8E7CFF",
+      "initial": "S",
+      "icon": "icons/starrail.ico"
+    },
+    {
+      "id": "zzz",
+      "name": "绝区零",
+      "category": "games",
+      "description": "米哈游都市动作游戏，官方启动器下载。",
+      "homepage": "https://zzz.mihoyo.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏",
+        "二次元"
+      ],
+      "color": "#FFD400",
+      "initial": "Z",
+      "icon": "icons/zzz.png"
+    },
+    {
+      "id": "minecraft",
+      "name": "Minecraft 启动器",
+      "category": "games",
+      "description": "我的世界官方启动器，支持 Java 与基岩版。",
+      "homepage": "https://www.minecraft.net/zh-hans/download",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "游戏",
+        "沙盒"
+      ],
+      "color": "#62B47A",
+      "initial": "M",
+      "icon": "icons/minecraft.png"
+    },
+    {
+      "id": "leigod",
+      "name": "雷神加速器",
+      "category": "games",
+      "description": "游戏网络加速器，支持主流网游与平台。",
+      "homepage": "https://www.leigod.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "加速器",
+        "网络"
+      ],
+      "color": "#FF5A00",
+      "initial": "L",
+      "icon": "icons/leigod.ico"
+    },
+    {
+      "id": "uu",
+      "name": "网易 UU 加速器",
+      "category": "games",
+      "description": "网易出品的游戏加速器，节点覆盖广。",
+      "homepage": "https://uu.163.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "加速器",
+        "网络"
+      ],
+      "color": "#FFCC00",
+      "initial": "U",
+      "icon": "icons/uu.ico"
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "category": "dev",
+      "description": "最流行的免费代码编辑器，插件生态庞大。",
+      "homepage": "https://code.visualstudio.com/",
+      "winget": "Microsoft.VisualStudioCode",
+      "mirror": "",
+      "tags": [
+        "编辑器",
+        "开发",
+        "必备"
+      ],
+      "color": "#007ACC",
+      "initial": "V",
+      "icon": "icons/vscode.png"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "dev",
+      "description": "版本控制工具，Windows 上附带 Git Bash。",
+      "homepage": "https://git-scm.com/download/win",
+      "winget": "Git.Git",
+      "mirror": "",
+      "tags": [
+        "开发",
+        "版本控制"
+      ],
+      "color": "#F05032",
+      "initial": "G",
+      "icon": "icons/git.ico"
+    },
+    {
+      "id": "python",
+      "name": "Python 3.13",
+      "category": "dev",
+      "description": "通用编程语言运行时，注意安装时勾选 PATH。",
+      "homepage": "https://www.python.org/downloads/windows/",
+      "winget": "Python.Python.3.13",
+      "mirror": "",
+      "tags": [
+        "开发",
+        "运行时"
+      ],
+      "color": "#3776AB",
+      "initial": "P",
+      "icon": "icons/python.png"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js LTS",
+      "category": "dev",
+      "description": "JavaScript 运行时，含 npm 包管理器。",
+      "homepage": "https://nodejs.org/zh-cn/download",
+      "winget": "OpenJS.NodeJS.LTS",
+      "mirror": "",
+      "tags": [
+        "开发",
+        "运行时"
+      ],
+      "color": "#5FA04E",
+      "initial": "N",
+      "icon": "icons/nodejs.png"
+    },
+    {
+      "id": "windows-terminal",
+      "name": "Windows Terminal",
+      "category": "dev",
+      "description": "微软现代终端，多标签与自定义主题。",
+      "homepage": "https://apps.microsoft.com/detail/9n0dx20hk701",
+      "winget": "Microsoft.WindowsTerminal",
+      "mirror": "",
+      "tags": [
+        "终端",
+        "开发"
+      ],
+      "color": "#4D4D4D",
+      "initial": "T",
+      "icon": "icons/windows-terminal.ico"
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell 7",
+      "category": "dev",
+      "description": "跨平台新版 PowerShell，脚本能力更强。",
+      "homepage": "https://github.com/PowerShell/PowerShell/releases",
+      "winget": "Microsoft.PowerShell",
+      "mirror": "",
+      "tags": [
+        "终端",
+        "脚本"
+      ],
+      "color": "#012456",
+      "initial": "P",
+      "icon": "icons/powershell.png"
+    },
+    {
+      "id": "docker",
+      "name": "Docker Desktop",
+      "category": "dev",
+      "description": "容器开发环境，需开启 WSL2 或虚拟化。",
+      "homepage": "https://www.docker.com/products/docker-desktop/",
+      "winget": "Docker.DockerDesktop",
+      "mirror": "",
+      "tags": [
+        "容器",
+        "开发"
+      ],
+      "color": "#2496ED",
+      "initial": "D",
+      "icon": "icons/docker.png"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "category": "dev",
+      "description": "接口调试与 API 协作工具。",
+      "homepage": "https://www.postman.com/downloads/",
+      "winget": "Postman.Postman",
+      "mirror": "",
+      "tags": [
+        "API",
+        "开发"
+      ],
+      "color": "#FF6C37",
+      "initial": "P",
+      "icon": "icons/postman.png"
+    },
+    {
+      "id": "github-desktop",
+      "name": "GitHub Desktop",
+      "category": "dev",
+      "description": "图形化 Git 客户端，适合不想敲命令的人。",
+      "homepage": "https://desktop.github.com/download/",
+      "winget": "GitHub.GitHubDesktop",
+      "mirror": "",
+      "tags": [
+        "Git",
+        "开发"
+      ],
+      "color": "#24292F",
+      "initial": "G",
+      "icon": "icons/github-desktop.svg"
+    },
+    {
+      "id": "notepadpp",
+      "name": "Notepad++",
+      "category": "dev",
+      "description": "轻量文本编辑器，语法高亮与正则替换好用。",
+      "homepage": "https://notepad-plus-plus.org/downloads/",
+      "winget": "Notepad++.Notepad++",
+      "mirror": "",
+      "tags": [
+        "编辑器",
+        "开发"
+      ],
+      "color": "#90E59A",
+      "initial": "N",
+      "icon": "icons/notepadpp.png"
+    },
+    {
+      "id": "sublime",
+      "name": "Sublime Text 4",
+      "category": "dev",
+      "description": "启动极快的代码编辑器，可免费评估使用。",
+      "homepage": "https://www.sublimetext.com/download",
+      "winget": "SublimeHQ.SublimeText.4",
+      "mirror": "",
+      "tags": [
+        "编辑器",
+        "开发"
+      ],
+      "color": "#FF9800",
+      "initial": "S",
+      "icon": "icons/sublime.png"
+    },
+    {
+      "id": "jetbrains-toolbox",
+      "name": "JetBrains Toolbox",
+      "category": "dev",
+      "description": "JetBrains 全家桶管理器，统一安装 IDE。",
+      "homepage": "https://www.jetbrains.com/toolbox-app/",
+      "winget": "JetBrains.Toolbox",
+      "mirror": "",
+      "tags": [
+        "IDE",
+        "开发"
+      ],
+      "color": "#FE315D",
+      "initial": "J",
+      "icon": "icons/jetbrains-toolbox.png"
+    },
+    {
+      "id": "putty",
+      "name": "PuTTY",
+      "category": "dev",
+      "description": "经典 SSH / Telnet 客户端，体积小巧。",
+      "homepage": "https://www.putty.org/",
+      "winget": "PuTTY.PuTTY",
+      "mirror": "",
+      "tags": [
+        "SSH",
+        "运维"
+      ],
+      "color": "#FFD400",
+      "initial": "P",
+      "icon": "icons/putty.svg"
+    },
+    {
+      "id": "winscp",
+      "name": "WinSCP",
+      "category": "dev",
+      "description": "Windows 上的 SFTP / SCP 文件传输工具。",
+      "homepage": "https://winscp.net/eng/download.php",
+      "winget": "WinSCP.WinSCP",
+      "mirror": "",
+      "tags": [
+        "SFTP",
+        "运维"
+      ],
+      "color": "#2C6E49",
+      "initial": "W",
+      "icon": "icons/winscp.ico"
+    },
+    {
+      "id": "wireshark",
+      "name": "Wireshark",
+      "category": "dev",
+      "description": "网络抓包与分析工具，排查网络问题利器。",
+      "homepage": "https://www.wireshark.org/download.html",
+      "winget": "WiresharkFoundation.Wireshark",
+      "mirror": "",
+      "tags": [
+        "网络",
+        "抓包"
+      ],
+      "color": "#1679A7",
+      "initial": "W",
+      "icon": "icons/wireshark.ico"
+    },
+    {
+      "id": "dbeaver",
+      "name": "DBeaver",
+      "category": "dev",
+      "description": "通用数据库管理工具，支持 MySQL、PostgreSQL 等。",
+      "homepage": "https://dbeaver.io/download/",
+      "winget": "DBeaver.DBeaver.Community",
+      "mirror": "",
+      "tags": [
+        "数据库",
+        "开发"
+      ],
+      "color": "#372F2C",
+      "initial": "D",
+      "icon": "icons/dbeaver.png"
+    },
+    {
+      "id": "acrobat",
+      "name": "Acrobat Reader",
+      "category": "dev",
+      "description": "Adobe 官方 PDF 阅读器，表单与批注支持好。",
+      "homepage": "https://get.adobe.com/cn/reader/",
+      "winget": "Adobe.Acrobat.Reader.64-bit",
+      "mirror": "",
+      "tags": [
+        "PDF",
+        "办公"
+      ],
+      "color": "#FA0F00",
+      "initial": "A",
+      "icon": "icons/acrobat.ico"
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "category": "dev",
+      "description": "免费开源的录屏与直播推流软件。",
+      "homepage": "https://obsproject.com/zh-cn/download",
+      "winget": "OBSProject.OBSStudio",
+      "mirror": "",
+      "tags": [
+        "录屏",
+        "直播",
+        "开源"
+      ],
+      "color": "#302E31",
+      "initial": "O",
+      "icon": "icons/obs.png"
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "category": "dev",
+      "description": "开源 3D 建模、动画与渲染软件。",
+      "homepage": "https://www.blender.org/download/",
+      "winget": "BlenderFoundation.Blender",
+      "mirror": "",
+      "tags": [
+        "3D",
+        "设计",
+        "开源"
+      ],
+      "color": "#EA7600",
+      "initial": "B",
+      "icon": "icons/blender.png"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "category": "dev",
+      "description": "协作式界面设计与原型工具。",
+      "homepage": "https://www.figma.com/downloads/",
+      "winget": "Figma.Figma",
+      "mirror": "",
+      "tags": [
+        "设计",
+        "UI"
+      ],
+      "color": "#F24E1E",
+      "initial": "F",
+      "icon": "icons/figma.png"
+    }
+  ]
+}
