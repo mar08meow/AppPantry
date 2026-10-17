@@ -2158,6 +2158,114 @@
       "initial": "B",
       "opensource": true,
       "icon": "icons/bcuninstaller.png"
+    },
+    {
+      "id": "lol",
+      "name": "英雄联盟",
+      "category": "games",
+      "description": "5v5 MOBA 竞技游戏，国服由腾讯运营。",
+      "homepage": "https://lol.qq.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "MOBA",
+        "竞技",
+        "腾讯"
+      ],
+      "color": "#C8A96A",
+      "initial": "L",
+      "opensource": false,
+      "icon": "icons/lol.ico"
+    },
+    {
+      "id": "valorant",
+      "name": "无畏契约",
+      "category": "games",
+      "description": "5v5 战术射击游戏，拳头游戏出品。",
+      "homepage": "https://val.qq.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "射击",
+        "竞技",
+        "腾讯"
+      ],
+      "color": "#FF4655",
+      "initial": "V",
+      "opensource": false,
+      "icon": "icons/valorant.ico"
+    },
+    {
+      "id": "naraka",
+      "name": "永劫无间",
+      "category": "games",
+      "description": "多人动作竞技游戏，武侠风格。",
+      "homepage": "https://www.yjwujian.cn/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "动作",
+        "竞技",
+        "武侠"
+      ],
+      "color": "#B8860B",
+      "initial": "N",
+      "opensource": false,
+      "icon": "icons/naraka.ico"
+    },
+    {
+      "id": "delta-force",
+      "name": "三角洲行动",
+      "category": "games",
+      "description": "第一人称射击游戏，含大战场和摸金模式。",
+      "homepage": "https://df.qq.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "射击",
+        "竞技",
+        "腾讯"
+      ],
+      "color": "#4A5D23",
+      "initial": "D",
+      "opensource": false,
+      "icon": "icons/delta-force.ico"
+    },
+    {
+      "id": "jx3",
+      "name": "剑网3",
+      "category": "games",
+      "description": "武侠 MMORPG，西山居出品。",
+      "homepage": "https://jx3.xoyo.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "MMORPG",
+        "武侠",
+        "西山居"
+      ],
+      "color": "#8B0000",
+      "initial": "J",
+      "opensource": false,
+      "icon": "icons/jx3.png"
+    },
+    {
+      "id": "nishuihan",
+      "name": "逆水寒",
+      "category": "games",
+      "description": "网易武侠 MMORPG，画面精致。",
+      "homepage": "https://n.163.com/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "MMORPG",
+        "武侠",
+        "网易"
+      ],
+      "color": "#1E3A5F",
+      "initial": "N",
+      "opensource": false,
+      "icon": "icons/nishuihan.ico"
     }
   ]
 }

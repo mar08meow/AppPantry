@@ -1757,5 +1757,95 @@
       "Leftover detection",
       "Open source (Apache-2.0)"
     ]
+  },
+  "lol": {
+    "name": "League of Legends",
+    "description": "5v5 MOBA with ranked and ARAM modes, operated by Tencent in China.",
+    "tags": [
+      "MOBA",
+      "Competitive",
+      "Tencent"
+    ],
+    "intro": "League of Legends is a 5v5 MOBA where players pick champions and fight as a team, with ranked and ARAM modes. The Chinese server is operated by Tencent and the client is available from the official site.",
+    "highlights": [
+      "5v5 team battles",
+      "Ranked and ARAM",
+      "Tencent-operated CN server"
+    ]
+  },
+  "valorant": {
+    "name": "VALORANT",
+    "description": "5v5 tactical shooter from Riot Games.",
+    "tags": [
+      "Shooter",
+      "Competitive",
+      "Tencent"
+    ],
+    "intro": "VALORANT is a 5v5 tactical shooter combining agent abilities with gunplay. The Chinese server is published by Tencent and the client is available from the official site.",
+    "highlights": [
+      "5v5 tactical shooter",
+      "Agent abilities",
+      "Tencent-published CN server"
+    ]
+  },
+  "naraka": {
+    "name": "Naraka: Bladepoint",
+    "description": "Multiplayer action battle royale with a wuxia setting.",
+    "tags": [
+      "Action",
+      "Competitive",
+      "Wuxia"
+    ],
+    "intro": "Naraka: Bladepoint is a multiplayer action game with a wuxia setting, supporting solo, trio and brawl modes. The client is available from the official site.",
+    "highlights": [
+      "Wuxia action combat",
+      "Solo and trio modes",
+      "Official download"
+    ]
+  },
+  "delta-force": {
+    "name": "Delta Force",
+    "description": "First-person shooter with large-scale warfare and extraction modes.",
+    "tags": [
+      "Shooter",
+      "Competitive",
+      "Tencent"
+    ],
+    "intro": "Delta Force is a first-person shooter featuring large-scale warfare and hazard operations (extraction) modes. The Chinese server is operated by Tencent and the client is available from the official site.",
+    "highlights": [
+      "Large-scale warfare",
+      "Extraction mode",
+      "Tencent-operated CN server"
+    ]
+  },
+  "jx3": {
+    "name": "JX3",
+    "description": "Wuxia MMORPG from Seasun Games.",
+    "tags": [
+      "MMORPG",
+      "Wuxia",
+      "Seasun"
+    ],
+    "intro": "JX3 is a wuxia MMORPG with schools, qinggong movement and large raids. The Chinese server is operated by Seasun and the client is available from the official site.",
+    "highlights": [
+      "Wuxia MMORPG",
+      "Schools and qinggong",
+      "Large raids"
+    ]
+  },
+  "nishuihan": {
+    "name": "Justice Online",
+    "description": "NetEase wuxia MMORPG with detailed visuals.",
+    "tags": [
+      "MMORPG",
+      "Wuxia",
+      "NetEase"
+    ],
+    "intro": "Justice Online is a wuxia MMORPG from NetEase known for its visuals and storytelling. The client is available from the official site.",
+    "highlights": [
+      "Detailed visuals",
+      "Wuxia storyline",
+      "Made by NetEase"
+    ]
   }
 }

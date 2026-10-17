@@ -411,24 +411,27 @@ function currentApps() {
     return state.recent.map((id) => state.appsById.get(id)).filter(Boolean);
   }
 
-  return state.catalog.apps.filter((app) => {
-    if (state.category === 'opensource') {
-      if (!app.opensource) return false;
-      if (state.opensourceSub !== 'all' && app.category !== state.opensourceSub) return false;
-    } else if (state.category !== 'all' && app.category !== state.category) {
-      return false;
-    }
-    if (state.installableOnly && !app.winget) return false;
-    const text = appText(app);
-    if (state.activeTags.size && !(text.tags || []).some((tag) => state.activeTags.has(tag))) {
-      return false;
-    }
-    if (!q) return true;
-    const haystack = [text.name, text.description, text.intro, app.publisher, ...(text.tags || [])]
-      .join(' ')
-      .toLowerCase();
-    return haystack.includes(q);
-  });
+  return state.catalog.apps
+    .filter((app) => {
+      if (state.category === 'opensource') {
+        if (!app.opensource) return false;
+        if (state.opensourceSub !== 'all' && app.category !== state.opensourceSub) return false;
+      } else if (state.category !== 'all' && app.category !== state.category) {
+        return false;
+      }
+      if (state.installableOnly && !app.winget) return false;
+      const text = appText(app);
+      if (state.activeTags.size && !(text.tags || []).some((tag) => state.activeTags.has(tag))) {
+        return false;
+      }
+      if (!q) return true;
+      const haystack = [text.name, text.description, text.intro, app.publisher, ...(text.tags || [])]
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(q);
+    })
+    // winget 可一键安装的应用排在前面，只能跳官网的排在后面（稳定排序，同组内保持原顺序）
+    .sort((a, b) => (a.winget ? 0 : 1) - (b.winget ? 0 : 1));
 }
 
 function iconHtml(app, extraClass = '') {

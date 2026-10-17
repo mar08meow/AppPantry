@@ -1,0 +1,170 @@
+[
+  {
+    "id": "lol",
+    "name": "英雄联盟",
+    "category": "games",
+    "description": "5v5 MOBA 竞技游戏，国服由腾讯运营。",
+    "homepage": "https://lol.qq.com/",
+    "winget": "",
+    "tags": ["MOBA", "竞技", "腾讯"],
+    "color": "#C8A96A",
+    "initial": "L",
+    "publisher": "腾讯 / Riot Games",
+    "intro": "英雄联盟是一款 5v5 MOBA 竞技游戏，选择英雄组队对抗，拥有排位赛、大乱斗等模式。国服由腾讯运营，官网可下载客户端。",
+    "highlights": ["5v5 团队竞技", "排位赛与大乱斗", "国服腾讯运营"],
+    "en": {
+      "name": "League of Legends",
+      "description": "5v5 MOBA with ranked and ARAM modes, operated by Tencent in China.",
+      "tags": ["MOBA", "Competitive", "Tencent"],
+      "intro": "League of Legends is a 5v5 MOBA where players pick champions and fight as a team, with ranked and ARAM modes. The Chinese server is operated by Tencent and the client is available from the official site.",
+      "highlights": ["5v5 team battles", "Ranked and ARAM", "Tencent-operated CN server"]
+    }
+  },
+  {
+    "id": "valorant",
+    "name": "无畏契约",
+    "category": "games",
+    "description": "5v5 战术射击游戏，拳头游戏出品。",
+    "homepage": "https://val.qq.com/",
+    "winget": "",
+    "tags": ["射击", "竞技", "腾讯"],
+    "color": "#FF4655",
+    "initial": "V",
+    "publisher": "腾讯 / Riot Games",
+    "intro": "无畏契约（VALORANT）是一款 5v5 战术射击游戏，结合英雄技能与枪法对抗。国服由腾讯代理，官网可下载客户端。",
+    "highlights": ["5v5 战术射击", "英雄技能与枪法", "国服腾讯代理"],
+    "en": {
+      "name": "VALORANT",
+      "description": "5v5 tactical shooter from Riot Games.",
+      "tags": ["Shooter", "Competitive", "Tencent"],
+      "intro": "VALORANT is a 5v5 tactical shooter combining agent abilities with gunplay. The Chinese server is published by Tencent and the client is available from the official site.",
+      "highlights": ["5v5 tactical shooter", "Agent abilities", "Tencent-published CN server"]
+    }
+  },
+  {
+    "id": "naraka",
+    "name": "永劫无间",
+    "category": "games",
+    "description": "多人动作竞技游戏，武侠风格。",
+    "homepage": "https://www.yjwujian.cn/",
+    "winget": "",
+    "tags": ["动作", "竞技", "武侠"],
+    "color": "#B8860B",
+    "initial": "N",
+    "publisher": "网易",
+    "intro": "永劫无间是一款多人动作竞技游戏，以武侠为背景，支持单排、三排和大乱斗，官网可下载客户端。",
+    "highlights": ["武侠动作竞技", "单排与三排", "官网下载"],
+    "en": {
+      "name": "Naraka: Bladepoint",
+      "description": "Multiplayer action battle royale with a wuxia setting.",
+      "tags": ["Action", "Competitive", "Wuxia"],
+      "intro": "Naraka: Bladepoint is a multiplayer action game with a wuxia setting, supporting solo, trio and brawl modes. The client is available from the official site.",
+      "highlights": ["Wuxia action combat", "Solo and trio modes", "Official download"]
+    }
+  },
+  {
+    "id": "delta-force",
+    "name": "三角洲行动",
+    "category": "games",
+    "description": "第一人称射击游戏，含大战场和摸金模式。",
+    "homepage": "https://df.qq.com/",
+    "winget": "",
+    "tags": ["射击", "竞技", "腾讯"],
+    "color": "#4A5D23",
+    "initial": "D",
+    "publisher": "腾讯",
+    "intro": "三角洲行动是一款第一人称射击游戏，提供大战场、危险行动等模式，国服由腾讯运营，官网可下载。",
+    "highlights": ["大战场模式", "危险行动（摸金）", "国服腾讯运营"],
+    "en": {
+      "name": "Delta Force",
+      "description": "First-person shooter with large-scale warfare and extraction modes.",
+      "tags": ["Shooter", "Competitive", "Tencent"],
+      "intro": "Delta Force is a first-person shooter featuring large-scale warfare and hazard operations (extraction) modes. The Chinese server is operated by Tencent and the client is available from the official site.",
+      "highlights": ["Large-scale warfare", "Extraction mode", "Tencent-operated CN server"]
+    }
+  },
+  {
+    "id": "jx3",
+    "name": "剑网3",
+    "category": "games",
+    "description": "武侠 MMORPG，西山居出品。",
+    "homepage": "https://jx3.xoyo.com/",
+    "winget": "",
+    "tags": ["MMORPG", "武侠", "西山居"],
+    "color": "#8B0000",
+    "initial": "J",
+    "publisher": "西山居",
+    "intro": "剑网3是一款武侠 MMORPG，拥有门派、轻功和大型副本，国服由西山居运营，官网可下载客户端。",
+    "highlights": ["武侠 MMORPG", "门派与轻功", "大型副本"],
+    "en": {
+      "name": "JX3",
+      "description": "Wuxia MMORPG from Seasun Games.",
+      "tags": ["MMORPG", "Wuxia", "Seasun"],
+      "intro": "JX3 is a wuxia MMORPG with schools, qinggong movement and large raids. The Chinese server is operated by Seasun and the client is available from the official site.",
+      "highlights": ["Wuxia MMORPG", "Schools and qinggong", "Large raids"]
+    }
+  },
+  {
+    "id": "nishuihan",
+    "name": "逆水寒",
+    "category": "games",
+    "description": "网易武侠 MMORPG，画面精致。",
+    "homepage": "https://n.163.com/",
+    "winget": "",
+    "tags": ["MMORPG", "武侠", "网易"],
+    "color": "#1E3A5F",
+    "initial": "N",
+    "publisher": "网易",
+    "intro": "逆水寒是网易出品的武侠 MMORPG，以画面和剧情著称，官网可下载客户端。",
+    "highlights": ["精致画面", "武侠剧情", "网易出品"],
+    "en": {
+      "name": "Justice Online",
+      "description": "NetEase wuxia MMORPG with detailed visuals.",
+      "tags": ["MMORPG", "Wuxia", "NetEase"],
+      "intro": "Justice Online is a wuxia MMORPG from NetEase known for its visuals and storytelling. The client is available from the official site.",
+      "highlights": ["Detailed visuals", "Wuxia storyline", "Made by NetEase"]
+    }
+  },
+  {
+    "id": "black-myth-wukong",
+    "name": "黑神话：悟空",
+    "category": "games",
+    "description": "国产动作角色扮演游戏，西游记题材。",
+    "homepage": "https://www.heishenhua.com/",
+    "winget": "",
+    "tags": ["动作", "单机", "国产"],
+    "color": "#8B4513",
+    "initial": "黑",
+    "publisher": "游戏科学",
+    "intro": "黑神话：悟空是一款国产动作角色扮演游戏，以西游记为背景，通过 Steam、WeGame 等平台购买和下载。",
+    "highlights": ["国产 3A 动作", "西游记题材", "Steam / WeGame 购买"],
+    "en": {
+      "name": "Black Myth: Wukong",
+      "description": "Chinese action RPG based on Journey to the West.",
+      "tags": ["Action", "Single-player", "Chinese"],
+      "intro": "Black Myth: Wukong is a Chinese action RPG inspired by Journey to the West. It is purchased and downloaded through Steam, WeGame and other platforms.",
+      "highlights": ["Chinese AAA action", "Journey to the West", "Steam / WeGame"]
+    }
+  },
+  {
+    "id": "palworld",
+    "name": "幻兽帕鲁",
+    "category": "games",
+    "description": "开放世界生存建造游戏，收集帕鲁。",
+    "homepage": "https://www.palworld.jp/",
+    "winget": "",
+    "tags": ["生存", "建造", "Steam"],
+    "color": "#2E8B57",
+    "initial": "P",
+    "publisher": "Pocketpair",
+    "intro": "幻兽帕鲁是一款开放世界生存建造游戏，可以捕捉帕鲁、建造基地和战斗，通过 Steam 购买下载。",
+    "highlights": ["开放世界", "捕捉帕鲁", "基地建造"],
+    "en": {
+      "name": "Palworld",
+      "description": "Open-world survival crafting game about collecting Pals.",
+      "tags": ["Survival", "Building", "Steam"],
+      "intro": "Palworld is an open-world survival crafting game where you catch Pals, build bases and fight. It is purchased and downloaded through Steam.",
+      "highlights": ["Open world", "Catch Pals", "Base building"]
+    }
+  }
+]
