@@ -8,6 +8,16 @@
       "icon": "◆"
     },
     {
+      "id": "media",
+      "name": "影音娱乐",
+      "icon": "▶"
+    },
+    {
+      "id": "utilities",
+      "name": "系统工具",
+      "icon": "⚙"
+    },
+    {
       "id": "social",
       "name": "社交与网盘",
       "icon": "●"
@@ -181,7 +191,8 @@
         "播放器"
       ],
       "color": "#EE7B1D",
-      "initial": "P"
+      "initial": "P",
+      "icon": "icons/potplayer.svg"
     },
     {
       "id": "netmusic",
@@ -685,7 +696,7 @@
       ],
       "color": "#4A90E2",
       "initial": "G",
-      "icon": "icons/genshin.png"
+      "icon": "icons/genshin.ico"
     },
     {
       "id": "starrail",
@@ -861,8 +872,7 @@
         "脚本"
       ],
       "color": "#012456",
-      "initial": "P",
-      "icon": "icons/powershell.png"
+      "initial": "P"
     },
     {
       "id": "docker",
@@ -1089,6 +1099,543 @@
       "color": "#F24E1E",
       "initial": "F",
       "icon": "icons/figma.png"
+    },
+    {
+      "id": "kazumi",
+      "name": "Kazumi",
+      "category": "media",
+      "description": "基于自定义规则的动漫聚合播放器，支持流媒体在线观看。",
+      "homepage": "https://github.com/Predidit/Kazumi",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "动漫",
+        "播放器",
+        "开源"
+      ],
+      "color": "#6C5CE7",
+      "initial": "K"
+    },
+    {
+      "id": "animeko",
+      "name": "Animeko",
+      "category": "media",
+      "description": "集找番、追番、看番于一体的一站式弹幕追番平台。",
+      "homepage": "https://github.com/open-ani/animeko",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "动漫",
+        "追番",
+        "弹幕",
+        "开源"
+      ],
+      "color": "#FF6B9D",
+      "initial": "A"
+    },
+    {
+      "id": "oneanime",
+      "name": "oneAnime",
+      "category": "media",
+      "description": "简洁清爽、无广告的看番软件。",
+      "homepage": "https://github.com/Predidit/oneAnime",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "动漫",
+        "播放器",
+        "开源"
+      ],
+      "color": "#00B894",
+      "initial": "O"
+    },
+    {
+      "id": "mpv",
+      "name": "MPV",
+      "category": "media",
+      "description": "极简高效的开源视频播放器，画质与性能兼备。",
+      "homepage": "https://mpv.io/",
+      "winget": "mpv.net",
+      "mirror": "",
+      "tags": [
+        "播放器",
+        "开源"
+      ],
+      "color": "#5B6B7A",
+      "initial": "M",
+      "icon": "icons/mpv.png"
+    },
+    {
+      "id": "lx-music",
+      "name": "洛雪音乐",
+      "category": "media",
+      "description": "开源的音乐聚合播放器，支持多平台音源。",
+      "homepage": "https://github.com/lyswhut/lx-music-desktop",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "开源",
+        "聚合"
+      ],
+      "color": "#4A90D9",
+      "initial": "L"
+    },
+    {
+      "id": "yesplaymusic",
+      "name": "YesPlayMusic",
+      "category": "media",
+      "description": "高颜值的第三方网易云音乐播放器。",
+      "homepage": "https://github.com/qier222/YesPlayMusic",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "开源",
+        "网易云"
+      ],
+      "color": "#F5A623",
+      "initial": "Y"
+    },
+    {
+      "id": "handbrake",
+      "name": "HandBrake",
+      "category": "media",
+      "description": "开源视频转码工具，用于压缩和格式转换。",
+      "homepage": "https://handbrake.fr/",
+      "winget": "HandBrake.HandBrake",
+      "mirror": "",
+      "tags": [
+        "视频",
+        "转码",
+        "开源"
+      ],
+      "color": "#F5A623",
+      "initial": "H",
+      "icon": "icons/handbrake.ico"
+    },
+    {
+      "id": "audacity",
+      "name": "Audacity",
+      "category": "media",
+      "description": "免费开源的音频录制与编辑软件。",
+      "homepage": "https://www.audacityteam.org/",
+      "winget": "Audacity.Audacity",
+      "mirror": "",
+      "tags": [
+        "音频",
+        "编辑",
+        "开源"
+      ],
+      "color": "#1A73E8",
+      "initial": "A",
+      "icon": "icons/audacity.png"
+    },
+    {
+      "id": "foobar2000",
+      "name": "foobar2000",
+      "category": "media",
+      "description": "轻量高音质的本地音乐播放器。",
+      "homepage": "https://www.foobar2000.org/",
+      "winget": "PeterPawlowski.foobar2000",
+      "mirror": "",
+      "tags": [
+        "音乐",
+        "播放器"
+      ],
+      "color": "#2C2C2C",
+      "initial": "F",
+      "icon": "icons/foobar2000.ico"
+    },
+    {
+      "id": "powertoys",
+      "name": "Microsoft PowerToys",
+      "category": "utilities",
+      "description": "微软官方效率工具集，包含窗口管理、取色、批量重命名等。",
+      "homepage": "https://github.com/microsoft/PowerToys",
+      "winget": "Microsoft.PowerToys",
+      "mirror": "",
+      "tags": [
+        "效率",
+        "系统",
+        "微软",
+        "开源"
+      ],
+      "color": "#0078D4",
+      "initial": "P"
+    },
+    {
+      "id": "rufus",
+      "name": "Rufus",
+      "category": "utilities",
+      "description": "制作启动 U 盘的轻量工具。",
+      "homepage": "https://rufus.ie/",
+      "winget": "Rufus.Rufus",
+      "mirror": "",
+      "tags": [
+        "U盘",
+        "启动盘",
+        "工具"
+      ],
+      "color": "#E5533D",
+      "initial": "R",
+      "icon": "icons/rufus.ico"
+    },
+    {
+      "id": "ventoy",
+      "name": "Ventoy",
+      "category": "utilities",
+      "description": "多合一启动 U 盘工具，镜像拷贝进去即可启动。",
+      "homepage": "https://www.ventoy.net/",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "U盘",
+        "启动盘",
+        "开源"
+      ],
+      "color": "#00A8A8",
+      "initial": "V",
+      "icon": "icons/ventoy.ico"
+    },
+    {
+      "id": "crystaldiskinfo",
+      "name": "CrystalDiskInfo",
+      "category": "utilities",
+      "description": "查看硬盘健康状态和温度。",
+      "homepage": "https://crystalmark.info/en/software/crystaldiskinfo/",
+      "winget": "CrystalDewWorld.CrystalDiskInfo",
+      "mirror": "",
+      "tags": [
+        "硬盘",
+        "检测",
+        "监控"
+      ],
+      "color": "#3B82F6",
+      "initial": "C",
+      "icon": "icons/crystaldiskinfo.ico"
+    },
+    {
+      "id": "hwinfo",
+      "name": "HWiNFO",
+      "category": "utilities",
+      "description": "硬件信息与温度监控工具。",
+      "homepage": "https://www.hwinfo.com/",
+      "winget": "REALiX.HWiNFO",
+      "mirror": "",
+      "tags": [
+        "硬件",
+        "监控",
+        "检测"
+      ],
+      "color": "#22C55E",
+      "initial": "H",
+      "icon": "icons/hwinfo.png"
+    },
+    {
+      "id": "geek-uninstaller",
+      "name": "Geek Uninstaller",
+      "category": "utilities",
+      "description": "轻量卸载工具，可清理卸载残留。",
+      "homepage": "https://geekuninstaller.com/",
+      "winget": "GeekUninstaller.GeekUninstaller",
+      "mirror": "",
+      "tags": [
+        "卸载",
+        "清理",
+        "工具"
+      ],
+      "color": "#4CAF50",
+      "initial": "G",
+      "icon": "icons/geek-uninstaller.ico"
+    },
+    {
+      "id": "quicklook",
+      "name": "QuickLook",
+      "category": "utilities",
+      "description": "按空格键快速预览文件，类似 macOS 的 Quick Look。",
+      "homepage": "https://github.com/QL-Win/QuickLook",
+      "winget": "QL-Win.QuickLook",
+      "mirror": "",
+      "tags": [
+        "预览",
+        "效率",
+        "开源"
+      ],
+      "color": "#3B82F6",
+      "initial": "Q"
+    },
+    {
+      "id": "ditto",
+      "name": "Ditto",
+      "category": "utilities",
+      "description": "剪贴板历史管理工具，支持搜索和固定。",
+      "homepage": "https://ditto-cp.sourceforge.io/",
+      "winget": "Ditto.Ditto",
+      "mirror": "",
+      "tags": [
+        "剪贴板",
+        "效率",
+        "开源"
+      ],
+      "color": "#F59E0B",
+      "initial": "D",
+      "icon": "icons/ditto.svg"
+    },
+    {
+      "id": "trafficmonitor",
+      "name": "TrafficMonitor",
+      "category": "utilities",
+      "description": "任务栏网速与 CPU 内存监控小工具。",
+      "homepage": "https://github.com/zhongyang219/TrafficMonitor",
+      "winget": "",
+      "mirror": "",
+      "tags": [
+        "网速",
+        "监控",
+        "开源"
+      ],
+      "color": "#06B6D4",
+      "initial": "T"
+    },
+    {
+      "id": "sharex",
+      "name": "ShareX",
+      "category": "utilities",
+      "description": "功能强大的截图、录屏与文件分享工具。",
+      "homepage": "https://getsharex.com/",
+      "winget": "ShareX.ShareX",
+      "mirror": "",
+      "tags": [
+        "截图",
+        "录屏",
+        "开源"
+      ],
+      "color": "#3B82F6",
+      "initial": "S",
+      "icon": "icons/sharex.ico"
+    },
+    {
+      "id": "bitwarden",
+      "name": "Bitwarden",
+      "category": "utilities",
+      "description": "开源密码管理器，跨平台同步。",
+      "homepage": "https://bitwarden.com/download/",
+      "winget": "Bitwarden.Bitwarden",
+      "mirror": "",
+      "tags": [
+        "密码",
+        "安全",
+        "开源"
+      ],
+      "color": "#175DDC",
+      "initial": "B",
+      "icon": "icons/bitwarden.png"
+    },
+    {
+      "id": "keepassxc",
+      "name": "KeePassXC",
+      "category": "utilities",
+      "description": "本地离线密码管理器，数据完全自己保管。",
+      "homepage": "https://keepassxc.org/",
+      "winget": "KeePassXCTeam.KeePassXC",
+      "mirror": "",
+      "tags": [
+        "密码",
+        "安全",
+        "开源",
+        "离线"
+      ],
+      "color": "#4B8B3B",
+      "initial": "K",
+      "icon": "icons/keepassxc.png"
+    },
+    {
+      "id": "sumatrapdf",
+      "name": "SumatraPDF",
+      "category": "utilities",
+      "description": "轻量快速的 PDF 阅读器。",
+      "homepage": "https://www.sumatrapdfreader.org/",
+      "winget": "SumatraPDF.SumatraPDF",
+      "mirror": "",
+      "tags": [
+        "PDF",
+        "阅读",
+        "开源"
+      ],
+      "color": "#EAB308",
+      "initial": "S",
+      "icon": "icons/sumatrapdf.ico"
+    },
+    {
+      "id": "calibre",
+      "name": "Calibre",
+      "category": "utilities",
+      "description": "电子书管理与格式转换工具。",
+      "homepage": "https://calibre-ebook.com/",
+      "winget": "calibre.calibre",
+      "mirror": "",
+      "tags": [
+        "电子书",
+        "转换",
+        "管理",
+        "开源"
+      ],
+      "color": "#3B82F6",
+      "initial": "C",
+      "icon": "icons/calibre.png"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "category": "utilities",
+      "description": "基于 Markdown 的本地笔记与知识管理工具。",
+      "homepage": "https://obsidian.md/",
+      "winget": "Obsidian.Obsidian",
+      "mirror": "",
+      "tags": [
+        "笔记",
+        "Markdown",
+        "知识库"
+      ],
+      "color": "#7C3AED",
+      "initial": "O",
+      "icon": "icons/obsidian.png"
+    },
+    {
+      "id": "joplin",
+      "name": "Joplin",
+      "category": "utilities",
+      "description": "开源跨平台笔记应用，支持端到端加密同步。",
+      "homepage": "https://joplinapp.org/",
+      "winget": "Joplin.Joplin",
+      "mirror": "",
+      "tags": [
+        "笔记",
+        "开源",
+        "同步"
+      ],
+      "color": "#2563EB",
+      "initial": "J",
+      "icon": "icons/joplin.png"
+    },
+    {
+      "id": "zotero",
+      "name": "Zotero",
+      "category": "utilities",
+      "description": "文献管理与引用工具，适合论文写作。",
+      "homepage": "https://www.zotero.org/download/",
+      "winget": "Zotero.Zotero",
+      "mirror": "",
+      "tags": [
+        "文献",
+        "学术",
+        "引用",
+        "开源"
+      ],
+      "color": "#B31B1B",
+      "initial": "Z",
+      "icon": "icons/zotero.ico"
+    },
+    {
+      "id": "playnite",
+      "name": "Playnite",
+      "category": "games",
+      "description": "开源游戏库管理器，统一管理各平台游戏。",
+      "homepage": "https://playnite.link/",
+      "winget": "Playnite.Playnite",
+      "mirror": "",
+      "tags": [
+        "游戏库",
+        "管理",
+        "开源"
+      ],
+      "color": "#7C3AED",
+      "initial": "P",
+      "icon": "icons/playnite.ico"
+    },
+    {
+      "id": "heroic",
+      "name": "Heroic Games Launcher",
+      "category": "games",
+      "description": "开源游戏启动器，支持 Epic、GOG 和 Amazon 游戏。",
+      "homepage": "https://heroicgameslauncher.com/",
+      "winget": "HeroicGamesLauncher.HeroicGamesLauncher",
+      "mirror": "",
+      "tags": [
+        "游戏平台",
+        "开源"
+      ],
+      "color": "#313131",
+      "initial": "H",
+      "icon": "icons/heroic.ico"
+    },
+    {
+      "id": "neovim",
+      "name": "Neovim",
+      "category": "dev",
+      "description": "现代化的 Vim 衍生编辑器，终端里高效写代码。",
+      "homepage": "https://neovim.io/",
+      "winget": "Neovim.Neovim",
+      "mirror": "",
+      "tags": [
+        "编辑器",
+        "开源",
+        "终端"
+      ],
+      "color": "#57A143",
+      "initial": "N",
+      "icon": "icons/neovim.ico"
+    },
+    {
+      "id": "mobaxterm",
+      "name": "MobaXterm",
+      "category": "dev",
+      "description": "集 SSH、SFTP、X11 于一体的远程终端工具。",
+      "homepage": "https://mobaxterm.mobatek.net/",
+      "winget": "Mobatek.MobaXterm",
+      "mirror": "",
+      "tags": [
+        "SSH",
+        "远程",
+        "终端"
+      ],
+      "color": "#1E4E79",
+      "initial": "M",
+      "icon": "icons/mobaxterm.ico"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "category": "social",
+      "description": "团队协作与即时通讯工具。",
+      "homepage": "https://slack.com/downloads/windows",
+      "winget": "Slack.Slack",
+      "mirror": "",
+      "tags": [
+        "团队",
+        "聊天",
+        "协作"
+      ],
+      "color": "#4A154B",
+      "initial": "S",
+      "icon": "icons/slack.png"
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "category": "social",
+      "description": "跨平台即时通讯，支持手机与电脑同步。",
+      "homepage": "https://www.whatsapp.com/download",
+      "winget": "WhatsApp.WhatsApp",
+      "mirror": "",
+      "tags": [
+        "聊天",
+        "通讯"
+      ],
+      "color": "#25D366",
+      "initial": "W",
+      "icon": "icons/whatsapp.svg"
     }
   ]
 }

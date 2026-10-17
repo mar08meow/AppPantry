@@ -18,5 +18,33 @@
   "7zip": {
     "url": "https://www.7-zip.org/a/7z2408-x64.exe",
     "filename": "7z2408-x64.exe"
+  },
+  "kazumi": {
+    "url": "https://github.com/Predidit/Kazumi/releases",
+    "filename": ""
+  },
+  "animeko": {
+    "url": "https://github.com/open-ani/animeko/releases",
+    "filename": ""
+  },
+  "oneanime": {
+    "url": "https://github.com/Predidit/oneAnime/releases",
+    "filename": ""
+  },
+  "lx-music": {
+    "url": "https://github.com/lyswhut/lx-music-desktop/releases",
+    "filename": ""
+  },
+  "yesplaymusic": {
+    "url": "https://github.com/qier222/YesPlayMusic/releases",
+    "filename": ""
+  },
+  "ventoy": {
+    "url": "https://www.ventoy.net/en/download.html",
+    "filename": ""
+  },
+  "trafficmonitor": {
+    "url": "https://github.com/zhongyang219/TrafficMonitor/releases",
+    "filename": ""
   }
 }

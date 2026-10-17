@@ -48,7 +48,7 @@
           <button class="theme-btn" id="themeToggle">
             <span id="themeIcon">☾</span><span id="themeLabel">切换浅色</span>
           </button>
-          <div class="version">v0.4.0 · 离线清单</div>
+          <div class="version">v0.5.0 · 离线清单</div>
         </div>
       </aside>
 
@@ -90,6 +90,8 @@
             <h2 id="sectionTitle">全部应用</h2>
             <span class="count" id="count"></span>
           </div>
+
+          <div class="tag-filter" id="tagFilter"></div>
 
           <div class="grid" id="grid"></div>
           <div class="empty" id="empty" hidden>
@@ -229,6 +231,15 @@
             <div class="settings-row">
               <code id="downloadDirLabel" data-i18n="settings.defaultDir">默认：系统下载文件夹</code>
               <button class="btn" id="pickDownloadDir" data-i18n="settings.changeDir">更改目录</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 data-i18n="settings.installDir">安装目录</h2>
+            <p class="settings-hint" data-i18n="settings.installDirHint">通过 winget 安装时尝试装到这个目录；仅部分安装器支持，其余仍使用默认位置。</p>
+            <div class="settings-row">
+              <code id="installDirLabel" data-i18n="settings.installDefault">默认：由安装器决定</code>
+              <button class="btn" id="pickInstallDir" data-i18n="settings.changeDir">更改目录</button>
             </div>
           </div>
 

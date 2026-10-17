@@ -29,8 +29,10 @@ const state = {
     language: 'auto',
     theme: 'dark',
     accent: '#6d8dff',
-    downloadDir: ''
+    downloadDir: '',
+    installDir: ''
   },
+  activeTags: new Set(),
   installedApps: [],
   installedLoading: false,
   installedError: '',
@@ -113,6 +115,7 @@ function updateVersionLabel() {
 
 function applyLanguage() {
   state.language = resolveLanguage();
+  state.activeTags.clear();
   document.documentElement.lang = state.language;
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -187,6 +190,10 @@ function renderSettingsUI() {
   if (dirLabel) {
     dirLabel.textContent = state.settings.downloadDir || t('settings.defaultDir');
   }
+  const installLabel = $('#installDirLabel');
+  if (installLabel) {
+    installLabel.textContent = state.settings.installDir || t('settings.installDefault');
+  }
 }
 
 function toast(message, ms = 3200) {
@@ -244,13 +251,42 @@ function appText(app) {
   };
 }
 
+function renderTagFilter() {
+  const box = $('#tagFilter');
+  if (!box) return;
+
+  const counts = new Map();
+  for (const app of state.catalog.apps) {
+    const text = appText(app);
+    for (const tag of text.tags || []) {
+      counts.set(tag, (counts.get(tag) || 0) + 1);
+    }
+  }
+
+  const tags = [...counts.entries()]
+    .filter(([, count]) => count >= 2)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 24)
+    .map(([tag]) => tag);
+
+  box.innerHTML = tags
+    .map(
+      (tag) =>
+        `<button class="tag-chip ${state.activeTags.has(tag) ? 'active' : ''}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)}</button>`
+    )
+    .join('');
+}
+
 function currentApps() {
   const q = state.query.trim().toLowerCase();
   return state.catalog.apps.filter((app) => {
     if (state.category !== 'all' && app.category !== state.category) return false;
     if (state.installableOnly && !app.winget) return false;
-    if (!q) return true;
     const text = appText(app);
+    if (state.activeTags.size && !(text.tags || []).some((tag) => state.activeTags.has(tag))) {
+      return false;
+    }
+    if (!q) return true;
     const haystack = [text.name, text.description, text.intro, app.publisher, ...(text.tags || [])]
       .join(' ')
       .toLowerCase();
@@ -342,6 +378,7 @@ function render() {
     state.category === 'all' ? t('nav.all') : t(`category.${state.category}`);
 
   renderNav();
+  renderTagFilter();
 }
 
 function renderDetail() {
@@ -471,7 +508,10 @@ async function installApp(app, options = {}) {
   if (state.modalApp?.id === app.id) renderDetail();
 
   try {
-    const result = await window.toolbox.install(app, { silent });
+    const result = await window.toolbox.install(app, {
+      silent,
+      installDir: state.settings.installDir
+    });
     let failed = result.code !== 0;
 
     // winget 的返回码并不总是可靠：已安装、需要重启、安装器返回非零都可能出现，
@@ -1354,6 +1394,25 @@ function bindEvents() {
       saveSettings();
       renderSettingsUI();
     }
+  });
+
+  $('#pickInstallDir').addEventListener('click', async () => {
+    if (!window.toolbox?.pickDirectory) return;
+    const dir = await window.toolbox.pickDirectory();
+    if (dir) {
+      state.settings.installDir = dir;
+      saveSettings();
+      renderSettingsUI();
+    }
+  });
+
+  $('#tagFilter').addEventListener('click', (event) => {
+    const chip = event.target.closest('[data-tag]');
+    if (!chip) return;
+    const tag = chip.dataset.tag;
+    if (state.activeTags.has(tag)) state.activeTags.delete(tag);
+    else state.activeTags.add(tag);
+    render();
   });
 
   $('#convertTabs').addEventListener('click', (event) => {

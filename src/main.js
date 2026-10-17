@@ -663,6 +663,9 @@ ipcMain.handle('winget:install', async (event, appEntry, options = {}) => {
     '--accept-source-agreements'
   ];
   if (silent) args.push('--silent', '--disable-interactivity');
+  if (options.installDir) {
+    args.push('--location', path.join(String(options.installDir), String(appEntry.id)));
+  }
 
   send(`> winget ${args.join(' ')}`);
   const res = await runWinget(args, send);
