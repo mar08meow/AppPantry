@@ -65,6 +65,7 @@ function loadCatalog() {
     const downloads = JSON.parse(fs.readFileSync(downloadsFile, 'utf8'));
     base.apps = base.apps.map((app) => ({ ...app, download: downloads[app.id] || null }));
   }
+  base.version = app.getVersion();
   return base;
 }
 

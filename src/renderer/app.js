@@ -110,7 +110,7 @@ function updateThemeButton() {
 
 function updateVersionLabel() {
   const el = $('.version');
-  if (el) el.textContent = `v0.4.0 · ${t('version.suffix')}`;
+  if (el) el.textContent = `v${state.catalog.version || '0.5.0'} · ${t('version.suffix')}`;
 }
 
 function applyLanguage() {
