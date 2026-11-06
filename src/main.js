@@ -96,16 +96,23 @@ function runWinget(args, onLine) {
       resolve({ output: lines.join('\n'), ...payload });
     };
 
+    let buffer = Buffer.alloc(0);
     const emit = (buf) => {
-      // 部分中文系统上 winget 输出 GBK，逐块解码可避免半个汉字被截断
-      const text = buf.toString('utf8');
-      const decoded = text.includes('\uFFFD') ? iconv.decode(buf, 'gbk') : text;
-      decoded.split(/\r?\n/).forEach((line) => {
+      buffer = Buffer.concat([buffer, buf]);
+      let offset = 0;
+      let newline;
+      while ((newline = buffer.indexOf('\n', offset)) !== -1) {
+        const lineBuf = buffer.subarray(offset, newline);
+        const text = lineBuf.toString('utf8');
+        const decoded = text.includes('\uFFFD') ? iconv.decode(lineBuf, 'gbk') : text;
+        const line = decoded.replace(/\r$/, '');
         if (line.trim()) {
           lines.push(line);
           onLine(line);
         }
-      });
+        offset = newline + 1;
+      }
+      buffer = buffer.subarray(offset);
     };
 
     child.stdout.on('data', emit);
@@ -542,11 +549,11 @@ function listExeCandidates(dir, maxDepth = 2, limit = 300) {
     }
     for (const entry of entries) {
       if (visited >= limit) break;
+      visited += 1;
       const full = path.join(current, entry.name);
       if (entry.isDirectory()) {
         if (depth < maxDepth) walk(full, depth + 1);
       } else if (/\.exe$/i.test(entry.name) && !SKIP_EXE.test(entry.name)) {
-        visited += 1;
         try {
           results.push({ file: full, size: fs.statSync(full).size });
         } catch (_) {
@@ -845,17 +852,23 @@ ipcMain.handle('download:start', async (event, payload) => {
 
       const total = Number(response.headers['content-length'] || 0);
       let received = 0;
+      let lastUpdate = 0;
       const file = fs.createWriteStream(target);
 
       response.on('data', (chunk) => {
         received += chunk.length;
         file.write(chunk);
-        if (!event.sender.isDestroyed()) {
+        const now = Date.now();
+        if (now - lastUpdate > 150 && !event.sender.isDestroyed()) {
+          lastUpdate = now;
           event.sender.send('download:progress', { url, received, total, target });
         }
       });
 
       response.on('end', () => {
+        if (!event.sender.isDestroyed()) {
+          event.sender.send('download:progress', { url, received, total, target });
+        }
         file.end(() => finish({ ok: true, path: target }));
       });
 

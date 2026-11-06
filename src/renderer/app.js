@@ -12,6 +12,7 @@ const state = {
   wingetOk: false,
   logId: null,
   logs: new Map(),
+  logRenderFrame: null,
   modalApp: null,
   toastTimer: null,
   view: 'catalog',
@@ -794,7 +795,13 @@ function appendLog(id, line) {
   lines.push(line);
   if (lines.length > 600) lines.splice(0, lines.length - 600);
   state.logs.set(id, lines);
-  if (state.logId === id) renderLog(id);
+  if (state.logId === id) {
+    if (state.logRenderFrame) cancelAnimationFrame(state.logRenderFrame);
+    state.logRenderFrame = requestAnimationFrame(() => {
+      renderLog(id);
+      state.logRenderFrame = null;
+    });
+  }
 }
 
 function renderLog(id) {
